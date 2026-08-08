@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ランニング | ノウハウノート</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header running-header">
+    <div class="container">
+      <a href="index.html" class="back-link">← トップへ</a>
+      <h1>🏃 ランニング</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- タグ絞り込み -->
+    <div class="filter-bar">
+      <span class="filter-label">タグで絞り込み：</span>
+      <div class="tag-list" id="tag-filter">
+        <!-- JSで動的生成 -->
+      </div>
+    </div>
+
+    <!-- ノート一覧 -->
+    <div class="note-grid" id="note-list">
+      <!-- JSで動的生成 -->
+      <p class="empty-msg">まだノートがありません。inbox を処理してノートを追加しましょう。</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="index.html">← トップへ戻る</a>
+    </div>
+  </footer>
+
+  <script src="notes-running.js"></script>
+</body>
+</html>
