@@ -4,6 +4,7 @@
 :root {
   --dance-color: #f97316;   /* オレンジ */
   --running-color: #22c55e; /* グリーン */
+  --ai-color: #6366f1;      /* インディゴ */
   --text: #1a1a1a;
   --text-muted: #6b7280;
   --bg: #ffffff;
@@ -52,6 +53,9 @@ body {
 .running-header { background: var(--running-color); }
 .running-header h1 { font-size: 2rem; font-weight: 800; }
 
+.ai-header { background: var(--ai-color); }
+.ai-header h1 { font-size: 2rem; font-weight: 800; }
+
 .back-link {
   display: inline-block;
   color: rgba(255,255,255,0.85);
@@ -86,6 +90,7 @@ body {
 
 .category-card.dance { border-top: 4px solid var(--dance-color); }
 .category-card.running { border-top: 4px solid var(--running-color); }
+.category-card.ai { border-top: 4px solid var(--ai-color); }
 
 .category-icon { font-size: 2.5rem; margin-bottom: 12px; }
 
