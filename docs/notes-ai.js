@@ -13,7 +13,20 @@
  *   sources  : 出典の配列（{ label, url, date } の形式）
  */
 const AI_NOTES = [
-  // ノートはここに追加されます
+  {
+    id: "claude-code-html-report-skill",
+    title: "Claude Code HTML出力をコンサル品質に整えるスキル",
+    category: "AI開発 > Claude Code活用",
+    tags: ["#ClaudeCode", "#スキル", "#HTML出力", "#資料作成"],
+    points: [
+      "html-report-design スキルを入れると「HTMLで出して」と言った瞬間だけ働く",
+      "枠・グラデ・絵文字を禁止し完成済みCSSを使わせる",
+      "各セクションは「見出し→結論1文→根拠」の順で強制",
+      "図解は矢羽根/ロードマップ/フレームワーク表/バブル/滝グラフの型から選ぶ",
+      "配色は脇役グレー＋主役の濃紺1色、凡例なしの直接ラベル",
+      "A4印刷でそのまま配布OK"
+    ]
+  }
 ];
 
 /* ===== 以下は表示ロジック（触らなくてOK） ===== */
