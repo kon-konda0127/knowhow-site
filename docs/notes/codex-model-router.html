@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex subagent のモデルルーティング | ノウハウノート</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header ai-header">
+    <div class="container">
+      <a href="../ai.html" class="back-link">← AI開発へ</a>
+      <h1>Codex subagent のモデルルーティング（model-router）</h1>
+      <p class="note-meta">カテゴリ: AI開発 > Codex活用 ｜ 更新: 2026-08-09</p>
+    </div>
+  </header>
+
+  <main class="note-page">
+    <div class="tags" style="margin-bottom:24px;">
+      <span class="note-tag">#Codex</span>
+      <span class="note-tag">#subagent</span>
+      <span class="note-tag">#モデル選択</span>
+      <span class="note-tag">#コスト最適化</span>
+    </div>
+
+    <h2>ポイント</h2>
+    <ul>
+      <li><code>model-router</code> というツールで Codex の subagent 機能を拡張できる</li>
+      <li>タスクごとに異なるモデルを使い分けられる（Opus等の上位モデル ↔ DeepSeek等の軽量モデル）</li>
+      <li>重い判断・設計は上位モデル、定型的なコード生成は軽量モデルに振り分け</li>
+      <li>コスト構造そのものが変わる発想</li>
+    </ul>
+
+    <h2>インストール手順</h2>
+    <ul>
+      <li>model-router をインストール</li>
+      <li>subagent のモデル設定で「選択したモデルすべて」を有効化</li>
+      <li>設定を保存して完了</li>
+    </ul>
+
+    <h2>よくあるミス・落とし穴</h2>
+    <ul>
+      <li>これまでは全タスクに同じ最上位モデルを使うのが普通だったが、それはコスト過多になりやすい</li>
+    </ul>
+
+    <h2>出典</h2>
+    <ul>
+      <li><a class="source-link" href="https://x.com" target="_blank">東大Codex研究所 のポスト</a>（取り込み日：2026-08-09）</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../ai.html">← AI開発へ戻る</a>
+    </div>
+  </footer>
+</body>
+</html>
