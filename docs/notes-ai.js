@@ -26,6 +26,17 @@ const AI_NOTES = [
       "配色は脇役グレー＋主役の濃紺1色、凡例なしの直接ラベル",
       "A4印刷でそのまま配布OK"
     ]
+  },
+  {
+    id: "codex-model-router",
+    title: "Codex subagent のモデルルーティング（model-router）",
+    category: "AI開発 > Codex活用",
+    tags: ["#Codex", "#subagent", "#モデル選択", "#コスト最適化"],
+    points: [
+      "model-router で Codex の subagent 機能を拡張、タスクごとに異なるモデルを使い分けられる",
+      "重い判断・設計は上位モデル（Opus等）、定型的なコード生成は軽量モデル（DeepSeek等）に振り分け",
+      "コスト構造そのものが変わる発想"
+    ]
   }
 ];
 
