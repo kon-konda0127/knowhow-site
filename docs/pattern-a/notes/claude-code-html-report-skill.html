@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code HTML出力をコンサル品質に整えるスキル | ノウハウノート</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header ai-header">
+    <div class="container">
+      <a href="../ai.html" class="back-link">← AI開発へ</a>
+      <h1>Claude Code HTML出力をコンサル品質に整えるスキル</h1>
+      <p class="note-meta">カテゴリ: AI開発 > Claude Code活用 ｜ 更新: 2026-08-09</p>
+    </div>
+  </header>
+
+  <main class="note-page">
+    <div class="tags" style="margin-bottom:28px;">
+      <span class="note-tag">#ClaudeCode</span>
+      <span class="note-tag">#スキル</span>
+      <span class="note-tag">#HTML出力</span>
+      <span class="note-tag">#資料作成</span>
+    </div>
+
+    <p style="color:#94a3b8; font-size:0.95rem; line-height:1.7; margin-bottom:28px; padding:16px; background:rgba(124,58,237,0.08); border-left:3px solid #7c3aed; border-radius:0 8px 8px 0;">
+      Claude CodeにHTMLを出力させると、デフォルトでは「枠・グラデ・絵文字まみれ」になりがち。
+      このスキルを導入すると、コンサル資料レベルの整ったHTMLを一発で生成できるようになる。
+    </p>
+
+    <h2>ポイント</h2>
+    <ul>
+      <li><code>html-report-design</code> スキル（AIに追加できる行動指針ファイル）を入れると「HTMLで出して」と指示した瞬間だけ自動的に働く</li>
+      <li>枠・グラデーション・絵文字を禁止し、あらかじめ用意された完成済みCSSを使わせる</li>
+      <li>各セクションは「見出し→結論1文→根拠」の順で強制される</li>
+      <li>図解は矢羽根／ロードマップ／フレームワーク表／バブル／滝グラフの型から選ぶ</li>
+      <li>配色は脇役グレー＋主役の濃紺1色、凡例なしの直接ラベル（視線が散らない）</li>
+      <li>アクセント色だけ会社カラーに差し替え可能</li>
+      <li>A4印刷でそのまま配布できるレベルのデザイン品質</li>
+    </ul>
+
+    <h2>インストール方法</h2>
+    <ul>
+      <li>ステップ1: CLIから <code>npx skills add Ted0321/kotetsu-work-ai-skills@html-report-design</code> を実行</li>
+      <li>ステップ2（別の方法）: Claude Codeに「github.com/Ted0321/kotetsu... の skills/html-report-design を ~/.claude/skills/ にインストールして」と1行貼るだけでもOK</li>
+      <li>ChatGPT派はSKILL.mdの内容をコピペしてカスタム指示に貼ることで同等の効果が得られる（※要確認）</li>
+    </ul>
+
+    <h2>よくあるミス・落とし穴</h2>
+    <ul>
+      <li>スキルなしで「HTMLで出して」と頼むと、枠・グラデ・絵文字まみれのスライド風になる</li>
+      <li>仕組みはシンプル：AIが「線と箱」でビジュアルを作ろうとするのを、完成済みCSSで強制的に矯正している</li>
+    </ul>
+
+    <h2>出典</h2>
+    <ul>
+      <li>
+        <a class="source-link" href="https://x.com" target="_blank">@kotetsu_ai（こてつ｜AI×コンサルワーク）のポスト（X）↗</a>
+        <span style="color:#64748b; font-size:0.8rem; display:block; margin-top:4px;">取り込み日：2026-08-09</span>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../ai.html">← AI開発へ戻る</a>
+    </div>
+  </footer>
+</body>
+</html>

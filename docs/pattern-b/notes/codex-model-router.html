@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex subagent のモデルルーティング | ノウハウノート</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header ai-header">
+    <div class="container">
+      <a href="../ai.html" class="back-link">← AI開発へ</a>
+      <h1>Codex subagent のモデルルーティング（model-router）</h1>
+      <p class="note-meta">カテゴリ: AI開発 > Codex活用 ｜ 更新: 2026-08-09</p>
+    </div>
+  </header>
+
+  <main class="note-page">
+    <div class="tags" style="margin-bottom:24px;">
+      <span class="note-tag">#Codex</span>
+      <span class="note-tag">#subagent</span>
+      <span class="note-tag">#モデル選択</span>
+      <span class="note-tag">#コスト最適化</span>
+    </div>
+
+    <p style="color:#1e40af; font-size:0.95rem; line-height:1.75; margin-bottom:28px; padding:16px 20px; background:#eff6ff; border-radius:8px; border:1px solid #bfdbfe;">
+      AIツールを使う時、すべての作業に最上位の高いモデルを使うのはコスト過多になりやすい。
+      model-routerを使うと「重い仕事は高いモデル、軽い仕事は安いモデル」に自動で振り分けられ、品質を落とさずにコストを下げられる。
+    </p>
+
+    <h2>ポイント</h2>
+    <ul>
+      <li><code>model-router</code> というツールで Codex の subagent（AIが別のAIに指示を出す仕組み）機能を拡張できる</li>
+      <li>タスクごとに異なるモデルを自動で使い分けられる</li>
+      <li>重い判断・設計は上位モデル（Opusなど）、定型的なコード生成は軽量モデル（DeepSeekなど）に振り分ける</li>
+      <li>コスト構造そのものが変わる発想：従来は全タスクに最上位モデルを使うのが普通だったが、それは過剰コストになりやすかった</li>
+    </ul>
+
+    <h2>インストール手順</h2>
+    <ul>
+      <li>ステップ1: model-router をインストール（※具体的なインストールコマンドは要確認）</li>
+      <li>ステップ2: subagent（AIが別のAIに指示を出す機能）のモデル設定で「選択したモデルすべて」を有効化する</li>
+      <li>ステップ3: 設定を保存して完了</li>
+    </ul>
+
+    <h2>よくあるミス・落とし穴</h2>
+    <ul>
+      <li>これまでは全タスクに同じ最上位モデルを使うのが普通だったが、それはコスト過多になりやすい</li>
+      <li>軽量モデルに向かない作業（複雑な判断・設計）まで振り分けると品質が落ちるので注意（※実際の使用感は要確認）</li>
+    </ul>
+
+    <h2>出典</h2>
+    <ul>
+      <li>
+        <a class="source-link" href="https://x.com" target="_blank">@todai_codex（東大Codex研究所）のポスト（X）</a>
+        <span style="color:#94a3b8; font-size:0.8rem; display:block; margin-top:4px;">取り込み日：2026-08-09</span>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../ai.html">← AI開発へ戻る</a>
+    </div>
+  </footer>
+</body>
+</html>
