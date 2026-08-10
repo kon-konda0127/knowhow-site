@@ -1,0 +1,251 @@
+/* ===== Pattern L: Medium風 ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --text: #242424;
+  --text-muted: #757575;
+  --accent: #1a8917;
+  --border: #e6e6e6;
+  --radius: 4px;
+}
+
+body {
+  font-family: "Georgia", "Hiragino Mincho ProN", "游明朝", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.85;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== ヘッダー ===== */
+.site-header {
+  padding: 80px 0 56px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.site-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.site-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-top: 14px;
+  font-family: -apple-system, sans-serif;
+}
+
+.ai-header, .dance-header, .running-header {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ai-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-family: -apple-system, sans-serif;
+  margin-bottom: 12px;
+}
+.back-link:hover { color: var(--text); }
+
+/* ===== カテゴリカード ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 48px 0;
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.category-card:first-child { border-top: 1px solid var(--border); }
+.category-card:hover { opacity: 0.85; }
+
+.category-icon { font-size: 2rem; flex-shrink: 0; }
+
+.category-card h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.category-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-family: -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+.note-count {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-family: -apple-system, sans-serif;
+  font-weight: 500;
+}
+
+/* ===== フィルターバー ===== */
+.filter-bar {
+  padding: 20px 0 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  font-family: -apple-system, sans-serif;
+}
+
+.filter-label { font-size: 0.82rem; color: var(--text-muted); }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2em;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.tag-btn:hover { border-color: var(--text); color: var(--text); }
+.tag-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+/* ===== ノート一覧 ===== */
+.note-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 16px 0 60px;
+}
+
+.note-card {
+  display: block;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  padding: 28px 0;
+  text-decoration: none;
+  color: var(--text);
+}
+.note-card:first-child { border-top: 1px solid var(--border); }
+.note-card:hover h3 { opacity: 0.7; }
+
+.note-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  transition: opacity 0.15s;
+}
+
+.note-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; font-family: -apple-system, sans-serif; }
+
+.note-tag {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+.note-tag::before { content: '# '; }
+
+.empty-msg {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px 0;
+  font-family: -apple-system, sans-serif;
+}
+
+/* ===== ノートページ ===== */
+.note-page {
+  padding: 48px 0 100px;
+}
+
+.note-page h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.note-meta { color: var(--text-muted); font-size: 0.875rem; margin-bottom: 32px; font-family: -apple-system, sans-serif; }
+
+.note-page h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 36px 0 14px;
+}
+
+.note-page ul { padding-left: 0; list-style: none; }
+
+.note-page li {
+  margin-bottom: 14px;
+  padding-left: 24px;
+  position: relative;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.note-page li::before { content: '—'; position: absolute; left: 0; color: var(--text-muted); }
+
+.note-page code {
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+  font-family: 'SF Mono', monospace;
+}
+
+.source-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: -apple-system, sans-serif;
+  font-size: 0.875rem;
+}
+.source-link:hover { text-decoration: underline; }
+
+/* ===== フッター ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-family: -apple-system, sans-serif;
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .container { padding: 0 16px; }
+  .site-title { font-size: 1.8rem; }
+  .note-page h1 { font-size: 1.6rem; }
+}

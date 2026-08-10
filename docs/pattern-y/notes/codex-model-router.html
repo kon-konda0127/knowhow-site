@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Codex subagentのモデルルーティング | ノウハウノート</title><link rel="stylesheet" href="../style.css"></head>
+<body>
+  <header class="site-header ai-header"><div class="container"><a href="../ai.html" class="back-link">← AI開発へ</a><h1>Codex subagentのモデルルーティング（model-router）</h1><p class="note-meta">AI開発 > Codex活用 ｜ 2026-08-08</p></div></header>
+  <main class="container"><div class="note-page">
+    <div class="tags" style="margin-bottom:20px;"><span class="note-tag">#Codex</span><span class="note-tag">#subagent</span><span class="note-tag">#モデル選択</span><span class="note-tag">#コスト最適化</span></div>
+    <h2>ポイント</h2>
+    <ul>
+      <li>model-routerでCodexのsubagent（AIが別のAIに指示を出す仕組み）を拡張し、タスクごとに異なるモデルを使い分けられる</li>
+      <li>重い判断・設計はOpus等の上位モデル、定型的なコード生成はDeepSeek等の軽量モデルに自動振り分け</li>
+      <li>全タスクに最上位モデルを使い続けるとコスト過多になる問題を解決する</li>
+      <li>コスト構造そのものを変える設計思想</li>
+    </ul>
+    <h2>出典</h2>
+    <ul><li><a class="source-link" href="https://x.com" target="_blank">@todai_codex のポスト（X）↗</a></li></ul>
+  </div></main>
+  <footer class="site-footer"><div class="container"><a href="../ai.html">← AI開発へ戻る</a></div></footer>
+</body>
+</html>

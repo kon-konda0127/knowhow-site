@@ -3,44 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ダンス・ランニング・AI開発 ノウハウノート</title>
+  <title>ノウハウノート — ダンス・ランニング・AI開発</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">ダンス・ランニング・AI開発<br>ノウハウノート</h1>
-      <p class="site-desc">動画・X・記事から学んだ知見を論点ごとに整理した個人学習ノート</p>
-    </div>
-  </header>
+<div class="site-layout">
 
-  <main class="container">
-    <div class="category-grid">
-      <a href="dance.html" class="category-card dance">
-        <div class="category-icon">💃</div>
-        <h2>ダンス</h2>
-        <p>アイソレーション・基礎・振り付けのコツ</p>
-        <span class="note-count" id="dance-count">ノートを読む →</span>
-      </a>
-      <a href="running.html" class="category-card running">
-        <div class="category-icon">🏃</div>
-        <h2>ランニング</h2>
-        <p>フォーム・トレーニングメニュー・補強</p>
-        <span class="note-count" id="running-count">ノートを読む →</span>
-      </a>
-      <a href="ai.html" class="category-card ai">
-        <div class="category-icon">🤖</div>
-        <h2>AI開発</h2>
-        <p>プロンプト設計・ツール活用・開発ノウハウ</p>
-        <span class="note-count">ノートを読む →</span>
+  <!-- ===== サイドバー ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <div class="sidebar-logo-title">ノウハウノート</div>
+        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
       </a>
     </div>
-  </main>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">カテゴリ</div>
+      <a href="index.html" class="sidebar-link active">
+        <span class="icon">🏠</span> トップ
+      </a>
+      <a href="dance.html" class="sidebar-link dance-link">
+        <span class="icon">💃</span> ダンス
+      </a>
+      <a href="running.html" class="sidebar-link running-link">
+        <span class="icon">🏃</span> ランニング
+      </a>
+      <a href="ai.html" class="sidebar-link ai-link">
+        <span class="icon">🤖</span> AI開発
+      </a>
+    </nav>
+  </aside>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>個人学習用ノート。出典は各ページに記載。</p>
+  <!-- モバイルオーバーレイ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <div class="main-content">
+
+    <!-- モバイルトップバー -->
+    <div class="topbar">
+      <span class="topbar-title">ノウハウノート</span>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </footer>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero-eyebrow">Personal Knowledge Base</p>
+        <h1 class="hero-title">
+          動画・X・記事から学んだ<br>
+          <span>論点ノート</span>
+        </h1>
+        <p class="hero-sub">
+          ダンス・ランニング・AI開発の3カテゴリで、動画やXのポストから得た知見を論点ごとに整理した個人学習ノートです。
+        </p>
+
+        <!-- SVGフロー図 -->
+        <div class="flow-diagram">
+          <svg viewBox="0 0 640 96" width="640" height="96" style="max-width:100%; display:block;">
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
+              </marker>
+            </defs>
+            <!-- Box 1 -->
+            <rect x="4" y="24" width="130" height="48" rx="10" fill="#f0f0ff" stroke="#6366f1" stroke-width="1.5"/>
+            <text x="69" y="43" text-anchor="middle" font-size="16">📱</text>
+            <text x="69" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">動画・X・記事</text>
+
+            <!-- Arrow 1 -->
+            <line x1="134" y1="48" x2="162" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <!-- Box 2 -->
+            <rect x="166" y="24" width="130" height="48" rx="10" fill="#faf0ff" stroke="#a855f7" stroke-width="1.5"/>
+            <text x="231" y="43" text-anchor="middle" font-size="16">🤖</text>
+            <text x="231" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">Claudeが整理</text>
+
+            <!-- Arrow 2 -->
+            <line x1="296" y1="48" x2="324" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <!-- Box 3 -->
+            <rect x="328" y="24" width="130" height="48" rx="10" fill="#f0f0ff" stroke="#6366f1" stroke-width="1.5"/>
+            <text x="393" y="43" text-anchor="middle" font-size="16">📚</text>
+            <text x="393" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">論点ノート</text>
+
+            <!-- Arrow 3 -->
+            <line x1="458" y1="48" x2="486" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
+
+            <!-- Box 4 -->
+            <rect x="490" y="24" width="146" height="48" rx="10" fill="#f0fff4" stroke="#22c55e" stroke-width="1.5"/>
+            <text x="563" y="43" text-anchor="middle" font-size="16">🔍</text>
+            <text x="563" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">いつでも検索・参照</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- カテゴリグリッド -->
+    <main class="container">
+      <p class="section-heading">カテゴリを選ぶ</p>
+      <div class="category-grid">
+        <a href="dance.html" class="category-card dance">
+          <span class="category-icon">💃</span>
+          <h2>ダンス</h2>
+          <p>アイソレーション・基礎・振り付けのコツ</p>
+          <span class="note-count">ノートを読む →</span>
+        </a>
+        <a href="running.html" class="category-card running">
+          <span class="category-icon">🏃</span>
+          <h2>ランニング</h2>
+          <p>フォーム・トレーニングメニュー・補強</p>
+          <span class="note-count">ノートを読む →</span>
+        </a>
+        <a href="ai.html" class="category-card ai">
+          <span class="category-icon">🤖</span>
+          <h2>AI開発</h2>
+          <p>プロンプト設計・ツール活用・開発ノウハウ</p>
+          <span class="note-count">ノートを読む →</span>
+        </a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      個人学習用ノート。出典は各ページに記載。
+    </footer>
+  </div>
+</div>
+
+<script>
+  // ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    const isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+  }
+
+  hamburger.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+</script>
 </body>
 </html>

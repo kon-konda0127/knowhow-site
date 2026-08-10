@@ -1,0 +1,262 @@
+/* ===== Pattern D: Notion風 ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --bg-card: #ffffff;
+  --bg-hover: #f7f6f3;
+  --text: #37352f;
+  --text-muted: #787774;
+  --accent: #2eaadc;
+  --border: #e9e9e7;
+  --radius: 6px;
+  --ai-color: #2eaadc;
+  --dance-color: #e25f5f;
+  --running-color: #4dad57;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== ヘッダー ===== */
+.site-header {
+  padding: 80px 0 40px;
+  text-align: left;
+}
+
+.site-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.site-title::before {
+  content: '📒 ';
+  font-size: 0.9em;
+}
+
+.site-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.ai-header, .dance-header, .running-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.ai-header h1 { font-size: 1.8rem; font-weight: 700; color: var(--text); }
+.ai-header h1::before { content: '🤖 '; }
+
+.back-link {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.back-link:hover { background: var(--bg-hover); color: var(--text); }
+
+/* ===== カテゴリカード ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  padding: 40px 0;
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: background 0.1s;
+}
+
+.category-card:hover { background: var(--bg-hover); }
+
+.category-icon { font-size: 1.8rem; margin-bottom: 10px; display: block; }
+
+.category-card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.category-card p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.note-count {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ===== フィルターバー ===== */
+.filter-bar {
+  padding: 24px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.1s;
+}
+.tag-btn:hover { background: var(--bg-hover); color: var(--text); }
+.tag-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+/* ===== ノート一覧 ===== */
+.note-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  padding: 16px 0 60px;
+}
+
+.note-card {
+  display: block;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.1s;
+}
+.note-card:hover { background: var(--bg-hover); }
+
+.note-card h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.note-card h3::before { content: '📄 '; font-size: 0.9em; }
+
+.note-card .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+.note-tag {
+  background: rgba(46,170,220,0.1);
+  border-radius: 3px;
+  padding: 1px 7px;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.empty-msg {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px 0;
+}
+
+/* ===== ノートページ ===== */
+.note-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.note-page h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.note-meta { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 28px; }
+
+.note-page h2 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 28px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.note-page ul { padding-left: 0; list-style: none; }
+
+.note-page li {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 24px;
+}
+.note-page li::before { content: '☑'; position: absolute; left: 4px; color: var(--accent); }
+.note-page li:hover { background: var(--bg-hover); }
+
+.note-page code {
+  background: rgba(135,131,120,0.12);
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  color: #eb5757;
+}
+
+.source-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+.source-link:hover { text-decoration: underline; }
+
+/* ===== フッター ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { color: var(--text); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  .site-title { font-size: 1.6rem; }
+  .category-grid { grid-template-columns: 1fr; gap: 2px; padding: 24px 0; }
+  .note-page { padding: 24px 0 60px; }
+  .note-page h1 { font-size: 1.5rem; }
+}

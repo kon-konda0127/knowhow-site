@@ -1,0 +1,138 @@
+/* ===== Pattern Y: ニュースペーパー風 ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f8f6f0;
+  --bg-card: #ffffff;
+  --text: #111111;
+  --text-muted: #555555;
+  --accent: #111111;
+  --border: #cccccc;
+  --radius: 0;
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", "Hiragino Mincho ProN", "游明朝", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+/* ===== ヘッダー ===== */
+.site-header { padding: 16px 0 12px; border-top: 4px solid var(--text); border-bottom: 2px solid var(--text); text-align: center; }
+
+.site-header .container { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 24px; margin-top: 4px; }
+
+.site-title { font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 700; font-family: "Times New Roman", "Hiragino Mincho ProN", serif; color: var(--text); line-height: 1; letter-spacing: -0.02em; }
+
+.site-desc { color: var(--text-muted); font-size: 0.8rem; margin-top: 8px; letter-spacing: 0.1em; text-transform: uppercase; font-family: -apple-system, sans-serif; border-top: 1px solid var(--border); padding-top: 8px; }
+
+.ai-header, .dance-header, .running-header { padding: 20px 0 14px; border-bottom: 3px double var(--text); }
+
+.ai-header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+
+.back-link { display: inline-block; color: var(--text-muted); text-decoration: none; font-size: 0.78rem; margin-bottom: 8px; font-family: -apple-system, sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
+.back-link:hover { color: var(--text); }
+.back-link::before { content: '‹ '; }
+
+/* ===== カテゴリカード（コラム風） ===== */
+.category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 32px 0; border-bottom: 1px solid var(--border); }
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+.category-card:last-child { border-right: none; }
+.category-card:hover { background: #f0ede5; }
+
+.category-icon { font-size: 1.5rem; margin-bottom: 8px; display: block; }
+
+.category-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+
+.category-card p { color: var(--text-muted); font-size: 0.82rem; margin-bottom: 10px; line-height: 1.6; font-family: -apple-system, sans-serif; }
+
+.note-count { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; font-family: -apple-system, sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ===== フィルターバー ===== */
+.filter-bar { padding: 12px 0 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); font-family: -apple-system, sans-serif; }
+
+.filter-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: all 0.1s;
+}
+.tag-btn:hover { background: var(--text); color: #fff; border-color: var(--text); }
+.tag-btn.active { background: var(--text); color: #fff; }
+
+/* ===== ノート一覧（コラムレイアウト） ===== */
+.note-grid { columns: 3; column-gap: 24px; padding: 24px 0 60px; }
+
+.note-card {
+  display: block;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--text);
+  padding: 16px;
+  margin-bottom: 20px;
+  break-inside: avoid;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.1s;
+}
+.note-card:hover { background: #f0ede5; }
+
+.note-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; line-height: 1.4; }
+
+.note-card .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; font-family: -apple-system, sans-serif; }
+
+.note-tag { color: var(--text-muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.empty-msg { color: var(--text-muted); text-align: center; padding: 40px 0; font-family: -apple-system, sans-serif; }
+
+/* ===== ノートページ ===== */
+.note-page { max-width: 720px; margin: 0 auto; padding: 32px 0 80px; }
+
+.note-page h1 { font-size: 2rem; font-weight: 700; margin-bottom: 10px; line-height: 1.25; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+
+.note-meta { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 24px; font-family: -apple-system, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.note-page h2 { font-size: 0.75rem; font-weight: 700; margin: 24px 0 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); font-family: -apple-system, sans-serif; }
+
+.note-page ul { padding-left: 0; list-style: none; }
+
+.note-page li { margin-bottom: 8px; padding: 8px 0; border-bottom: 1px dotted var(--border); font-size: 0.9rem; line-height: 1.7; }
+
+.note-page code { background: #f0f0f0; border: 1px solid var(--border); padding: 1px 5px; font-size: 0.85em; font-family: 'Courier New', monospace; }
+
+.source-link { color: var(--text); text-decoration: underline; font-size: 0.875rem; font-family: -apple-system, sans-serif; }
+.source-link:hover { color: var(--text-muted); }
+
+/* ===== フッター ===== */
+.site-footer { border-top: 2px solid var(--text); padding: 16px 0; text-align: center; color: var(--text-muted); font-size: 0.72rem; font-family: -apple-system, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; }
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+@media (max-width: 600px) {
+  .container { padding: 0 12px; }
+  .category-grid { grid-template-columns: 1fr; }
+  .note-grid { columns: 1; }
+  .site-title { font-size: 2rem; }
+}

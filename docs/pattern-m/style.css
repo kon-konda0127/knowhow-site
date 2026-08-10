@@ -1,0 +1,288 @@
+/* ===== Pattern M: マガジン風 ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --text-muted: #666666;
+  --accent: #cc0000;
+  --border: #111111;
+  --radius: 0;
+}
+
+body {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "游明朝", Georgia, serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== ヘッダー ===== */
+.site-header {
+  border-top: 4px solid var(--border);
+  border-bottom: 4px solid var(--border);
+  padding: 32px 0;
+  text-align: center;
+  position: relative;
+}
+
+.site-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--accent);
+  position: absolute;
+  top: 8px;
+  left: 0; right: 0;
+}
+
+.site-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.site-desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: -apple-system, sans-serif;
+}
+
+.ai-header, .dance-header, .running-header {
+  border-top: 4px solid var(--border);
+  padding: 24px 0 20px;
+  border-bottom: 2px solid var(--border);
+}
+
+.ai-header h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.ai-header h1::before { content: '▌ '; color: var(--accent); }
+
+.back-link {
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-family: -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.back-link:hover { color: var(--accent); }
+
+/* ===== カテゴリカード ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 40px 0;
+  border-bottom: 2px solid var(--border);
+}
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  padding: 28px 20px;
+  border-right: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.category-card:last-child { border-right: none; }
+.category-card:hover { background: #f9f9f9; }
+
+.category-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+
+.category-card h2 {
+  font-size: 1.1rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.category-card p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+  font-family: -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+.note-count {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-family: -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ===== フィルターバー ===== */
+.filter-bar {
+  padding: 16px 0 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--border);
+  font-family: -apple-system, sans-serif;
+}
+
+.filter-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.1s;
+}
+.tag-btn:hover { background: var(--text); color: #fff; }
+.tag-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ===== ノート一覧 ===== */
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0;
+  padding: 16px 0 60px;
+}
+
+.note-card {
+  display: block;
+  background: transparent;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 22px 20px;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.1s;
+}
+.note-card:hover { background: #f9f9f9; }
+
+.note-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.note-card .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; font-family: -apple-system, sans-serif; }
+
+.note-tag {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.empty-msg {
+  color: var(--text-muted);
+  text-align: center;
+  padding: 48px 0;
+  grid-column: 1/-1;
+  font-family: -apple-system, sans-serif;
+}
+
+/* ===== ノートページ ===== */
+.note-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+.note-page h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.note-meta { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 24px; font-family: -apple-system, sans-serif; letter-spacing: 0.04em; text-transform: uppercase; }
+
+.note-page h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 28px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  font-family: -apple-system, sans-serif;
+}
+
+.note-page ul { padding-left: 0; list-style: none; border-left: 3px solid var(--accent); margin-left: 4px; }
+
+.note-page li {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.note-page code {
+  background: #f0f0f0;
+  border-radius: 2px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+  font-family: 'SF Mono', monospace;
+}
+
+.source-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-family: -apple-system, sans-serif;
+}
+.source-link:hover { text-decoration: underline; }
+
+/* ===== フッター ===== */
+.site-footer {
+  border-top: 4px solid var(--border);
+  padding: 24px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  .site-title { font-size: 2.2rem; }
+  .category-grid { grid-template-columns: 1fr; }
+  .note-grid { grid-template-columns: 1fr; }
+  .note-page h1 { font-size: 1.6rem; }
+}

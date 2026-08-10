@@ -6,53 +6,155 @@
   <title>Codex subagent のモデルルーティング | ノウハウノート</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<body>
-  <header class="site-header ai-header">
-    <div class="container">
-      <a href="../ai.html" class="back-link">← AI開発へ</a>
-      <h1>Codex subagent のモデルルーティング（model-router）</h1>
-      <p class="note-meta">カテゴリ: AI開発 > Codex活用 ｜ 更新: 2026-08-09</p>
+<body class="ai-theme">
+<div class="site-layout">
+
+  <!-- ===== サイドバー ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="../index.html">
+        <div class="sidebar-logo-title">ノウハウノート</div>
+        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
+      </a>
     </div>
-  </header>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">カテゴリ</div>
+      <a href="../index.html" class="sidebar-link">
+        <span class="icon">🏠</span> トップ
+      </a>
+      <a href="../dance.html" class="sidebar-link dance-link">
+        <span class="icon">💃</span> ダンス
+      </a>
+      <a href="../running.html" class="sidebar-link running-link">
+        <span class="icon">🏃</span> ランニング
+      </a>
+      <a href="../ai.html" class="sidebar-link ai-link active">
+        <span class="icon">🤖</span> AI開発
+      </a>
+    </nav>
+  </aside>
 
-  <main class="note-page">
-    <div class="tags" style="margin-bottom:24px;">
-      <span class="note-tag">#Codex</span>
-      <span class="note-tag">#subagent</span>
-      <span class="note-tag">#モデル選択</span>
-      <span class="note-tag">#コスト最適化</span>
+  <!-- モバイルオーバーレイ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <div class="main-content">
+
+    <!-- モバイルトップバー -->
+    <div class="topbar">
+      <span class="topbar-title">🤖 AI開発</span>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <h2>ポイント</h2>
-    <ul>
-      <li><code>model-router</code> というツールで Codex の subagent 機能を拡張できる</li>
-      <li>タスクごとに異なるモデルを使い分けられる（Opus等の上位モデル ↔ DeepSeek等の軽量モデル）</li>
-      <li>重い判断・設計は上位モデル、定型的なコード生成は軽量モデルに振り分け</li>
-      <li>コスト構造そのものが変わる発想</li>
-    </ul>
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI開発へ</a>
+        <h1>Codex subagent のモデルルーティング（model-router）</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI開発 &gt; Codex活用</span>
+          <span>更新: 2026-08-09</span>
+          <span class="reading-time">📖 約2分で読めます</span>
+        </div>
+      </div>
+    </header>
 
-    <h2>インストール手順</h2>
-    <ul>
-      <li>model-router をインストール</li>
-      <li>subagent のモデル設定で「選択したモデルすべて」を有効化</li>
-      <li>設定を保存して完了</li>
-    </ul>
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#Codex</span>
+          <span class="note-tag">#subagent</span>
+          <span class="note-tag">#モデル選択</span>
+          <span class="note-tag">#コスト最適化</span>
+        </div>
 
-    <h2>よくあるミス・落とし穴</h2>
-    <ul>
-      <li>これまでは全タスクに同じ最上位モデルを使うのが普通だったが、それはコスト過多になりやすい</li>
-    </ul>
+        <h2 id="points"><a class="anchor-link" href="#points">#</a> ポイント</h2>
+        <ul>
+          <li><code>model-router</code> というツールで Codex の subagent 機能を拡張できる</li>
+          <li>タスクごとに異なるモデルを使い分けられる（Opus等の上位モデル ↔ DeepSeek等の軽量モデル）</li>
+          <li>重い判断・設計は上位モデル、定型的なコード生成は軽量モデルに振り分け</li>
+          <li>コスト構造そのものが変わる発想</li>
+        </ul>
 
-    <h2>出典</h2>
-    <ul>
-      <li><a class="source-link" href="https://x.com" target="_blank">東大Codex研究所 のポスト</a>（取り込み日：2026-08-09）</li>
-    </ul>
-  </main>
+        <h2 id="install"><a class="anchor-link" href="#install">#</a> インストール手順</h2>
+        <ul>
+          <li>model-router をインストール</li>
+          <li>subagent のモデル設定で「選択したモデルすべて」を有効化</li>
+          <li>設定を保存して完了</li>
+        </ul>
 
-  <footer class="site-footer">
-    <div class="container">
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+        <ul>
+          <li>これまでは全タスクに同じ最上位モデルを使うのが普通だったが、それはコスト過多になりやすい</li>
+        </ul>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+        <ul>
+          <li><a class="source-link" href="https://x.com" target="_blank" rel="noopener">東大Codex研究所 のポスト</a>（取り込み日：2026-08-09）</li>
+        </ul>
+
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <a href="claude-code-html-report-skill.html" class="note-nav-item prev">
+            <div class="nav-label">← 前のノート</div>
+            <div class="nav-title">Claude Code HTML出力をコンサル品質に整えるスキル</div>
+          </a>
+          <span></span>
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#points">ポイント</a></li>
+            <li><a href="#install">インストール手順</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+            <li><a href="#source">出典</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
       <a href="../ai.html">← AI開発へ戻る</a>
-    </div>
-  </footer>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // ハンバーガー
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    const isOpen = sidebar.classList.toggle('open');
+    sidebarOverlay.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+  }
+  hamburger.addEventListener('click', toggleSidebar);
+  sidebarOverlay.addEventListener('click', toggleSidebar);
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
 </body>
 </html>

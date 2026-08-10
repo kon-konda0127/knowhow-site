@@ -6,36 +6,172 @@
   <title>ダンス | ノウハウノート</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header dance-header">
-    <div class="container">
-      <a href="index.html" class="back-link">← トップへ</a>
-      <h1>💃 ダンス</h1>
-    </div>
-  </header>
+<body class="dance-theme">
+<div class="site-layout">
 
-  <main class="container">
-    <!-- タグ絞り込み -->
-    <div class="filter-bar">
-      <span class="filter-label">タグで絞り込み：</span>
-      <div class="tag-list" id="tag-filter">
-        <!-- JSで動的生成 -->
+  <!-- ===== サイドバー ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="index.html">
+        <div class="sidebar-logo-title">ノウハウノート</div>
+        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
+      </a>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">カテゴリ</div>
+      <a href="index.html" class="sidebar-link">
+        <span class="icon">🏠</span> トップ
+      </a>
+      <a href="dance.html" class="sidebar-link dance-link active">
+        <span class="icon">💃</span> ダンス
+      </a>
+      <a href="running.html" class="sidebar-link running-link">
+        <span class="icon">🏃</span> ランニング
+      </a>
+      <a href="ai.html" class="sidebar-link ai-link">
+        <span class="icon">🤖</span> AI開発
+      </a>
+    </nav>
+    <div class="sidebar-tags">
+      <div class="sidebar-section-label">タグ</div>
+      <div class="sidebar-tag-list" id="sidebar-tag-list"></div>
+    </div>
+  </aside>
+
+  <!-- モバイルオーバーレイ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <div class="main-content">
+
+    <!-- モバイルトップバー -->
+    <div class="topbar">
+      <span class="topbar-title">💃 ダンス</span>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- ページヘッダー -->
+    <header class="page-header header-dance">
+      <div class="page-header-inner">
+        <a href="index.html" class="page-header-back">← トップへ</a>
+        <h1>💃 ダンス</h1>
+        <p class="page-header-desc">アイソレーション・基礎・振り付けのコツ</p>
+      </div>
+    </header>
+
+    <!-- フィルターバー -->
+    <div class="container">
+      <div class="filter-bar">
+        <span class="filter-label">タグで絞り込み：</span>
+        <div class="tag-list" id="tag-filter"></div>
+      </div>
+
+      <!-- ノートグリッド -->
+      <div class="note-grid" id="note-list">
+        <p class="empty-msg">まだノートがありません。inbox を処理してノートを追加しましょう。</p>
       </div>
     </div>
 
-    <!-- ノート一覧 -->
-    <div class="note-grid" id="note-list">
-      <!-- JSで動的生成 -->
-      <p class="empty-msg">まだノートがありません。inbox を処理してノートを追加しましょう。</p>
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
+    <footer class="site-footer">
       <a href="index.html">← トップへ戻る</a>
-    </div>
-  </footer>
+    </footer>
+  </div>
+</div>
 
-  <script src="notes-dance.js"></script>
+<script src="notes-dance.js"></script>
+<script>
+(function() {
+  const notes = typeof NOTES_DANCE !== 'undefined' ? NOTES_DANCE : [];
+  const noteList  = document.getElementById('note-list');
+  const tagFilter = document.getElementById('tag-filter');
+  const sidebarTagList = document.getElementById('sidebar-tag-list');
+  const hamburger = document.getElementById('hamburger');
+  const sidebar   = document.getElementById('sidebar');
+  const overlay   = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    const isOpen = sidebar.classList.toggle('open');
+    overlay.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+  }
+  hamburger.addEventListener('click', toggleSidebar);
+  overlay.addEventListener('click', toggleSidebar);
+
+  const allTags = [...new Set(notes.flatMap(n => n.tags || []))];
+
+  function buildTagButtons(container, sidebarMode) {
+    if (!allTags.length) return;
+    if (!sidebarMode) {
+      const allBtn = document.createElement('button');
+      allBtn.className = 'tag-btn active';
+      allBtn.textContent = 'すべて';
+      allBtn.dataset.tag = '';
+      container.appendChild(allBtn);
+    }
+    allTags.forEach(tag => {
+      const btn = document.createElement('button');
+      btn.className = sidebarMode ? 'sidebar-tag' : 'tag-btn';
+      btn.textContent = tag;
+      btn.dataset.tag = tag;
+      container.appendChild(btn);
+    });
+  }
+
+  buildTagButtons(tagFilter, false);
+  buildTagButtons(sidebarTagList, true);
+
+  function filterNotes(tag) {
+    tagFilter.querySelectorAll('.tag-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.tag === (tag || ''));
+    });
+    noteList.querySelectorAll('.note-card').forEach(card => {
+      const tags = JSON.parse(card.dataset.tags || '[]');
+      const show = !tag || tags.includes(tag);
+      if (show) {
+        card.classList.remove('hiding');
+        setTimeout(() => { card.style.display = ''; }, 200);
+      } else {
+        card.classList.add('hiding');
+        setTimeout(() => { card.style.display = 'none'; card.classList.remove('hiding'); }, 200);
+      }
+    });
+  }
+
+  tagFilter.addEventListener('click', e => {
+    const btn = e.target.closest('.tag-btn');
+    if (btn) filterNotes(btn.dataset.tag);
+  });
+  sidebarTagList.addEventListener('click', e => {
+    const btn = e.target.closest('.sidebar-tag');
+    if (btn) filterNotes(btn.dataset.tag);
+  });
+
+  if (notes.length) {
+    noteList.innerHTML = '';
+    notes.forEach((note, i) => {
+      const card = document.createElement('div');
+      card.className = 'note-card';
+      card.dataset.tags = JSON.stringify(note.tags || []);
+      card.style.transitionDelay = `${i * 0.07}s`;
+      const preview = note.points && note.points.length ? note.points[0] : '';
+      card.innerHTML = `
+        <h3>${note.title}</h3>
+        ${preview ? `<p class="note-card-preview">${preview}</p>` : ''}
+        <div class="tags">${(note.tags || []).map(t => `<span class="note-tag">${t}</span>`).join('')}</div>
+        <div class="note-card-footer">${note.category || 'ダンス'}</div>
+      `;
+      if (note.url) card.addEventListener('click', () => { window.location.href = note.url; });
+      noteList.appendChild(card);
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    noteList.querySelectorAll('.note-card').forEach(c => io.observe(c));
+  }
+})();
+</script>
 </body>
 </html>

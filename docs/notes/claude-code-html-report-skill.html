@@ -6,58 +6,160 @@
   <title>Claude Code HTML出力をコンサル品質に整えるスキル | ノウハウノート</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<body>
-  <header class="site-header ai-header">
-    <div class="container">
-      <a href="../ai.html" class="back-link">← AI開発へ</a>
-      <h1>Claude Code HTML出力をコンサル品質に整えるスキル</h1>
-      <p class="note-meta">カテゴリ: AI開発 > Claude Code活用 ｜ 更新: 2026-08-09</p>
+<body class="ai-theme">
+<div class="site-layout">
+
+  <!-- ===== サイドバー ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <a href="../index.html">
+        <div class="sidebar-logo-title">ノウハウノート</div>
+        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
+      </a>
     </div>
-  </header>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">カテゴリ</div>
+      <a href="../index.html" class="sidebar-link">
+        <span class="icon">🏠</span> トップ
+      </a>
+      <a href="../dance.html" class="sidebar-link dance-link">
+        <span class="icon">💃</span> ダンス
+      </a>
+      <a href="../running.html" class="sidebar-link running-link">
+        <span class="icon">🏃</span> ランニング
+      </a>
+      <a href="../ai.html" class="sidebar-link ai-link active">
+        <span class="icon">🤖</span> AI開発
+      </a>
+    </nav>
+  </aside>
 
-  <main class="note-page">
-    <div class="tags" style="margin-bottom:24px;">
-      <span class="note-tag">#ClaudeCode</span>
-      <span class="note-tag">#スキル</span>
-      <span class="note-tag">#HTML出力</span>
-      <span class="note-tag">#資料作成</span>
+  <!-- モバイルオーバーレイ -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ===== メインコンテンツ ===== -->
+  <div class="main-content">
+
+    <!-- モバイルトップバー -->
+    <div class="topbar">
+      <span class="topbar-title">🤖 AI開発</span>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
     </div>
 
-    <h2>ポイント</h2>
-    <ul>
-      <li>Claude CodeのHTML出力は「線と箱」で作るためデザインが野暮ったくなりがち</li>
-      <li>コンサル資料は「余白と文字の階層」で作るのが原則</li>
-      <li><code>html-report-design</code> スキルを入れると「HTMLで出して」と言った瞬間だけ働き、枠・グラデ・絵文字を禁止し完成済みCSSを使わせる</li>
-      <li>各セクションは「見出し→結論1文→根拠」の順で強制される</li>
-      <li>図解は矢羽根/ロードマップ/フレームワーク表/バブル/滝グラフの型から選ぶ</li>
-      <li>配色は脇役グレー＋主役の濃紺1色、凡例なしの直接ラベル</li>
-      <li>アクセント色だけ会社カラーに差し替え可能</li>
-      <li>A4印刷でそのまま配布OK</li>
-    </ul>
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI開発へ</a>
+        <h1>Claude Code HTML出力をコンサル品質に整えるスキル</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI開発 &gt; Claude Code活用</span>
+          <span>更新: 2026-08-09</span>
+          <span class="reading-time">📖 約2分で読めます</span>
+        </div>
+      </div>
+    </header>
 
-    <h2>インストール方法</h2>
-    <ul>
-      <li>CLIの場合: <code>npx skills add Ted0321/kotetsu-work-ai-skills@html-report-design</code></li>
-      <li>Claude Codeに「github.com/Ted0321/kotetsu... の skills/html-report-design を ~/.claude/skills/ にインストールして」と1行貼るだけでもOK</li>
-      <li>ChatGPT派はSKILL.mdのコピペでも動く</li>
-    </ul>
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#ClaudeCode</span>
+          <span class="note-tag">#スキル</span>
+          <span class="note-tag">#HTML出力</span>
+          <span class="note-tag">#資料作成</span>
+        </div>
 
-    <h2>よくあるミス・落とし穴</h2>
-    <ul>
-      <li>スキルなしで「HTMLで出して」と頼むと枠・グラデ・絵文字まみれになる</li>
-      <li>仕組みはシンプル: AIが「線と箱」で作ろうとするのを、完成済みCSSで強制的に矯正している</li>
-    </ul>
+        <h2 id="points"><a class="anchor-link" href="#points">#</a> ポイント</h2>
+        <ul>
+          <li>Claude CodeのHTML出力は「線と箱」で作るためデザインが野暮ったくなりがち</li>
+          <li>コンサル資料は「余白と文字の階層」で作るのが原則</li>
+          <li><code>html-report-design</code> スキルを入れると「HTMLで出して」と言った瞬間だけ働き、枠・グラデ・絵文字を禁止し完成済みCSSを使わせる</li>
+          <li>各セクションは「見出し→結論1文→根拠」の順で強制される</li>
+          <li>図解は矢羽根/ロードマップ/フレームワーク表/バブル/滝グラフの型から選ぶ</li>
+          <li>配色は脇役グレー＋主役の濃紺1色、凡例なしの直接ラベル</li>
+          <li>アクセント色だけ会社カラーに差し替え可能</li>
+          <li>A4印刷でそのまま配布OK</li>
+        </ul>
 
-    <h2>出典</h2>
-    <ul>
-      <li><a class="source-link" href="https://x.com" target="_blank">こてつ｜AI×コンサルワーク のポスト</a>（取り込み日：2026-08-09）</li>
-    </ul>
-  </main>
+        <h2 id="install"><a class="anchor-link" href="#install">#</a> インストール方法</h2>
+        <ul>
+          <li>CLIの場合: <code>npx skills add Ted0321/kotetsu-work-ai-skills@html-report-design</code></li>
+          <li>Claude Codeに「github.com/Ted0321/kotetsu... の skills/html-report-design を ~/.claude/skills/ にインストールして」と1行貼るだけでもOK</li>
+          <li>ChatGPT派はSKILL.mdのコピペでも動く</li>
+        </ul>
 
-  <footer class="site-footer">
-    <div class="container">
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+        <ul>
+          <li>スキルなしで「HTMLで出して」と頼むと枠・グラデ・絵文字まみれになる</li>
+          <li>仕組みはシンプル: AIが「線と箱」で作ろうとするのを、完成済みCSSで強制的に矯正している</li>
+        </ul>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+        <ul>
+          <li><a class="source-link" href="https://x.com" target="_blank" rel="noopener">こてつ｜AI×コンサルワーク のポスト</a>（取り込み日：2026-08-09）</li>
+        </ul>
+
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <span></span>
+          <a href="codex-model-router.html" class="note-nav-item next">
+            <div class="nav-label">次のノート →</div>
+            <div class="nav-title">Codex subagent のモデルルーティング</div>
+          </a>
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#points">ポイント</a></li>
+            <li><a href="#install">インストール方法</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+            <li><a href="#source">出典</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
       <a href="../ai.html">← AI開発へ戻る</a>
-    </div>
-  </footer>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // ハンバーガー
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function toggleSidebar() {
+    const isOpen = sidebar.classList.toggle('open');
+    sidebarOverlay.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+  }
+  hamburger.addEventListener('click', toggleSidebar);
+  sidebarOverlay.addEventListener('click', toggleSidebar);
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
 </body>
 </html>

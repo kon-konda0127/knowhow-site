@@ -1,0 +1,160 @@
+/* ===== Pattern W: 和風/侘び寂び ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f0e8;
+  --bg-card: #faf7f0;
+  --text: #1a1410;
+  --text-muted: #7a6e5e;
+  --accent: #4a3728;
+  --accent-light: #8b6914;
+  --border: #c8b89a;
+  --radius: 2px;
+}
+
+body {
+  font-family: "Hiragino Mincho ProN", "游明朝", "Yu Mincho", "Noto Serif JP", serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 2;
+  font-size: 16px;
+}
+
+.container { max-width: 800px; margin: 0 auto; padding: 0 48px; }
+
+/* ===== ヘッダー ===== */
+.site-header {
+  padding: 72px 0 56px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.site-header::before {
+  content: '〜';
+  display: block;
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  letter-spacing: 0.5em;
+}
+
+.site-header::after {
+  content: '〜';
+  display: block;
+  color: var(--accent-light);
+  font-size: 1.2rem;
+  margin-top: 16px;
+  letter-spacing: 0.5em;
+}
+
+.site-title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: var(--text); line-height: 1.5; letter-spacing: 0.1em; }
+
+.site-desc { color: var(--text-muted); font-size: 0.88rem; margin-top: 12px; letter-spacing: 0.08em; font-family: -apple-system, sans-serif; }
+
+.ai-header, .dance-header, .running-header { padding: 48px 0 32px; border-bottom: 1px solid var(--border); }
+
+.ai-header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.1em; }
+
+.back-link { display: inline-block; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; margin-bottom: 14px; font-family: -apple-system, sans-serif; letter-spacing: 0.05em; }
+.back-link:hover { color: var(--accent); }
+.back-link::before { content: '← '; }
+
+.category-grid { display: grid; grid-template-columns: 1fr; gap: 0; padding: 48px 0; }
+
+.category-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  text-decoration: none;
+  color: var(--text);
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  transition: opacity 0.2s;
+}
+.category-card:first-child { border-top: 1px solid var(--border); }
+.category-card:hover { opacity: 0.75; }
+
+.category-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+.category-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.08em; }
+
+.category-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; font-family: -apple-system, sans-serif; }
+
+.note-count { font-size: 0.8rem; color: var(--accent-light); font-family: -apple-system, sans-serif; }
+
+.filter-bar { padding: 20px 0 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); font-family: -apple-system, sans-serif; }
+
+.filter-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.05em; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.tag-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  transition: all 0.15s;
+}
+.tag-btn:hover { background: var(--bg-card); color: var(--text); border-color: var(--accent); }
+.tag-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.note-grid { display: grid; grid-template-columns: 1fr; gap: 0; padding: 12px 0 60px; }
+
+.note-card {
+  display: block;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+}
+.note-card:first-child { border-top: 1px solid var(--border); }
+.note-card:hover { background: var(--bg-card); padding-left: 12px; }
+
+.note-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; line-height: 1.6; letter-spacing: 0.06em; }
+
+.note-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-family: -apple-system, sans-serif; }
+
+.note-tag {
+  color: var(--accent-light);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.note-tag::before { content: '#'; }
+
+.empty-msg { color: var(--text-muted); text-align: center; padding: 48px 0; font-family: -apple-system, sans-serif; }
+
+.note-page { max-width: 680px; margin: 0 auto; padding: 48px 0 100px; }
+
+.note-page h1 { font-size: 1.7rem; font-weight: 700; margin-bottom: 12px; line-height: 1.5; letter-spacing: 0.08em; border-bottom: 2px solid var(--border); padding-bottom: 14px; }
+
+.note-meta { color: var(--text-muted); font-size: 0.8rem; margin: 12px 0 28px; font-family: -apple-system, sans-serif; letter-spacing: 0.05em; }
+
+.note-page h2 { font-size: 0.82rem; font-weight: 700; margin: 32px 0 14px; letter-spacing: 0.12em; color: var(--accent-light); font-family: -apple-system, sans-serif; }
+
+.note-page ul { padding-left: 0; list-style: none; }
+
+.note-page li { margin-bottom: 12px; padding: 10px 0 10px 20px; border-bottom: 1px dotted var(--border); font-size: 0.95rem; line-height: 1.9; position: relative; }
+.note-page li::before { content: '—'; position: absolute; left: 0; color: var(--accent-light); }
+
+.note-page code { background: rgba(139,105,20,0.08); border-bottom: 1px solid var(--accent-light); padding: 0 4px; font-size: 0.88em; font-family: 'SF Mono', monospace; color: var(--accent-light); }
+
+.source-link { color: var(--accent-light); text-decoration: none; font-size: 0.875rem; font-family: -apple-system, sans-serif; }
+.source-link:hover { text-decoration: underline; }
+
+.site-footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; font-family: -apple-system, sans-serif; letter-spacing: 0.05em; }
+.site-footer a { color: var(--text-muted); text-decoration: none; }
+.site-footer a:hover { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .site-title { font-size: 1.4rem; }
+  .note-page h1 { font-size: 1.4rem; }
+}
