@@ -3,245 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>デザイン比較 | ノウハウノート</title>
+  <title>デザイン比較（A〜Z）| ノウハウノート</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      background: #f8fafc;
-      color: #1e293b;
-      min-height: 100vh;
-    }
-
-    .header {
-      background: #1e293b;
-      color: #f8fafc;
-      padding: 48px 24px;
-      text-align: center;
-    }
-
-    .header h1 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .header p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    .compare-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .pattern-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .pattern-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      transform: translateY(-4px);
-    }
-
-    .pattern-preview {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .preview-a {
-      background: #0f0f13;
-    }
-
-    .preview-a::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(59,130,246,0.1));
-    }
-
-    .preview-b {
-      background: #f0f9ff;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .preview-c {
-      background: #ffffff;
-      border-bottom: 3px solid #111;
-    }
-
-    .pattern-info {
-      padding: 20px 20px 24px;
-    }
-
-    .pattern-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #94a3b8;
-      margin-bottom: 6px;
-    }
-
-    .pattern-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .pattern-desc {
-      font-size: 0.875rem;
-      color: #64748b;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .pattern-keywords {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .keyword {
-      background: #f1f5f9;
-      border-radius: 999px;
-      padding: 3px 12px;
-      font-size: 0.75rem;
-      color: #475569;
-      font-weight: 500;
-    }
-
-    .open-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 16px;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: opacity 0.15s;
-    }
-
-    .btn-a { background: #7c3aed; color: #fff; }
-    .btn-b { background: #2563eb; color: #fff; }
-    .btn-c { background: #111111; color: #fff; }
-
-    .open-btn:hover { opacity: 0.85; }
-
-    .back {
-      display: block;
-      text-align: center;
-      margin-top: 40px;
-      color: #64748b;
-      text-decoration: none;
-      font-size: 0.875rem;
-    }
-
+    body { font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif; background: #f8fafc; color: #1e293b; }
+    .header { background: #1e293b; color: #f8fafc; padding: 48px 24px; text-align: center; }
+    .header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; margin-bottom: 8px; }
+    .header p { color: #94a3b8; font-size: 0.9rem; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px; }
+    .compare-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .pattern-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+    .pattern-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    .pattern-preview { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .pattern-info { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; }
+    .pattern-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 4px; }
+    .pattern-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .pattern-desc { font-size: 0.82rem; color: #64748b; line-height: 1.6; margin-bottom: 12px; flex: 1; }
+    .open-btn { display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; background: #1e293b; color: #fff; transition: opacity 0.15s; align-self: flex-start; }
+    .open-btn:hover { opacity: 0.8; }
+    .back { display: block; text-align: center; margin-top: 40px; color: #64748b; text-decoration: none; font-size: 0.875rem; }
     .back:hover { color: #1e293b; }
-
-    @media (max-width: 600px) {
-      .compare-grid { grid-template-columns: 1fr; }
-      .container { padding: 32px 16px 60px; }
-    }
+    @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } .container { padding: 24px 16px 60px; } }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>デザイン比較ページ</h1>
-    <p>3つのデザインパターンを比較してご覧いただけます</p>
+    <h1>デザイン比較（A〜Z 全26パターン）</h1>
+    <p>気に入ったデザインを選んでください → 採用したいパターンをClaudeに伝えるとメインに昇格します</p>
   </div>
-
   <div class="container">
     <div class="compare-grid">
 
-      <!-- Pattern A -->
       <div class="pattern-card">
-        <div class="pattern-preview preview-a">
-          <span style="position:relative;z-index:1;font-size:3rem;">🌌</span>
-        </div>
+        <div class="pattern-preview" style="background:#0f0f13;">🌌</div>
         <div class="pattern-info">
           <p class="pattern-label">Pattern A</p>
           <h2 class="pattern-name">Linear風（ダーク）</h2>
-          <p class="pattern-desc">
-            黒背景＋紫のアクセントカラー。技術者向けのプロダクト感漂うダークテーマ。
-            ホバーで枠線が光る演出が特徴。
-          </p>
-          <div class="pattern-keywords">
-            <span class="keyword">ダーク</span>
-            <span class="keyword">プロダクト感</span>
-            <span class="keyword">グロー効果</span>
-          </div>
-          <a href="pattern-a/index.html" class="open-btn btn-a">パターンAを開く →</a>
+          <p class="pattern-desc">黒背景＋紫アクセント。技術者向けのプロダクト感。ホバーでグロー効果。</p>
+          <a href="pattern-a/index.html" class="open-btn" style="background:#7c3aed;">開く →</a>
         </div>
       </div>
 
-      <!-- Pattern B -->
       <div class="pattern-card">
-        <div class="pattern-preview preview-b">
-          <span style="font-size:3rem;">📘</span>
-        </div>
+        <div class="pattern-preview" style="background:#f0f9ff;">📘</div>
         <div class="pattern-info">
           <p class="pattern-label">Pattern B</p>
           <h2 class="pattern-name">Zenn風（青白）</h2>
-          <p class="pattern-desc">
-            水色がかった白背景＋青のアクセント。技術ブログの王道スタイル。
-            読みやすさを最優先したシンプルなデザイン。
-          </p>
-          <div class="pattern-keywords">
-            <span class="keyword">ライト</span>
-            <span class="keyword">読みやすい</span>
-            <span class="keyword">技術ブログ</span>
-          </div>
-          <a href="pattern-b/index.html" class="open-btn btn-b">パターンBを開く →</a>
+          <p class="pattern-desc">水色がかった白背景＋青アクセント。読みやすさ最優先の技術ブログスタイル。</p>
+          <a href="pattern-b/index.html" class="open-btn" style="background:#2563eb;">開く →</a>
         </div>
       </div>
 
-      <!-- Pattern C -->
       <div class="pattern-card">
-        <div class="pattern-preview preview-c">
-          <span style="font-size:3rem;">📰</span>
-        </div>
+        <div class="pattern-preview" style="background:#fff;border-bottom:3px solid #111;">📰</div>
         <div class="pattern-info">
           <p class="pattern-label">Pattern C</p>
-          <h2 class="pattern-name">マガジン風（インパクト）</h2>
-          <p class="pattern-desc">
-            白黒直角レイアウト＋赤いアクセント。雑誌のような視覚的インパクト。
-            大きなセリフ体見出しとナンバリングが特徴。
-          </p>
-          <div class="pattern-keywords">
-            <span class="keyword">雑誌レイアウト</span>
-            <span class="keyword">セリフ体</span>
-            <span class="keyword">インパクト</span>
-          </div>
-          <a href="pattern-c/index.html" class="open-btn btn-c">パターンCを開く →</a>
+          <h2 class="pattern-name">マガジン風</h2>
+          <p class="pattern-desc">白黒直角レイアウト＋赤アクセント。雑誌的インパクト・大セリフ体見出し。</p>
+          <a href="pattern-c/index.html" class="open-btn" style="background:#dc2626;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;">📝</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern D</p>
+          <h2 class="pattern-name">Notion風（ミニマル）</h2>
+          <p class="pattern-desc">白背景・グレーアクセント・絵文字アイコン多用。シンプルで飽きない。</p>
+          <a href="pattern-d/index.html" class="open-btn">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;border-left:4px solid #0969da;">📚</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern E</p>
+          <h2 class="pattern-name">GitHub Docs風</h2>
+          <p class="pattern-desc">白背景・左サイドバーナビ・コードブロック感。ドキュメント感が強い。</p>
+          <a href="pattern-e/index.html" class="open-btn" style="background:#0969da;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;">🍎</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern F</p>
+          <h2 class="pattern-name">Apple風</h2>
+          <p class="pattern-desc">白背景・超大きな余白・SF Pro相当・洗練されたミニマル。</p>
+          <a href="pattern-f/index.html" class="open-btn" style="background:#0071e3;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fdf8f0;">📖</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern G</p>
+          <h2 class="pattern-name">教科書風</h2>
+          <p class="pattern-desc">クリーム地・明朝体・二重罫線・ブラウンアクセント。温かみのある学習ノート感。</p>
+          <a href="pattern-g/index.html" class="open-btn" style="background:#92400e;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#000;">⬛</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern H</p>
+          <h2 class="pattern-name">Vercel風</h2>
+          <p class="pattern-desc">黒背景・白テキスト・モノクロのみ。圧倒的なコントラスト。</p>
+          <a href="pattern-h/index.html" class="open-btn" style="background:#333;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:linear-gradient(135deg,#0f2167,#1a3a8f);">💳</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern I</p>
+          <h2 class="pattern-name">Stripe風</h2>
+          <p class="pattern-desc">白背景・濃紺アクセント・グラデーションヘッダー。信頼感と高級感。</p>
+          <a href="pattern-i/index.html" class="open-btn" style="background:#635bff;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f0f9ff;">🌊</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern J</p>
+          <h2 class="pattern-name">Tailwind UI風</h2>
+          <p class="pattern-desc">白背景・スカイブルー・角丸・強めのシャドウ。モダンで親しみやすい。</p>
+          <a href="pattern-j/index.html" class="open-btn" style="background:#0ea5e9;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#1e2130;">📊</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern K</p>
+          <h2 class="pattern-name">ダッシュボード風</h2>
+          <p class="pattern-desc">グレー背景・カード多め・数値バッジ・データ感のある設計。</p>
+          <a href="pattern-k/index.html" class="open-btn" style="background:#6366f1;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;">✍️</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern L</p>
+          <h2 class="pattern-name">Medium風</h2>
+          <p class="pattern-desc">白背景・セリフ体・大きな本文・行間広め。長文を読ませるスタイル。</p>
+          <a href="pattern-l/index.html" class="open-btn" style="background:#1a1a1a;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;">🗞️</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern M</p>
+          <h2 class="pattern-name">マガジン風（別案）</h2>
+          <p class="pattern-desc">白黒・赤アクセント・大見出し・Noto Serif。雑誌感強め。</p>
+          <a href="pattern-m/index.html" class="open-btn" style="background:#b91c1c;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f0f0f8;">🌿</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern N</p>
+          <h2 class="pattern-name">note.com風</h2>
+          <p class="pattern-desc">ラベンダーグレー背景・ティールグリーン・ピル型タグ。親しみやすいブログ感。</p>
+          <a href="pattern-n/index.html" class="open-btn" style="background:#41c9b4;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f5f3ff;">🎨</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern O</p>
+          <h2 class="pattern-name">Figma Community風</h2>
+          <p class="pattern-desc">薄紫背景・紫アクセント・カードにカラーバー。デザイナー向けの洗練感。</p>
+          <a href="pattern-o/index.html" class="open-btn" style="background:#7c3aed;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f6ffed;">💚</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern P</p>
+          <h2 class="pattern-name">Qiita風</h2>
+          <p class="pattern-desc">白背景・緑アクセント・技術記事レイアウト。エンジニアに馴染みある雰囲気。</p>
+          <a href="pattern-p/index.html" class="open-btn" style="background:#55c500;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f5f5f5;border-left:4px solid #3b49df;">💙</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern Q</p>
+          <h2 class="pattern-name">DEV.to風</h2>
+          <p class="pattern-desc">薄グレー背景・青アクセント・左ボーダーハイライト。開発者コミュニティ感。</p>
+          <a href="pattern-q/index.html" class="open-btn" style="background:#3b49df;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#111;">🖤</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern R</p>
+          <h2 class="pattern-name">Behance風</h2>
+          <p class="pattern-desc">黒背景・白カード・ポートフォリオ感。クリエイティブな印象。</p>
+          <a href="pattern-r/index.html" class="open-btn" style="background:#0057ff;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;">🎯</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern S</p>
+          <h2 class="pattern-name">Google Material風</h2>
+          <p class="pattern-desc">白背景・4色（青/赤/黄/緑）・影強め。Googleらしい親しみやすさ。</p>
+          <a href="pattern-s/index.html" class="open-btn" style="background:#1a73e8;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:linear-gradient(135deg,#667eea,#764ba2);">🔮</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern T</p>
+          <h2 class="pattern-name">Glassmorphism風</h2>
+          <p class="pattern-desc">半透明カード・ブラー・グラデーション背景。幻想的でモダンな印象。</p>
+          <a href="pattern-t/index.html" class="open-btn" style="background:rgba(99,102,241,0.9);">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#e8e8e8;">⚪</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern U</p>
+          <h2 class="pattern-name">ネオモルフィズム風</h2>
+          <p class="pattern-desc">ライトグレー背景・内側影・立体感。柔らかく触りたくなるUI。</p>
+          <a href="pattern-u/index.html" class="open-btn" style="background:#6b7280;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#000080;">🕹️</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern V</p>
+          <h2 class="pattern-name">Y2K/レトロ風</h2>
+          <p class="pattern-desc">明るい色・ピクセルフォント感・90年代デザイン。懐かしくて個性的。</p>
+          <a href="pattern-v/index.html" class="open-btn" style="background:#ff00ff;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#f5f0e8;">⛩️</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern W</p>
+          <h2 class="pattern-name">和風/侘び寂び</h2>
+          <p class="pattern-desc">ベージュ・墨色・縦線・伝統的な日本デザイン。落ち着いた上品さ。</p>
+          <a href="pattern-w/index.html" class="open-btn" style="background:#4a3728;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#0a0a0a;">⚡</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern X</p>
+          <h2 class="pattern-name">ゲーミング風</h2>
+          <p class="pattern-desc">黒背景・ネオンカラー・グロー効果。ゲーマー向けの強烈な個性。</p>
+          <a href="pattern-x/index.html" class="open-btn" style="background:#00ff41;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fffff0;">🗺️</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern Y</p>
+          <h2 class="pattern-name">ニュースペーパー風</h2>
+          <p class="pattern-desc">クリーム白背景・黒テキスト・コラムレイアウト。新聞のような読み応え。</p>
+          <a href="pattern-y/index.html" class="open-btn" style="background:#1a1a1a;">開く →</a>
+        </div>
+      </div>
+
+      <div class="pattern-card">
+        <div class="pattern-preview" style="background:#fff;border:4px solid #000;">🔲</div>
+        <div class="pattern-info">
+          <p class="pattern-label">Pattern Z</p>
+          <h2 class="pattern-name">Brutalist風</h2>
+          <p class="pattern-desc">白背景・太いボーダー・原色・余白ゼロ感。圧倒的な主張と個性。</p>
+          <a href="pattern-z/index.html" class="open-btn" style="background:#ff0000;">開く →</a>
         </div>
       </div>
 
     </div>
-
     <a href="index.html" class="back">← 元のサイトへ戻る</a>
   </div>
 </body>

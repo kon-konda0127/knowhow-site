@@ -231,7 +231,7 @@
 
     notes.forEach((note, i) => {
       const card = document.createElement('div');
-      card.className = 'note-card';
+      card.className = 'note-card card-hidden';
       card.dataset.tags = JSON.stringify(note.tags || []);
       card.style.transitionDelay = `${i * 0.07}s`;
 
@@ -256,7 +256,8 @@
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.remove('card-hidden');
+          entry.target.classList.add('card-visible');
           io.unobserve(entry.target);
         }
       });

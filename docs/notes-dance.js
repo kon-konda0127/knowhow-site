@@ -11,6 +11,8 @@
  *   mistakes : よくあるミスの配列
  *   drills   : 練習ドリルの配列
  *   sources  : 出典の配列（{ label, url, date } の形式）
+ *   images   : 任意。ステップ図解画像のファイル名の配列（docs/assets/dance-steps/配下、拡張子込み。GitHub Pagesはdocs/のみ公開するため、画像は必ずdocs/配下に置くこと）
+ *              例: ["two-step.png"]。複数枚可。無ければ省略してよい
  */
 const DANCE_NOTES = [
   // ノートはここに追加されます（例）
@@ -22,7 +24,8 @@ const DANCE_NOTES = [
   //   points: ["首だけを動かし、肩は固定する", "前後左右4方向を均等に"],
   //   mistakes: ["肩が一緒に動いてしまう", "動きが小さくなりがち"],
   //   drills: ["鏡の前で1日10回×4方向", "音楽に合わせてゆっくりから"],
-  //   sources: [{ label: "参考動画タイトル", url: "https://...", date: "2026-08-08" }]
+  //   sources: [{ label: "参考動画タイトル", url: "https://...", date: "2026-08-08" }],
+  //   images: ["isolation-neck.png"]
   // }
 ];
 
@@ -59,6 +62,7 @@ function renderNotes(notes) {
       ? '<p class="empty-msg">該当するノートがありません。</p>'
       : filtered.map(n => `
           <a href="notes/${n.id}.html" class="note-card">
+            ${n.images && n.images.length ? `<img src="assets/dance-steps/${n.images[0]}" alt="" style="width:100%;border-radius:8px;margin-bottom:8px;">` : ''}
             <h3>${n.title}</h3>
             <p style="font-size:0.82rem;color:#6b7280;">${n.category}</p>
             <div class="tags">${n.tags.map(t => `<span class="note-tag">${t}</span>`).join('')}</div>

@@ -910,6 +910,17 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+.card-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== タブレット（768px以下） ===== */
 @media (max-width: 768px) {
   .sidebar {
