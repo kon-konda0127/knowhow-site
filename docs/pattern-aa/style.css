@@ -1,0 +1,205 @@
+/* ===== Pattern AA: Y2K × Brutalist（Zの色・テイスト + Vの動き） ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --accent: #ff0000;
+  --accent-2: #0000ff;
+  --accent-3: #ffff00;
+  --border: 3px solid #000000;
+  --radius: 0;
+}
+
+body {
+  font-family: "Arial Black", "Helvetica Neue", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0; }
+
+/* ===== アニメーション定義（V由来の動き） ===== */
+@keyframes rainbow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+@keyframes stripe-slide { 0% { background-position: 0 0; } 100% { background-position: 48px 0; } }
+@keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ===== ヘッダー（黒地=Z + 動く原色ストライプ=V） ===== */
+.site-header { padding: 0; border-bottom: var(--border); background: #000; position: relative; }
+
+.site-header::after {
+  content: '';
+  display: block;
+  height: 12px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--accent) 0 12px,
+    var(--accent-3) 12px 24px,
+    var(--accent-2) 24px 36px,
+    #ffffff 36px 48px
+  );
+  background-size: 68px 12px;
+  border-top: var(--border);
+  animation: stripe-slide 1.6s linear infinite;
+}
+
+.site-header .container { padding: 24px; }
+
+.site-title {
+  font-size: clamp(1.8rem, 6vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0 var(--accent), 6px 6px 0 var(--accent-2);
+}
+
+.site-desc { color: #999; font-size: 0.85rem; margin-top: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.ai-header, .dance-header, .running-header {
+  padding: 0;
+  border-bottom: var(--border);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2));
+  background-size: 200% auto;
+  animation: rainbow 6s linear infinite;
+}
+.ai-header::after, .dance-header::after, .running-header::after { display: none; }
+
+.ai-header .container { padding: 20px 24px; }
+
+.ai-header h1 { font-size: 2rem; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -0.02em; text-shadow: 2px 2px 0 #000; }
+
+.back-link { display: inline-block; color: #fff; text-decoration: none; font-size: 0.8rem; margin-bottom: 8px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; background: #000; padding: 2px 8px; transition: transform 0.15s; }
+.back-link:hover { background: var(--accent-3); color: #000; transform: rotate(-2deg); }
+
+/* ===== カテゴリカード（Zの構造 + Vのホバー挙動） ===== */
+.category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 0; border-bottom: var(--border); }
+
+.category-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  background: #fff;
+  border-right: var(--border);
+  padding: 24px;
+  position: relative;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.category-card:last-child { border-right: none; }
+.category-card::before { content: '★'; position: absolute; top: 8px; right: 12px; font-size: 1rem; color: #000; }
+.category-card:hover { transform: rotate(-1.2deg); z-index: 1; box-shadow: 6px 6px 0 #000; }
+.category-card:hover::before { animation: spin 0.8s linear infinite; color: var(--accent); }
+.category-card.ai:hover { background: var(--accent-3); }
+.category-card.dance:hover { background: #ffccff; }
+.category-card.running:hover { background: #ccffcc; }
+
+.category-icon { font-size: 2.5rem; margin-bottom: 10px; display: block; }
+
+.category-card h2 { font-size: 1.1rem; font-weight: 900; margin-bottom: 8px; text-transform: uppercase; border-bottom: var(--border); padding-bottom: 8px; }
+
+.category-card p { color: #444; font-size: 0.82rem; margin-bottom: 14px; line-height: 1.5; }
+
+.note-count { font-size: 0.85rem; color: #000; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em; background: var(--accent-3); padding: 2px 6px; display: inline-block; animation: blink 1.6s step-end infinite; }
+
+/* ===== フィルターバー ===== */
+.filter-bar { padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; border-bottom: var(--border); background: #f0f0f0; }
+
+.filter-label { font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.tag-btn {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 0;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: #000;
+  font-family: inherit;
+  font-weight: 900;
+  text-transform: uppercase;
+  transition: background 0.1s, transform 0.1s;
+}
+.tag-btn:hover { background: var(--accent-2); color: #fff; transform: rotate(1.5deg); }
+.tag-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ===== ノート一覧 ===== */
+.note-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0; padding: 0; border-left: var(--border); }
+
+.note-card {
+  display: block;
+  background: #fff;
+  border-right: var(--border);
+  border-bottom: var(--border);
+  padding: 20px 24px;
+  text-decoration: none;
+  color: #000;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.note-card:hover { background: var(--accent-3); transform: translate(-3px, -3px); box-shadow: 6px 6px 0 #000; z-index: 1; position: relative; }
+.note-card:nth-child(even):hover { background: #ccffff; }
+
+.note-category { font-size: 0.68rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; background: var(--accent-2); display: inline-block; padding: 1px 6px; margin-bottom: 8px; }
+
+.note-card h3, .note-title { font-size: 0.95rem; font-weight: 900; margin-bottom: 8px; line-height: 1.3; text-transform: uppercase; letter-spacing: -0.01em; }
+
+.note-card .tags, .note-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+
+.note-tag {
+  background: #000;
+  color: #fff;
+  padding: 1px 7px;
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.note-date { font-size: 0.7rem; color: #555; font-weight: 700; margin-top: 10px; letter-spacing: 0.06em; }
+
+.empty-msg { color: #666; text-align: center; padding: 40px 0; font-weight: 700; text-transform: uppercase; grid-column: 1/-1; }
+
+/* ===== ノートページ ===== */
+.note-page { max-width: 100%; margin: 0; padding: 0; }
+
+.note-page > * { padding-left: 24px; padding-right: 24px; }
+
+.note-page h1 { font-size: 2rem; font-weight: 900; padding: 24px; line-height: 1.1; text-transform: uppercase; border-bottom: var(--border); background: var(--accent-3); text-shadow: 2px 2px 0 #fff, 4px 4px 0 var(--accent); }
+
+.note-meta { color: #555; font-size: 0.75rem; padding: 12px 24px; background: #f0f0f0; border-bottom: var(--border); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.note-page h2 { font-size: 0.78rem; font-weight: 900; padding: 16px 24px 8px; text-transform: uppercase; letter-spacing: 0.12em; background: #000; color: #fff; margin-top: 0; }
+
+.note-page ul { padding-left: 0; list-style: none; }
+
+.note-page li { margin-bottom: 0; padding: 14px 24px; border-bottom: 2px solid #000; font-size: 0.95rem; line-height: 1.5; font-weight: 700; transition: background 0.1s, padding-left 0.15s; }
+.note-page li:nth-child(even) { background: #f0f0f0; }
+.note-page li::before { content: '► '; color: var(--accent); }
+.note-page li:hover { background: var(--accent-3); padding-left: 32px; }
+
+.note-page code { background: #000; color: #0f0; padding: 1px 6px; font-size: 0.85em; font-family: 'Courier New', monospace; font-weight: 700; }
+
+.source-link { color: var(--accent-2); text-decoration: underline; font-size: 0.875rem; font-weight: 700; }
+.source-link:hover { color: var(--accent); }
+
+.site-footer { border-top: var(--border); background: #000; padding: 16px 24px; text-align: left; color: #fff; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; }
+.site-footer a { color: var(--accent-3); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+
+/* 動きが苦手な閲覧者向け（OSの「視差効果を減らす」設定を尊重） */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 600px) {
+  .category-grid { grid-template-columns: 1fr; }
+  .category-card { border-right: none; border-bottom: var(--border); }
+  .category-card:last-child { border-bottom: none; }
+  .note-grid { grid-template-columns: 1fr; }
+  .site-title { font-size: 1.8rem; }
+}
