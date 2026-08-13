@@ -357,6 +357,21 @@ button { font: inherit; cursor: pointer; }
   font-size: 11px;
 }
 
+/* 見出し脇の注意バッジ（SNS情報・未検証 等） */
+.note-caution {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
 .note-page-layout {
   display: grid;
   grid-template-columns: 1fr minmax(0, 780px) 1fr;
