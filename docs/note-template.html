@@ -7,58 +7,85 @@
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="<!-- THEME -->">
-  <header class="site-header <!-- HEADER-CLASS -->">
-    <div class="container">
-      <a href="../<!-- CATEGORY -->.html" class="back-link">← <!-- CATEGORY-LABEL -->へ</a>
-      <h1><!-- TITLE --></h1>
-      <p class="note-meta">カテゴリ: <!-- CATEGORY-PATH --> ｜ 更新: <!-- DATE --></p>
-    </div>
-  </header>
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span><!-- RAIL-TEXT --></span></aside>
+  <div class="main">
 
-  <main class="note-page">
-    <!-- タグ -->
-    <div class="tags" style="margin-bottom:24px;">
-      <!-- TAGS -->
-    </div>
+    <header class="topbar">
+      <a class="brand" href="../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../index.html">はじめに</a>
+        <a href="../dance.html">ダンス</a>
+        <a href="../running.html">ランニング</a>
+        <a href="../ai.html">AI開発</a>
+        <a href="../column.html">コラム</a>
+        <!-- 該当カテゴリのリンクに class="active" を付ける -->
+      </nav>
+    </header>
 
-    <!-- 全カテゴリ共通: 冒頭に必ず入れる（README「ノート品質基準」参照） -->
-    <h2>なぜ重要か</h2>
-    <p><!-- WHY: 背景・文脈を1〜2文 --></p>
+    <header class="page-header">
+      <div class="page-header-inner">
+        <a href="../<!-- CATEGORY -->.html" class="page-header-back">← <!-- CATEGORY-LABEL -->へ</a>
+        <h1><!-- TITLE --></h1>
+        <p class="note-meta">カテゴリ: <!-- CATEGORY-PATH -->　｜　更新: <!-- DATE --></p>
+      </div>
+    </header>
 
-    <!-- ダンス用セクション -->
-    <h2>ポイント</h2>
-    <ul>
-      <!-- POINTS -->
-    </ul>
+    <main class="note-page">
+      <!-- タグ -->
+      <div class="note-tags-row">
+        <!-- TAGS -->
+      </div>
 
-    <h2>よくあるミス</h2>
-    <ul>
-      <!-- MISTAKES -->
-    </ul>
+      <!-- 全カテゴリ共通: 冒頭に必ず入れる（README「ノート品質基準」参照） -->
+      <h2>なぜ重要か</h2>
+      <p><!-- WHY: 背景・文脈を1〜2文 --></p>
 
-    <h2>練習ドリル</h2>
-    <ul>
-      <!-- DRILLS -->
-    </ul>
+      <!-- ダンス用セクション -->
+      <h2>ポイント</h2>
+      <ul>
+        <!-- POINTS -->
+      </ul>
 
-    <!-- ステップ図解（ダンスノートのみ。画像が無いノートはこのブロックごと省略する） -->
-    <!-- IMAGES -->
-    <!-- 例（imagesが["two-step.png"]の場合、Claudeが生成時に以下へ置き換える。notes/配下のページなので相対パスは ../assets/ ）:
-    <div class="note-images" style="margin:16px 0;">
-      <img src="../assets/dance-steps/two-step.png" alt="ツーステップの図解" style="max-width:100%;border-radius:8px;">
-    </div>
-    -->
+      <h2>よくあるミス</h2>
+      <ul>
+        <!-- MISTAKES -->
+      </ul>
 
-    <h2>出典</h2>
-    <ul>
-      <!-- SOURCES -->
-    </ul>
-  </main>
+      <h2>練習ドリル</h2>
+      <ul>
+        <!-- DRILLS -->
+      </ul>
 
-  <footer class="site-footer">
-    <div class="container">
+      <!-- ステップ図解（ダンスノートのみ。画像が無いノートはこのブロックごと省略する） -->
+      <!-- IMAGES -->
+      <!-- 例（imagesが["two-step.png"]の場合、Claudeが生成時に以下へ置き換える。notes/配下のページなので相対パスは ../assets/ ）:
+      <div class="note-images" style="margin:16px 0;">
+        <img src="../assets/dance-steps/two-step.png" alt="ツーステップの図解">
+      </div>
+      -->
+
+      <h2>出典</h2>
+      <ul>
+        <!-- SOURCES -->
+      </ul>
+    </main>
+
+    <footer class="site-footer">
       <a href="../<!-- CATEGORY -->.html">← 一覧へ戻る</a>
-    </div>
-  </footer>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+</script>
 </body>
 </html>

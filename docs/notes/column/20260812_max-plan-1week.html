@@ -7,49 +7,21 @@
   <link rel="stylesheet" href="../../style.css">
 </head>
 <body class="column-theme">
-<div class="site-layout">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>考えを言葉にして、暮らしを整える。</span></aside>
+  <div class="main">
 
-  <!-- ===== サイドバー ===== -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <a href="../../index.html">
-        <div class="sidebar-logo-title">アラフォーから始める趣味</div>
-        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
-      </a>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="sidebar-section-label">カテゴリ</div>
-      <a href="../../index.html" class="sidebar-link">
-        <span class="icon">🏠</span> トップ
-      </a>
-      <a href="../../dance.html" class="sidebar-link dance-link">
-        <span class="icon">💃</span> ダンス
-      </a>
-      <a href="../../running.html" class="sidebar-link running-link">
-        <span class="icon">🏃</span> ランニング
-      </a>
-      <a href="../../ai.html" class="sidebar-link ai-link">
-        <span class="icon">🤖</span> AI開発
-      </a>
-      <a href="../../column.html" class="sidebar-link column-link active">
-        <span class="icon">📝</span> コラム
-      </a>
-    </nav>
-  </aside>
-
-  <!-- モバイルオーバーレイ -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <!-- ===== メインコンテンツ ===== -->
-  <div class="main-content">
-
-    <!-- モバイルトップバー -->
-    <div class="topbar">
-      <span class="topbar-title">📝 コラム</span>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <header class="topbar">
+      <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../../index.html">はじめに</a>
+        <a href="../../dance.html">ダンス</a>
+        <a href="../../running.html">ランニング</a>
+        <a href="../../ai.html">AI開発</a>
+        <a href="../../column.html" class="active">コラム</a>
+      </nav>
+    </header>
 
     <!-- ページヘッダー -->
     <header class="page-header header-column">
@@ -225,21 +197,16 @@
       <a href="../../column.html">← コラム一覧へ戻る</a>
     </footer>
   </div>
-</div>
+</div></div>
 
 <script>
-  // ハンバーガー
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  const sidebarOverlay = document.getElementById('sidebarOverlay');
-
-  function toggleSidebar() {
-    const isOpen = sidebar.classList.toggle('open');
-    sidebarOverlay.classList.toggle('open', isOpen);
-    hamburger.classList.toggle('open', isOpen);
-  }
-  hamburger.addEventListener('click', toggleSidebar);
-  sidebarOverlay.addEventListener('click', toggleSidebar);
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
 
   // TOCアクティブ追跡
   const headings = document.querySelectorAll('.note-body h2[id]');

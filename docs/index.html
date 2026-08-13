@@ -3,158 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="アラフォーから始める趣味。ダンス・ランニング・AI開発の学習ノートと、実体験を事実と考察に分けて振り返るコラム。">
   <title>アラフォーから始める趣味 — ダンス・ランニング・AI開発</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="site-layout">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>体も、頭も、ゆっくり学ぶ大人の趣味サイト。</span></aside>
+  <div class="main">
 
-  <!-- ===== サイドバー ===== -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <a href="index.html">
-        <div class="sidebar-logo-title">アラフォーから始める趣味</div>
-        <div class="sidebar-logo-sub">学びを論点ごとに整理</div>
-      </a>
-    </div>
-    <nav class="sidebar-nav">
-      <div class="sidebar-section-label">カテゴリ</div>
-      <a href="index.html" class="sidebar-link active">
-        <span class="icon">🏠</span> トップ
-      </a>
-      <a href="dance.html" class="sidebar-link dance-link">
-        <span class="icon">💃</span> ダンス
-      </a>
-      <a href="running.html" class="sidebar-link running-link">
-        <span class="icon">🏃</span> ランニング
-      </a>
-      <a href="ai.html" class="sidebar-link ai-link">
-        <span class="icon">🤖</span> AI開発
-      </a>
-      <a href="column.html" class="sidebar-link column-link">
-        <span class="icon">📝</span> コラム
-      </a>
-    </nav>
-  </aside>
+    <header class="topbar">
+      <a class="brand" href="index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="index.html" class="active">はじめに</a>
+        <a href="dance.html">ダンス</a>
+        <a href="running.html">ランニング</a>
+        <a href="ai.html">AI開発</a>
+        <a href="column.html">コラム</a>
+      </nav>
+    </header>
 
-  <!-- モバイルオーバーレイ -->
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-  <!-- ===== メインコンテンツ ===== -->
-  <div class="main-content">
-
-    <!-- モバイルトップバー -->
-    <div class="topbar">
-      <span class="topbar-title">アラフォーから始める趣味</span>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <!-- ヒーローセクション -->
-    <section class="hero">
-      <div class="container">
-        <p class="hero-eyebrow">Personal Knowledge Base</p>
-        <h1 class="hero-title">
-          動画・X・記事から学んだ<br>
-          <span>論点ノート</span>
-        </h1>
-        <p class="hero-sub">
-          ダンス・ランニング・AI開発の3カテゴリで動画やXのポストから得た知見を論点ごとに整理した個人学習ノートと、実体験を事実と考察に分けて振り返るコラムです。
-        </p>
-
-        <!-- SVGフロー図 -->
-        <div class="flow-diagram">
-          <svg viewBox="0 0 640 96" width="640" height="96" style="max-width:100%; display:block;">
-            <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L8,3 z" fill="#6366f1"/>
-              </marker>
-            </defs>
-            <!-- Box 1 -->
-            <rect x="4" y="24" width="130" height="48" rx="10" fill="#f0f0ff" stroke="#6366f1" stroke-width="1.5"/>
-            <text x="69" y="43" text-anchor="middle" font-size="16">📱</text>
-            <text x="69" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">動画・X・記事</text>
-
-            <!-- Arrow 1 -->
-            <line x1="134" y1="48" x2="162" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-
-            <!-- Box 2 -->
-            <rect x="166" y="24" width="130" height="48" rx="10" fill="#faf0ff" stroke="#a855f7" stroke-width="1.5"/>
-            <text x="231" y="43" text-anchor="middle" font-size="16">🤖</text>
-            <text x="231" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">Claudeが整理</text>
-
-            <!-- Arrow 2 -->
-            <line x1="296" y1="48" x2="324" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-
-            <!-- Box 3 -->
-            <rect x="328" y="24" width="130" height="48" rx="10" fill="#f0f0ff" stroke="#6366f1" stroke-width="1.5"/>
-            <text x="393" y="43" text-anchor="middle" font-size="16">📚</text>
-            <text x="393" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">論点ノート</text>
-
-            <!-- Arrow 3 -->
-            <line x1="458" y1="48" x2="486" y2="48" stroke="#6366f1" stroke-width="2" marker-end="url(#arrow)"/>
-
-            <!-- Box 4 -->
-            <rect x="490" y="24" width="146" height="48" rx="10" fill="#f0fff4" stroke="#22c55e" stroke-width="1.5"/>
-            <text x="563" y="43" text-anchor="middle" font-size="16">🔍</text>
-            <text x="563" y="60" text-anchor="middle" font-size="10" fill="#1a1a1a" font-family="-apple-system,sans-serif" font-weight="600">いつでも検索・参照</text>
-          </svg>
+    <div class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">今日のわたしを、少し更新する</p>
+          <h1>動画とXから、<br><em>学びを拾う。</em></h1>
+          <p class="lead">
+            ダンス・ランニング・AI開発の3カテゴリで、動画やXのポストから得た知見を論点ごとに整理した個人学習ノート。
+            あわせて、実体験を事実と考察に分けて振り返るコラムを置いています。
+          </p>
         </div>
-      </div>
-    </section>
+        <div class="route-art">
+          <svg viewBox="0 0 500 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="3つの趣味の道のりを表す線画">
+            <path d="M32 295C110 254 110 216 190 207C281 196 252 144 324 126C383 111 410 73 454 41" stroke="currentColor" stroke-width="2" stroke-dasharray="6 8"/>
+            <path d="M327 125c18-15 28-17 45-18M190 207c15 0 25 5 38 14" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M78 272c8-17 15-22 23-28m-12 33c20-2 28 2 34 12" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="32" cy="295" r="6" fill="var(--rust)"/>
+            <circle cx="454" cy="41" r="6" fill="var(--ochre)"/>
+            <path d="M86 214c2-30 16-50 29-50 15 0 17 26 16 53m-15-43-15 15m15-15 15 15m-15 28-18 24m18-24 15 23" stroke="var(--rust)" stroke-width="2"/>
+            <path d="M327 128c-3-22 7-43 20-44 17-1 18 21 17 42m-18-30-13 14m13-14 13 12m-13 16-13 24m13-24 17 17" stroke="var(--moss)" stroke-width="2"/>
+            <path d="M248 251h47m-43 0 8-34h29l7 34m-40-30h35m-19-5v-14m0 14 10-6" stroke="var(--indigo)" stroke-width="2"/>
+          </svg>
+          <span class="route-label dance">dance</span>
+          <span class="route-label run">running</span>
+          <span class="route-label ai">ai build</span>
+        </div>
+      </section>
 
-    <!-- カテゴリグリッド -->
-    <main class="container">
-      <p class="section-heading">カテゴリを選ぶ</p>
+      <div class="section-head">
+        <h2>好きな入口から、どうぞ。</h2>
+        <span>4つのテーマ</span>
+      </div>
       <div class="category-grid">
-        <a href="dance.html" class="category-card dance">
-          <span class="category-icon">💃</span>
-          <h2>ダンス</h2>
-          <p>アイソレーション・基礎・振り付けのコツ</p>
-          <span class="note-count">ノートを読む →</span>
+        <a class="category-card dance" href="dance.html">
+          <div class="copy">
+            <div class="kicker">DANCE</div>
+            <h2>ダンス</h2>
+            <p>アイソレーション・基礎・振り付けのコツ</p>
+          </div>
+          <span class="mini-figure" aria-hidden="true">♧</span>
+          <div class="go"><span>ノートを見る</span><span>›</span></div>
         </a>
-        <a href="running.html" class="category-card running">
-          <span class="category-icon">🏃</span>
-          <h2>ランニング</h2>
-          <p>フォーム・トレーニングメニュー・補強</p>
-          <span class="note-count">ノートを読む →</span>
+        <a class="category-card running" href="running.html">
+          <div class="copy">
+            <div class="kicker">RUNNING</div>
+            <h2>ランニング</h2>
+            <p>フォーム・トレーニングメニュー・補強</p>
+          </div>
+          <span class="mini-figure" aria-hidden="true">∿</span>
+          <div class="go"><span>ノートを見る</span><span>›</span></div>
         </a>
-        <a href="ai.html" class="category-card ai">
-          <span class="category-icon">🤖</span>
-          <h2>AI開発</h2>
-          <p>プロンプト設計・ツール活用・開発ノウハウ</p>
-          <span class="note-count">ノートを読む →</span>
+        <a class="category-card ai" href="ai.html">
+          <div class="copy">
+            <div class="kicker">AI BUILD</div>
+            <h2>AI開発</h2>
+            <p>プロンプト設計・ツール活用・開発ノウハウ</p>
+          </div>
+          <span class="mini-figure" aria-hidden="true">⌘</span>
+          <div class="go"><span>ノートを見る</span><span>›</span></div>
         </a>
-        <a href="column.html" class="category-card column">
-          <span class="category-icon">📝</span>
-          <h2>コラム</h2>
-          <p>実体験を事実と考察に分けて振り返る読み物</p>
-          <span class="note-count">コラムを読む →</span>
+        <a class="category-card column" href="column.html">
+          <div class="copy">
+            <div class="kicker">COLUMN</div>
+            <h2>コラム</h2>
+            <p>実体験を事実と考察に分けて振り返る読み物</p>
+          </div>
+          <span class="mini-figure" aria-hidden="true">✎</span>
+          <div class="go"><span>記事を読む</span><span>›</span></div>
         </a>
       </div>
-    </main>
+
+      <section class="notes">
+        <div class="section-head">
+          <h2>最新のノート</h2>
+          <span id="note-total"></span>
+        </div>
+        <div class="note-list" id="latest-notes"></div>
+      </section>
+    </div>
 
     <footer class="site-footer">
-      個人学習用ノート。出典は各ページに記載。
+      個人学習用ノート。出典は各ページに記載しています。
     </footer>
   </div>
-</div>
+</div></div>
 
+<script src="notes-dance.js"></script>
+<script src="notes-running.js"></script>
+<script src="notes-ai.js"></script>
+<script src="notes-column.js"></script>
 <script>
+(function () {
   // ハンバーガーメニュー
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
 
-  function toggleSidebar() {
-    const isOpen = sidebar.classList.toggle('open');
-    overlay.classList.toggle('open', isOpen);
-    hamburger.classList.toggle('open', isOpen);
+  // 4カテゴリのデータを1つにまとめ、新しい順に並べる
+  const groups = [
+    { key: 'dance',   label: 'ダンス',      mark: '♧', page: 'dance.html',   data: typeof NOTES_DANCE   !== 'undefined' ? NOTES_DANCE   : [] },
+    { key: 'running', label: 'ランニング',  mark: '∿', page: 'running.html', data: typeof NOTES_RUNNING !== 'undefined' ? NOTES_RUNNING : [] },
+    { key: 'ai',      label: 'AI開発',      mark: '⌘', page: 'ai.html',      data: typeof NOTES_AI      !== 'undefined' ? NOTES_AI      : [] },
+    { key: 'column',  label: 'コラム',      mark: '✎', page: 'column.html',  data: typeof NOTES_COLUMN  !== 'undefined' ? NOTES_COLUMN  : [] }
+  ];
+
+  const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[c]);
+
+  const all = groups.flatMap(g => g.data.map(note => ({ note, group: g })));
+  all.sort((a, b) => String(b.note.date || '').localeCompare(String(a.note.date || '')));
+
+  const target = document.getElementById('latest-notes');
+  const total = document.getElementById('note-total');
+
+  if (!all.length) {
+    target.innerHTML = '<p class="empty-msg">まだノートがありません。</p>';
+    total.textContent = '';
+    return;
   }
+  total.textContent = `全 ${all.length} 件`;
 
-  hamburger.addEventListener('click', toggleSidebar);
-  overlay.addEventListener('click', toggleSidebar);
+  // 一覧の1行目に出す要約は、カテゴリごとに持っている項目が違うため順に拾う
+  const previewOf = (note) => {
+    const source = note.points || note.form || note.mistakes || note.notes || [];
+    return Array.isArray(source) && source.length ? source[0] : '';
+  };
+
+  target.innerHTML = all.slice(0, 8).map(({ note, group }) => {
+    const href = note.url ? note.url : group.page;
+    const preview = previewOf(note);
+    return `<a class="note-row" href="${escapeHtml(href)}">
+      <span class="thumb ${group.key}" aria-hidden="true">${group.mark}</span>
+      <span class="tag ${group.key}">${group.label}</span>
+      <span class="note-row-body">
+        <h3>${escapeHtml(note.title)}</h3>
+        ${preview ? `<p>${escapeHtml(preview)}</p>` : ''}
+        <span class="note-row-meta">${escapeHtml(note.date || '')}</span>
+      </span>
+    </a>`;
+  }).join('');
+})();
 </script>
 </body>
 </html>
