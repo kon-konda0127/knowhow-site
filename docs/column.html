@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ダンス | アラフォーから始める趣味</title>
+  <title>コラム | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="dance-theme">
+<body class="column-theme">
 <div class="site-layout">
 
   <!-- ===== サイドバー ===== -->
@@ -22,7 +22,7 @@
       <a href="index.html" class="sidebar-link">
         <span class="icon">🏠</span> トップ
       </a>
-      <a href="dance.html" class="sidebar-link dance-link active">
+      <a href="dance.html" class="sidebar-link dance-link">
         <span class="icon">💃</span> ダンス
       </a>
       <a href="running.html" class="sidebar-link running-link">
@@ -31,11 +31,11 @@
       <a href="ai.html" class="sidebar-link ai-link">
         <span class="icon">🤖</span> AI開発
       </a>
-      <a href="column.html" class="sidebar-link column-link">
+      <a href="column.html" class="sidebar-link column-link active">
         <span class="icon">📝</span> コラム
       </a>
     </nav>
-    <div class="sidebar-tags">
+    <div class="sidebar-tags" id="sidebar-tags-container">
       <div class="sidebar-section-label">タグ</div>
       <div class="sidebar-tag-list" id="sidebar-tag-list"></div>
     </div>
@@ -49,18 +49,18 @@
 
     <!-- モバイルトップバー -->
     <div class="topbar">
-      <span class="topbar-title">💃 ダンス</span>
+      <span class="topbar-title">📝 コラム</span>
       <button class="hamburger" id="hamburger" aria-label="メニューを開く">
         <span></span><span></span><span></span>
       </button>
     </div>
 
     <!-- ページヘッダー -->
-    <header class="page-header header-dance">
+    <header class="page-header header-column">
       <div class="page-header-inner">
         <a href="index.html" class="page-header-back">← トップへ</a>
-        <h1>💃 ダンス</h1>
-        <p class="page-header-desc">アイソレーション・基礎・振り付けのコツ</p>
+        <h1>📝 コラム</h1>
+        <p class="page-header-desc">実体験を「事実」と「考察」に分けて振り返る読み物</p>
       </div>
     </header>
 
@@ -73,7 +73,7 @@
 
       <!-- ノートグリッド -->
       <div class="note-grid" id="note-list">
-        <p class="empty-msg">まだノートがありません。inbox を処理してノートを追加しましょう。</p>
+        <p class="empty-msg">まだコラムがありません。</p>
       </div>
     </div>
 
@@ -83,17 +83,43 @@
   </div>
 </div>
 
-<script src="notes-dance.js"></script>
+<!-- ===== モーダル ===== -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose" aria-label="閉じる">✕</button>
+    <div class="modal-category" id="modalCategory"></div>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-tags" id="modalTags"></div>
+    <div class="modal-points">
+      <h3>ポイント</h3>
+      <ul id="modalPoints"></ul>
+    </div>
+    <a href="#" class="modal-link" id="modalLink">全文を読む →</a>
+  </div>
+</div>
+
+<script src="notes-column.js"></script>
 <script>
 (function() {
-  const notes = typeof NOTES_DANCE !== 'undefined' ? NOTES_DANCE : [];
-  const noteList  = document.getElementById('note-list');
-  const tagFilter = document.getElementById('tag-filter');
-  const sidebarTagList = document.getElementById('sidebar-tag-list');
-  const hamburger = document.getElementById('hamburger');
-  const sidebar   = document.getElementById('sidebar');
-  const overlay   = document.getElementById('sidebarOverlay');
+  // ---- データ読み込み ----
+  const notes = typeof NOTES_COLUMN !== 'undefined' ? NOTES_COLUMN : [];
 
+  // ---- DOM参照 ----
+  const noteList   = document.getElementById('note-list');
+  const tagFilter  = document.getElementById('tag-filter');
+  const sidebarTagList = document.getElementById('sidebar-tag-list');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalClose = document.getElementById('modalClose');
+  const hamburger  = document.getElementById('hamburger');
+  const sidebar    = document.getElementById('sidebar');
+  const overlay    = document.getElementById('sidebarOverlay');
+
+  let activeTag = null;
+
+  // ---- タグ収集 ----
+  const allTags = [...new Set(notes.flatMap(n => n.tags || []))];
+
+  // ---- ハンバーガー ----
   function toggleSidebar() {
     const isOpen = sidebar.classList.toggle('open');
     overlay.classList.toggle('open', isOpen);
@@ -102,8 +128,7 @@
   hamburger.addEventListener('click', toggleSidebar);
   overlay.addEventListener('click', toggleSidebar);
 
-  const allTags = [...new Set(notes.flatMap(n => n.tags || []))];
-
+  // ---- タグボタン生成 ----
   function buildTagButtons(container, sidebarMode) {
     if (!allTags.length) return;
     if (!sidebarMode) {
@@ -125,19 +150,27 @@
   buildTagButtons(tagFilter, false);
   buildTagButtons(sidebarTagList, true);
 
+  // ---- フィルター処理 ----
   function filterNotes(tag) {
+    activeTag = tag || null;
+    const cards = noteList.querySelectorAll('.note-card');
     tagFilter.querySelectorAll('.tag-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.tag === (tag || ''));
     });
-    noteList.querySelectorAll('.note-card').forEach(card => {
+    cards.forEach(card => {
       const tags = JSON.parse(card.dataset.tags || '[]');
       const show = !tag || tags.includes(tag);
       if (show) {
         card.classList.remove('hiding');
-        setTimeout(() => { card.style.display = ''; }, 200);
+        setTimeout(() => {
+          card.style.display = '';
+        }, 200);
       } else {
         card.classList.add('hiding');
-        setTimeout(() => { card.style.display = 'none'; card.classList.remove('hiding'); }, 200);
+        setTimeout(() => {
+          card.style.display = 'none';
+          card.classList.remove('hiding');
+        }, 200);
       }
     });
   }
@@ -146,34 +179,88 @@
     const btn = e.target.closest('.tag-btn');
     if (btn) filterNotes(btn.dataset.tag);
   });
+
   sidebarTagList.addEventListener('click', e => {
     const btn = e.target.closest('.sidebar-tag');
     if (btn) filterNotes(btn.dataset.tag);
   });
 
-  if (notes.length) {
+  // ---- モーダル ----
+  function openModal(note) {
+    document.getElementById('modalCategory').textContent = note.category || 'コラム';
+    document.getElementById('modalTitle').textContent = note.title;
+    const tagsEl = document.getElementById('modalTags');
+    tagsEl.innerHTML = (note.tags || []).map(t =>
+      `<span class="note-tag">${t}</span>`).join('');
+    const pointsEl = document.getElementById('modalPoints');
+    pointsEl.innerHTML = (note.points || []).map(p => `<li>${p}</li>`).join('');
+    const linkEl = document.getElementById('modalLink');
+    if (note.url) {
+      linkEl.href = note.url;
+      linkEl.style.display = 'inline-flex';
+    } else {
+      linkEl.style.display = 'none';
+    }
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', e => {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ---- ノートカード生成 ----
+  function buildCards() {
+    if (!notes.length) return;
     noteList.innerHTML = '';
+
     notes.forEach((note, i) => {
       const card = document.createElement('div');
-      card.className = 'note-card';
+      card.className = 'note-card card-hidden';
       card.dataset.tags = JSON.stringify(note.tags || []);
       card.style.transitionDelay = `${i * 0.07}s`;
-      const preview = note.points && note.points.length ? note.points[0] : '';
+
+      const preview = note.points && note.points.length
+        ? note.points[0]
+        : '';
+
       card.innerHTML = `
         <h3>${note.title}</h3>
         ${preview ? `<p class="note-card-preview">${preview}</p>` : ''}
-        <div class="tags">${(note.tags || []).map(t => `<span class="note-tag">${t}</span>`).join('')}</div>
-        <div class="note-card-footer">${note.category || 'ダンス'}</div>
+        <div class="tags">
+          ${(note.tags || []).map(t => `<span class="note-tag">${t}</span>`).join('')}
+        </div>
+        <div class="note-card-footer">${note.category || 'コラム'}</div>
       `;
-      if (note.url) card.addEventListener('click', () => { window.location.href = note.url; });
+
+      card.addEventListener('click', () => openModal(note));
       noteList.appendChild(card);
     });
 
+    // IntersectionObserver でフェードアップ
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('card-hidden');
+          entry.target.classList.add('card-visible');
+          io.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.1 });
-    noteList.querySelectorAll('.note-card').forEach(c => io.observe(c));
+
+    noteList.querySelectorAll('.note-card').forEach(card => io.observe(card));
   }
+
+  buildCards();
 })();
 </script>
 </body>

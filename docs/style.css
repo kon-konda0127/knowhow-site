@@ -5,6 +5,7 @@
   --dance-color: #f97316;
   --running-color: #22c55e;
   --ai-color: #6366f1;
+  --column-color: #0d9488;
   --text: #1a1a1a;
   --text-muted: #6b7280;
   --bg: #ffffff;
@@ -966,3 +967,23 @@ body {
   .note-nav-item.next { grid-column: 1; text-align: left; }
   .modal { padding: 24px 18px; }
 }
+
+/* ===== コラムカテゴリ（2026-08-12追加） ===== */
+.sidebar-link.column-link:hover,
+.sidebar-link.column-link.active {
+  background: #f0fdfa;
+  color: var(--column-color);
+}
+.header-column { border-top: 4px solid var(--column-color); }
+.category-card.column::before { background: var(--column-color); }
+.category-card.column:hover { border-color: var(--column-color); }
+.category-card.column .note-count { color: var(--column-color); }
+.column-theme .tag-btn.active {
+  background: var(--column-color);
+  border-color: var(--column-color);
+  color: #fff;
+}
+.column-theme .note-card:hover { border-color: var(--column-color); }
+/* コラム本文の段落（既存ノートは箇条書き中心のため、コラム用にpの行間を確保） */
+.column-theme .note-body p { margin: 0 0 16px; line-height: 1.9; }
+.column-theme .note-body h2 { margin-top: 36px; }
