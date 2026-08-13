@@ -600,7 +600,8 @@ code {
   .page-header, .site-header { padding: 40px 22px 22px; }
   .note-page-layout { grid-template-columns: 1fr; gap: 0; padding: 30px 22px 70px; }
   .note-page-layout > .note-body { grid-column: 1; }
-  .toc-sidebar { grid-column: 1; position: static; margin-bottom: 28px; }
+  /* モバイルでは目次を本文より先に表示する（order:-1で縦積みの先頭へ） */
+  .toc-sidebar { grid-column: 1; position: static; order: -1; margin-bottom: 28px; }
   .note-page { padding: 30px 22px 70px; }
   .site-footer { padding: 28px 22px 40px; }
 
