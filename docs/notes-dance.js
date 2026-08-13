@@ -1,6 +1,8 @@
 /**
  * ダンスノートデータ
  * 「サイトを更新して」と指示すると Claude がこのファイルに追記します。
+ * 描画は各ページ側のスクリプトが行うため、このファイルはデータ定義のみ（notes-column.jsと同形式）。
+ * 詳細ページを作る場合は url フィールド（例: "notes/xxx.html"）を追加すること。
  *
  * 各ノートの構造:
  *   id       : ファイル名に使うID（英数字とハイフンのみ）
@@ -14,7 +16,7 @@
  *   images   : 任意。ステップ図解画像のファイル名の配列（docs/assets/dance-steps/配下、拡張子込み。GitHub Pagesはdocs/のみ公開するため、画像は必ずdocs/配下に置くこと）
  *              例: ["two-step.png"]。複数枚可。無ければ省略してよい
  */
-const DANCE_NOTES = [
+const NOTES_DANCE = [
   // ノートはここに追加されます（例）
   // {
   //   id: "isolation-neck",
@@ -28,49 +30,3 @@ const DANCE_NOTES = [
   //   images: ["isolation-neck.png"]
   // }
 ];
-
-/* ===== 以下は表示ロジック（触らなくてOK） ===== */
-
-function renderNotes(notes) {
-  const list = document.getElementById('note-list');
-  const tagFilter = document.getElementById('tag-filter');
-
-  if (notes.length === 0) return;
-
-  // タグ一覧を収集
-  const allTags = [...new Set(notes.flatMap(n => n.tags))].sort();
-  let activeTag = null;
-
-  function renderTagFilter() {
-    tagFilter.innerHTML = '';
-    allTags.forEach(tag => {
-      const btn = document.createElement('button');
-      btn.className = 'tag-btn' + (tag === activeTag ? ' active' : '');
-      btn.textContent = tag;
-      btn.onclick = () => {
-        activeTag = activeTag === tag ? null : tag;
-        renderTagFilter();
-        renderList();
-      };
-      tagFilter.appendChild(btn);
-    });
-  }
-
-  function renderList() {
-    const filtered = activeTag ? notes.filter(n => n.tags.includes(activeTag)) : notes;
-    list.innerHTML = filtered.length === 0
-      ? '<p class="empty-msg">該当するノートがありません。</p>'
-      : filtered.map(n => `
-          <a href="notes/${n.id}.html" class="note-card">
-            ${n.images && n.images.length ? `<img src="assets/dance-steps/${n.images[0]}" alt="" style="width:100%;border-radius:8px;margin-bottom:8px;">` : ''}
-            <h3>${n.title}</h3>
-            <p style="font-size:0.82rem;color:#6b7280;">${n.category}</p>
-            <div class="tags">${n.tags.map(t => `<span class="note-tag">${t}</span>`).join('')}</div>
-          </a>`).join('');
-  }
-
-  renderTagFilter();
-  renderList();
-}
-
-renderNotes(DANCE_NOTES);
