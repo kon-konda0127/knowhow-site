@@ -409,6 +409,11 @@ button { font: inherit; cursor: pointer; }
 
 .note-images img { max-width: 100%; border: 1px solid var(--line); }
 
+/* 図版（before/after の比較スクリーンショット等） */
+figure { margin: 26px 0; }
+figure img { display: block; width: 100%; border: 1px solid var(--line); background: var(--paper-2); }
+figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+
 /* --- コラム可読性部品（README「コラムの可読性基準」対応。クラス名は変更しない） --- */
 
 .tldr-box {

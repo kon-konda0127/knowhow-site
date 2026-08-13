@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="個人サイトの見た目づくりを別のAIサービスに外注した記録。デザインは良くなったが、初版には実在しない数字が混ざっていた。">
+  <title>デザインをAIに外注したら、見た目は上がって、数字だけが嘘だった | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="column-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>考えを言葉にして、暮らしを整える。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../../index.html">はじめに</a>
+        <a href="../../dance.html">ダンス</a>
+        <a href="../../running.html">ランニング</a>
+        <a href="../../ai.html">AI開発</a>
+        <a href="../../column.html" class="active">コラム</a>
+      </nav>
+    </header>
+
+    <header class="page-header header-column">
+      <div class="page-header-inner">
+        <a href="../../column.html" class="page-header-back">← コラム一覧へ</a>
+        <h1>デザインをAIに外注したら、見た目は上がって、数字だけが嘘だった</h1>
+        <div class="note-meta">
+          <span>カテゴリ: コラム &gt; AI活用</span>
+          <span>公開: 2026-08-13</span>
+          <span class="reading-time">📖 流し読み1分・全文6分</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#AI活用</span>
+          <span class="note-tag">#デザイン</span>
+          <span class="note-tag">#外注</span>
+          <span class="note-tag">#検収</span>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこの記事</div>
+          <ul>
+            <li>個人サイトの見た目づくりを、普段使っているのとは<strong>別のAIサービスに外注</strong>した。デザインは明確に良くなった</li>
+            <li>ただし初版には、<strong>実際には存在しない数字</strong>が混ざっていた。気づかず公開していれば、嘘の情報を載せるところだった</li>
+            <li>外注で買えるのは「見た目」まで。<strong>「事実の正しさ」は受け取る側が担保するしかない</strong>と考えられる</li>
+          </ul>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-tile"><div class="stat-value">3<span>件</span></div><div class="stat-label">外注した案件</div></div>
+          <div class="stat-tile"><div class="stat-value">486<span>行</span></div><div class="stat-label">受け取った初版</div></div>
+          <div class="stat-tile"><div class="stat-value">2<span>種</span></div><div class="stat-label">破棄した架空の数字</div></div>
+          <div class="stat-tile"><div class="stat-value">0<span>件</span></div><div class="stat-label">実データの変更</div></div>
+        </div>
+
+        <p>自分のサイトが、どうにも「AIが作りました」という顔をしていました。</p>
+
+        <p>絵文字が並び、紫のグラデーションがかかり、角の丸いカードが整列している。よくある見た目です。</p>
+
+        <p>この記事は、その見た目を別のAIに作り直させた記録です。良かった点と、危なかった点の両方を書きます。</p>
+
+        <h2 id="background">背景<a href="#background" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>私はプログラミング初心者で、コードはAI（Claude）に書いてもらっています。</p>
+
+        <p>そのAIに「デザインも良くして」と頼むと、どうしても無難で没個性な見た目に寄っていきます。これは「AI slop」と呼ばれる現象で、私の指示が甘いせいでもあります。</p>
+
+        <p>そこで、<strong>0→1のデザインだけを別のAIサービス（Manus）に任せる</strong>運用を決めました。</p>
+
+        <p>役割分担はこうです。前工程（デザインの初版づくり）は外部のAI、本工程（中身の配線・安全確認・公開）は手元のAI。</p>
+
+        <p>作らせたものを、そのまま本番に入れないことを条件にしました。</p>
+
+        <h2 id="facts">事実：3件の外注で起きたこと<a href="#facts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>ここは「起きたこと」だけを書きます。評価は次の章から。</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-date">8/13</span><span class="tl-head">外注のルールを決めた</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <ul>
+                  <li>渡すのは「見た目の殻とダミーデータ」だけ。実データ・個人情報・認証情報は渡さない</li>
+                  <li>成果物は必ず手元に保存する。相手のサーバーに置いたままにしない</li>
+                </ul>
+                <p>出典: 作業日報 2026-08-13</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/13</span><span class="tl-head">1件目：アプリの玄関ページ</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>ダミー情報だけのブリーフでUI初版を作らせ、受け取ってから実データに差し替えました。</p>
+                <p>出典: 作業日報 2026-08-13</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/13</span><span class="tl-head">2件目：ランニング記録アプリ</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>初版に「GPSの停止時間」「1kmごとのラップ」という項目が入っていました。</p>
+                <p>どちらも私の記録データには<strong>存在しない項目</strong>だったため、その表示ごと破棄しています。</p>
+                <p>出典: 作業日報 2026-08-13</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/13</span><span class="tl-head">3件目：このサイト</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>初版は1ファイル486行。外部から読み込むデータは0件で、その点は安全でした。</p>
+                <p>一方で、全記事に共通の固定の読了時間と、根拠のない利用頻度の数字が埋め込まれていました。</p>
+                <p>出典: 作業日報 2026-08-13</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/13</span><span class="tl-head">検収してから公開した</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>受け入れテスト15件すべて合格。記事データのファイルは1バイトも変更していません。</p>
+                <p>出典: 作業日報 2026-08-13</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="visual">見た目の変化<a href="#visual" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <figure>
+          <img src="../../assets/column/manus-before-top.jpg" alt="外注前のトップページ。左に絵文字付きのメニュー、紫色の見出し、角丸の枠で囲まれた図が並んでいる">
+          <figcaption>外注前。絵文字・紫のグラデーション・角丸カードという、よくある構成。</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../../assets/column/manus-draft-top.jpg" alt="外部AIが提出したデザイン初版。紙のような背景に明朝体の大きな見出し、右側に手描き風の線画がある">
+          <figcaption>外部AIが出してきた初版。紙のような地に明朝体、手描き風の線画。ここまでは狙いどおり。</figcaption>
+        </figure>
+
+        <figure>
+          <img src="../../assets/column/manus-after-top.jpg" alt="検収後に公開した現在のトップページ。初版のデザインを保ちつつ、根拠のない数字の欄が取り除かれている">
+          <figcaption>検収後に公開した現在の姿。デザインは初版のまま、根拠のない数字だけを外した。</figcaption>
+        </figure>
+
+        <p>2枚目の画像の下のほうに、「週2回」「5分で読める」という数字が並んでいるのが見えます。</p>
+
+        <p><strong>これは私が一度も伝えていない数字です。</strong></p>
+
+        <h2 id="analysis">分析：受け取ったものの仕分け<a href="#analysis" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>初版を、項目ごとに3つに仕分けました。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>受け取ったもの</th><th>判断</th><th>理由</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>配色・書体・余白の設計</td><td>採用</td><td>没個性から抜けることが目的そのものだった</td></tr>
+              <tr><td>手描き風の線画</td><td>採用</td><td>出来合いの素材にはない個性が出ていた</td></tr>
+              <tr><td>タグの絞り込み</td><td>修正して採用</td><td>3つ決め打ちだったため、実データから作る形に直した</td></tr>
+              <tr><td>カードのクリック</td><td>修正して採用</td><td>見た目だけのボタンだったため、本物のリンクに直した</td></tr>
+              <tr><td>ページの仕組み（URL）</td><td>破棄</td><td>採用すると公開済みのページのURLが全部切れる</td></tr>
+              <tr><td>読了時間・利用頻度の数字</td><td>破棄</td><td><strong>元データに存在しない数字だった</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>破棄した2件は、どちらも「見た目としては正しく、事実としては間違っている」ものでした。</p>
+
+        <h2 id="thoughts">考察：ここからは私の解釈<a href="#thoughts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ol class="claim-list">
+          <li>
+            <strong>AIは、空欄を「それらしく」埋める</strong><br>
+            デザインの完成度を上げようとして、数字の入る場所に架空の値を置いたのだと考えられます。悪意ではなく、埋めたほうが見栄えがするからでしょう。
+          </li>
+          <li>
+            <strong>危ないのは、嘘が目立たない場所に入ること</strong><br>
+            今回の架空の数字は、見出しではなく一覧の隅の小さな文字でした。派手な間違いなら気づけますが、小さな装飾は読み飛ばしやすいと思われます。
+          </li>
+          <li>
+            <strong>検収の勘所は「この項目は実在するか」の照合</strong><br>
+            デザインの好き嫌いを議論する前に、表示される項目を1つずつ元データと突き合わせるほうが効きそうです。存在しない項目に依存した機能は、デザインごと落とすのが安全だと考えられます。
+          </li>
+          <li>
+            <strong>外注の線引きは「対外的・使い捨て・非機微」</strong><br>
+            見せ物としての初版は外に出せます。一方で、長く育てるもの・自分でメンテするもの・機微なデータを扱うものの中身は、手元に置いたほうが安全だと言えそうです。
+          </li>
+        </ol>
+
+        <h2 id="limits">この記事の限界<a href="#limits" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ul>
+          <li>私1人・1サービス・3案件だけの記録です（n=1）。他のサービスでも同じ傾向が出るかは分かりません</li>
+          <li>すべて同じ日の出来事で、長期間運用したときの手間やコストは分かっていません</li>
+          <li>私はプログラミング初心者で、コードの良し悪しの判断はAIの補助を受けています</li>
+          <li>「デザインが良くなった」の判断は私の主観です。第三者の評価は取っていません</li>
+        </ul>
+
+        <h2 id="summary">まとめ<a href="#summary" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>外注してよかったか、と聞かれれば、よかったと答えます。</p>
+
+        <p>自分ひとり（と手元のAI）では、この見た目にはたどり着けませんでした。</p>
+
+        <p>ただし受け取ったものをそのまま使っていたら、私のサイトには嘘の数字が並んでいました。</p>
+
+        <p><strong>外注で買えるのは見た目まで。事実の正しさは、受け取った側が確かめるしかない。</strong> 今回いちばん学んだのはここでした。</p>
+      </article>
+
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#background">背景</a></li>
+            <li><a href="#facts">事実</a></li>
+            <li><a href="#visual">見た目の変化</a></li>
+            <li><a href="#analysis">分析</a></li>
+            <li><a href="#thoughts">考察</a></li>
+            <li><a href="#limits">この記事の限界</a></li>
+            <li><a href="#summary">まとめ</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../../column.html">← コラム一覧へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // 目次のアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>
