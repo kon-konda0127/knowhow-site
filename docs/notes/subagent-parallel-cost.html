@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="サブエージェントを設定なしで並列実行するとトークン消費が膨らむ。モデルの使い分け・推論強度・設定ファイルという3つの対策と、停止条件の決め方。">
+  <title>【見送り】サブエージェントの並列コスト対策 | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ai-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>学びと、作る喜びで、未来を広げる。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../index.html">はじめに</a>
+        <a href="../dance.html">ダンス</a>
+        <a href="../diet.html">ダイエット</a>
+        <a href="../ai.html" class="active">AI開発</a>
+        <a href="../column.html">コラム</a>
+      </nav>
+    </header>
+
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI開発へ</a>
+        <h1>【見送り】サブエージェントの並列コスト対策は、うちでは重複だった</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI開発 &gt; Codex活用</span>
+          <span>取り込み: 2026-08-14</span>
+          <span class="reading-time">📖 要点30秒・全文3分</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#Codex</span>
+          <span class="note-tag">#subagent</span>
+          <span class="note-tag">#トークン</span>
+          <span class="note-tag">#コスト最適化</span>
+          <span class="note-tag">#見送り</span>
+        </div>
+
+        <div class="verdict-panel">
+          <dl>
+            <dt>判定</dt><dd><span class="verdict verdict-skip">見送り</span>（2026-08-14）</dd>
+            <dt>理由</dt><dd>重複。時間の目安・停止条件・作業の振り分けを、すでにチーム規程に明文化していたため</dd>
+            <dt>逆に必要かも</dt><dd>サブエージェントを並列で使っていて、停止条件をまだ決めていない人</dd>
+          </dl>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
+          <ul>
+            <li>AIの子分（サブエージェント）を設定なしで並列に走らせると、利用量が一気に膨らむ</li>
+            <li>対策は3つ。<strong>モデルの使い分け・推論強度の設計・設定ファイルの整備</strong></li>
+            <li>並列数を増やすことは最適化ではない。<strong>1体あたりの仕事量を絞る</strong>方が効く</li>
+            <li>自分の体制では<strong>見送り</strong>。時間の目安・停止条件・振り分けはすでに規程にあったため</li>
+          </ul>
+        </div>
+
+        <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
+        <p>これを読むと、並列実行で利用枠が急に減る事故を避けられる。</p>
+        <p>サブエージェントは速い。ただし同時に走った分だけ消費する。速さの対価が見えないまま増やすと、気づいた時には枠が尽きている。</p>
+
+        <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
+        <ul>
+          <li>サブエージェントとは、親のAIが作業の一部を子のAIに切り出す仕組み。並列に走らせると、同時進行する分だけトークン（AIの利用量の単位）を消費する</li>
+          <li>元の投稿が挙げていた対策は3点。①モデルの使い分け ②推論強度（effort）の設計 ③エージェント設定ファイルの整備</li>
+          <li>推論強度とは「どれだけ念入りに考えさせるか」の設定。すべて最大にすると、軽い作業にも重い費用がかかる</li>
+          <li>同じ発想の続きとして、<a href="codex-model-router.html">Codex subagent のモデルルーティング</a>も参照</li>
+        </ul>
+
+        <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
+        <p>当チームの監査担当（テスト役・最終監査役）は、まさにサブエージェントとして動いている。起動の作法は規程にすでに書いてある。</p>
+        <ul>
+          <li>依頼文に作業時間の目安を書く（軽いレビューなら15分、全面審査なら30分）</li>
+          <li>長引きそうな依頼はバックグラウンドで走らせ、目安の2倍を過ぎたら一度だけ状況を確認し、それでも応答がなければ打ち切って範囲を絞り直す</li>
+          <li>読む量が多く出力が長い作業は外部の定額AIへ逃がし、判断と統合は司令塔の手元に残す</li>
+        </ul>
+        <p>2026-08-14にこの投稿を検討し、<strong>見送りと判断した</strong>。上記がすでに明文化されており、新たに足すものが無かったため。</p>
+        <p>残った視点（この項は筆者の考察）: 起動する前に「時間・範囲・停止条件」を決める。並列数そのものより、1体に渡す仕事の量を絞る方が効く。</p>
+
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+        <p>以下は筆者の考察。</p>
+        <ul>
+          <li>並列数を増やすこと自体を最適化だと思ってしまう</li>
+          <li>すべての子分を最上位モデル・最大の推論強度で走らせる</li>
+          <li>停止条件を決めないまま起動し、終わらない相手を待ち続ける</li>
+        </ul>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+        <ul>
+          <li><a class="source-link" href="https://x.com/UT_Codex/status/2087806482519900336" target="_blank" rel="noopener">@UT_Codex のポスト（X）</a>（取り込み日：2026-08-14。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
+        </ul>
+
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <a href="codex-skills-fixation.html" class="note-nav-item prev">
+            <div class="nav-label">← 前のノート</div>
+            <div class="nav-title">【見送り】手順のスキル固定（Codex Skills）は、うちでは重複だった</div>
+          </a>
+          <a href="loop-engineering.html" class="note-nav-item next">
+            <div class="nav-label">次のノート →</div>
+            <div class="nav-title">【採用】AIの自走は、合格基準を先に決める（ループエンジニアリング）</div>
+          </a>
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#why">なぜ重要か</a></li>
+            <li><a href="#how">しくみ（なぜ効くか）</a></li>
+            <li><a href="#ourcase">うちの体制ではこう使う</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+            <li><a href="#source">出典</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../ai.html">← AI開発へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>

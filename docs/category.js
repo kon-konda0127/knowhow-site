@@ -7,6 +7,10 @@
  *   data     : notes-*.js が定義した配列（NOTES_DANCE 等）
  *   sections : モーダルに出す項目の定義 [{ field, label }, ...]
  *
+ * ノートは任意で採否ラベルを持てる（AI開発カテゴリで使用。他カテゴリは未定義なので何も出ない）:
+ *   verdict       : "採用" | "見送り" | "未判定"
+ *   verdictReason : そう判断した理由（1行）
+ *
  * カード自体は url があれば <a>（本物のリンク）、無ければ <button>（モーダル）になる。
  * データファイル（notes-*.js）は読み取り専用として扱い、ここでは一切書き換えない。
  */
@@ -54,12 +58,20 @@
     filterbar.style.display = 'none';
   }
 
+  // 採否ラベル。データに verdict が無ければ何も出さない（他カテゴリはこれで無影響）
+  const TONE = { '採用': 'adopt', '見送り': 'skip', '未判定': 'pending' };
+  const verdictHtml = (note) => {
+    if (!note.verdict || !TONE[note.verdict]) return '';
+    return `<span class="verdict verdict-${TONE[note.verdict]}">${escapeHtml(note.verdict)}</span>`;
+  };
+
   /* ---------- カード生成 ---------- */
   function cardHtml(note, index) {
     const preview = previewOf(note);
     const inner = `
-      <span class="tag ${escapeHtml(config.key)}">${escapeHtml(config.label)}</span>
+      <span class="card-labels"><span class="tag ${escapeHtml(config.key)}">${escapeHtml(config.label)}</span>${verdictHtml(note)}</span>
       <h3>${escapeHtml(note.title)}</h3>
+      ${note.verdictReason ? `<p class="verdict-reason">${escapeHtml(note.verdictReason)}</p>` : ''}
       ${preview ? `<p class="preview">${escapeHtml(preview)}</p>` : ''}
       <span class="card-foot">
         <span>${(note.tags || []).map(escapeHtml).join('　')}</span>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AIを自走させる「ループエンジニアリング」の5段階（発見・計画・実行・検証・反復）と、合格基準と停止条件を先に決めるクローズドループ設計。">
+  <title>【採用】AIの自走は、合格基準を先に決める | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ai-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>学びと、作る喜びで、未来を広げる。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../index.html">はじめに</a>
+        <a href="../dance.html">ダンス</a>
+        <a href="../diet.html">ダイエット</a>
+        <a href="../ai.html" class="active">AI開発</a>
+        <a href="../column.html">コラム</a>
+      </nav>
+    </header>
+
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI開発へ</a>
+        <h1>【採用】AIの自走は、合格基準を先に決める（ループエンジニアリング）</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI開発 &gt; エージェント設計</span>
+          <span>取り込み: 2026-08-14</span>
+          <span class="reading-time">📖 要点30秒・全文4分</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#エージェント設計</span>
+          <span class="note-tag">#ループエンジニアリング</span>
+          <span class="note-tag">#検証基準</span>
+          <span class="note-tag">#Codex</span>
+          <span class="note-tag">#採用</span>
+        </div>
+
+        <div class="verdict-panel is-adopt">
+          <dl>
+            <dt>判定</dt><dd><span class="verdict verdict-adopt">採用</span>（2026-08-14）</dd>
+            <dt>理由</dt><dd>採用したのは「検証基準の形式化」1点のみ。承認スキップの推奨は読み取り専用の原則と衝突するため不採用</dd>
+            <dt>取り込んだ結果</dt><dd>監査役・テスト役への依頼文に、合否基準を先に書く運用へ規程を改訂した</dd>
+          </dl>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
+          <ul>
+            <li>AIの自走が失敗する原因は、能力不足よりも「合格の定義がないまま走らせたこと」にある</li>
+            <li>自走のサイクルは5段階。<strong>発見 → 計画 → 実行 → 検証 → 反復</strong></li>
+            <li>中心は<strong>クローズドループ設計</strong>。合格基準と停止条件を、走らせる前に人間が決める</li>
+            <li>自分の体制では<strong>採用</strong>。ただし取り込んだのは1点だけ（検証基準の形式化）。承認スキップは採らなかった</li>
+          </ul>
+        </div>
+
+        <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
+        <p>これを読むと、AIを自走させる時に「どこで止めるか」を先に決められるようになる。</p>
+        <p>自走させたAIが空回りする時、たいてい原因は能力ではない。何をもって終わりとするかを、誰も決めていないだけである。</p>
+
+        <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
+        <ul>
+          <li>5段階のサイクル: <strong>発見</strong>（何が問題か）→ <strong>計画</strong>（どう解くか）→ <strong>実行</strong> → <strong>検証</strong> → <strong>反復</strong></li>
+          <li>核になるのが<strong>クローズドループ設計</strong>。合格基準と停止条件を、人間が<strong>先に</strong>決めておく</li>
+          <li>基準が無いと、AIは「終わったつもり」で止まるか、いつまでも終わらないかのどちらかになる</li>
+          <li>組み合わせる道具として、前提を共有する設定ファイル・手順を固定するスキル・作業を隔離する作業場（worktrees）・役割ごとのサブエージェント分離が挙げられていた</li>
+        </ul>
+
+        <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
+        <p>当チームはこの記事の主要素をすでに実践している。作った本人に採点させない監査の分離、手順のスキル化、差し戻し回数の上限がそれにあたる。</p>
+        <p>2026-08-14、この投稿は<strong>採用と判断した</strong>。取り込んだのは1点だけ、「検証基準の形式化」である。</p>
+        <ul>
+          <li>チーム規程を改訂し、監査役やテスト役に依頼する時は、<strong>合否基準を依頼文に先に書く</strong>運用にした</li>
+          <li>書くのは、実行できるテスト・仕様書の節番号・期待する出力など、客観的に確認できる条件</li>
+          <li>「良さそうか見て」という主観頼みの頼み方をやめた。判定基準を設計するのは、頼む側の仕事だと位置づけた</li>
+        </ul>
+        <p><strong>採らなかった部分</strong>もある。元記事が勧める承認スキップ（すべての操作を確認なしで許可する設定）は、外部AIを読み取り専用で動かすという当チームの原則と正面から衝突するため、不採用とした。</p>
+
+        <h2 id="practice"><a class="anchor-link" href="#practice">#</a> 実践のしかた <span class="note-caution">※SNS情報・採用したのは1のみ</span></h2>
+        <ol>
+          <li>走らせる前に合格基準を書く（実行できるテスト・期待する出力・守るべき規約）</li>
+          <li>停止条件を書く（差し戻しは何回まで、何分で打ち切るか）</li>
+          <li>検証は、作った本人以外に渡す</li>
+          <li>落ちた理由を基準側に書き足して、次の周回に入る</li>
+        </ol>
+
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+        <p>以下は筆者の考察。</p>
+        <ul>
+          <li>合格基準を後から決める。走らせたあとの基準は、出てきた結果に引きずられる</li>
+          <li>速度を優先して承認をスキップする。取り返しのつかない操作まで通ってしまう</li>
+          <li>作った本人に検証させる。自分の作ったものは、どうしても甘く見える</li>
+        </ul>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+        <ul>
+          <li><a class="source-link" href="https://x.com/UT_Codex/status/2072085661990158608" target="_blank" rel="noopener">@UT_Codex のポスト（X）</a>（取り込み日：2026-08-14。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
+        </ul>
+
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <a href="subagent-parallel-cost.html" class="note-nav-item prev">
+            <div class="nav-label">← 前のノート</div>
+            <div class="nav-title">【見送り】サブエージェントの並列コスト対策は、うちでは重複だった</div>
+          </a>
+          <a href="chatgpt-desktop-linux.html" class="note-nav-item next">
+            <div class="nav-label">次のノート →</div>
+            <div class="nav-title">【見送り】ChatGPTデスクトップのLinux版は、うちの環境では関係なかった</div>
+          </a>
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#why">なぜ重要か</a></li>
+            <li><a href="#how">しくみ（なぜ効くか）</a></li>
+            <li><a href="#ourcase">うちの体制ではこう使う</a></li>
+            <li><a href="#practice">実践のしかた</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+            <li><a href="#source">出典</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../ai.html">← AI開発へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>

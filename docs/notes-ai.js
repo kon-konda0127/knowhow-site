@@ -11,11 +11,17 @@
  *   points   : ポイントの配列（先頭が一覧カードのプレビューになる）
  *   url      : 詳細ページへの相対パス（docs/からの相対。例: "notes/xxx.html"）
  *   date     : 取り込み日
+ *
+ * 採否ラベル（AI開発カテゴリのみ。読んだ人が「自分に必要か」を判断できるようにするため）:
+ *   verdict       : "採用" | "見送り" | "未判定"（この3語以外はバッジが出ない）
+ *   verdictReason : そう判断した理由を1行で。見送りは「何と重複したか」まで書く
  */
 const NOTES_AI = [
   {
     id: "claude-code-html-report-skill",
-    title: "Claude Code HTML出力をコンサル品質に整えるスキル",
+    title: "【未判定】Claude Code HTML出力をコンサル品質に整えるスキル",
+    verdict: "未判定",
+    verdictReason: "採否ラベルの運用開始（2026-08-14）より前に取り込んだノート。導入するかは未判断",
     category: "AI開発 > Claude Code活用",
     tags: ["#ClaudeCode", "#スキル", "#HTML出力", "#資料作成"],
     points: [
@@ -30,7 +36,9 @@ const NOTES_AI = [
   },
   {
     id: "codex-model-router",
-    title: "Codex subagent のモデルルーティング（model-router）",
+    title: "【未判定】Codex subagent のモデルルーティング（model-router）",
+    verdict: "未判定",
+    verdictReason: "考え方は人力で実践中だが、ツール自体を導入するかは未判断",
     category: "AI開発 > Codex活用",
     tags: ["#Codex", "#subagent", "#モデル選択", "#コスト最適化"],
     points: [
@@ -41,5 +49,74 @@ const NOTES_AI = [
     ],
     url: "notes/codex-model-router.html",
     date: "2026-08-09"
+  },
+  {
+    id: "codex-skills-fixation",
+    title: "【見送り】手順のスキル固定（Codex Skills）は、うちでは重複だった",
+    verdict: "見送り",
+    verdictReason: "重複。同じ定型指示を運用規約のファイル側ですでに固定していたため、二重に持つ意味がなかった",
+    category: "AI開発 > Codex活用",
+    tags: ["#Codex", "#Skills", "#手順の固定化", "#再現性", "#見送り"],
+    points: [
+      "うまくいったやり方は会話とともに消える。ファイルにすれば、AIが自分で呼び出せる",
+      "固定する対象は、レビュー基準・テストコマンド・リリース手順など繰り返す作業",
+      "品質のばらつきの多くは「毎回言い方が違うこと」から生まれる（筆者の考察）",
+      "うちが見送った理由: 手順の正本がすでに別ファイルにあり、固定先が二重になるため",
+      "逆に必要な人: 同じ指示を毎回書き直している／手順の正本がまだ無い場合",
+      "設置場所・コマンドはSNS情報・未検証。裏取りしてから"
+    ],
+    url: "notes/codex-skills-fixation.html",
+    date: "2026-08-14"
+  },
+  {
+    id: "subagent-parallel-cost",
+    title: "【見送り】サブエージェントの並列コスト対策は、うちでは重複だった",
+    verdict: "見送り",
+    verdictReason: "重複。時間の目安・停止条件・作業の振り分けを、すでにチーム規程に明文化していたため",
+    category: "AI開発 > Codex活用",
+    tags: ["#Codex", "#subagent", "#トークン", "#コスト最適化", "#見送り"],
+    points: [
+      "AIの子分を設定なしで並列に走らせると、速さと引き換えに利用量が一気に膨らむ",
+      "対策は3つ。モデルの使い分け、推論強度の設計、設定ファイルの整備",
+      "並列数を増やすことは最適化ではない。1体あたりの仕事量を絞る方が効く（筆者の考察）",
+      "うちが見送った理由: 同じ対策を規程側ですでに明文化していたため",
+      "逆に必要な人: サブエージェントを並列で使っていて、停止条件を決めていない場合"
+    ],
+    url: "notes/subagent-parallel-cost.html",
+    date: "2026-08-14"
+  },
+  {
+    id: "loop-engineering",
+    title: "【採用】AIの自走は、合格基準を先に決める（ループエンジニアリング）",
+    verdict: "採用",
+    verdictReason: "採用したのは「検証基準の形式化」1点のみ。承認スキップの推奨は読み取り専用の原則と衝突するため不採用",
+    category: "AI開発 > エージェント設計",
+    tags: ["#エージェント設計", "#ループエンジニアリング", "#検証基準", "#Codex", "#採用"],
+    points: [
+      "自走の失敗は能力不足ではなく、合格の定義がないまま走らせたことによる",
+      "サイクルは5段階。発見 → 計画 → 実行 → 検証 → 反復",
+      "核はクローズドループ設計。合格基準と停止条件を、走らせる前に人間が決める",
+      "うちが採用した部分: 監査依頼に合否基準を先に書く運用へ規程を改訂した",
+      "採らなかった部分: 承認スキップの推奨。読み取り専用の原則と衝突するため"
+    ],
+    url: "notes/loop-engineering.html",
+    date: "2026-08-14"
+  },
+  {
+    id: "chatgpt-desktop-linux",
+    title: "【見送り】ChatGPTデスクトップのLinux版は、うちの環境では関係なかった",
+    verdict: "見送り",
+    verdictReason: "環境不一致。当方はmacOS環境のため、Linux版プレビューは動かす場所が無かった",
+    category: "AI開発 > ツールの見極め",
+    tags: ["#ChatGPT", "#ニュースの読み方", "#環境依存", "#見送り"],
+    points: [
+      "ニュースは、自分の環境に当てはめて初めて情報になる（見送り記録として残したノート）",
+      "内容はChatGPTデスクトップアプリのLinux版プレビュー（Ubuntu/Debian/Fedora対応）",
+      "うちが見送った理由: macOS環境のため、そもそも動かす場所が無い",
+      "逆に必要な人: Linuxを常用環境にしていて、ブラウザ版で不便を感じている場合",
+      "同じ形の判断: 新機能の可否より先に「自分の環境に載るか」を見る"
+    ],
+    url: "notes/chatgpt-desktop-linux.html",
+    date: "2026-08-14"
   }
 ];
