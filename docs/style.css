@@ -431,8 +431,10 @@ button { font: inherit; cursor: pointer; }
 
 /* グリッドの子要素は既定が min-width:auto のため、中身の最小幅（表460px・グラフ420px）に
    記事全体が押し広げられ、狭い画面で本文が画面外へはみ出す。0を明示することで、
-   はみ出しは受け皿（.table-wrap / .chart-wrap）の横スクロールの中だけに閉じ込められる */
-.note-page-layout > *, .note-body { min-width: 0; }
+   はみ出しは受け皿（.table-wrap / .chart-wrap）の横スクロールの中だけに閉じ込められる。
+   対象は本文だけに絞ること。`.note-page-layout > *` のように全列へ広げると、
+   3列目（1fr）の最小幅の下限まで外れて目次サイドバーが幅0に潰れる（901〜1250pxで発生） */
+.note-body { min-width: 0; }
 
 .note-page { max-width: 780px; margin: 0 auto; padding: 40px 58px 90px; }
 
@@ -767,7 +769,7 @@ code {
 }
 .chart-wrap { overflow-x: auto; }
 .chart-svg { width: 100%; height: auto; display: block; min-width: 420px; }
-/* 320px幅では横スクロールで実寸を確保する（縮小しすぎて文字が読めなくなるのを防ぐ） */
+/* 560px以下では下の方の @media で min-width を外し、幅いっぱいに縮めて全体を見せる */
 .chart-grid { stroke: var(--line); stroke-width: 1; }
 .chart-baseline { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 3; opacity: .55; }
 .chart-baseline-label {
