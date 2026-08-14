@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ランニングのフォーム・トレーニングメニュー・補強を論点ごとに整理した学習ノート。">
-  <title>ランニング | アラフォーから始める趣味</title>
+  <!-- 2026-08-14: ランニングカテゴリはダイエットへ統合。既存のリンク・ブックマークを
+       壊さないため、このページは転送専用として残している（中身は持たない）。
+       GitHub Pagesはサーバー側リダイレクトを設定できないため meta refresh を使う。 -->
+  <meta http-equiv="refresh" content="0; url=diet.html">
+  <link rel="canonical" href="diet.html">
+  <!-- noindexは付けない: 転送＋canonicalで「移転」を示す方が、旧URLの評価をdiet.htmlへ引き継げるため -->
+  <meta name="description" content="ランニングのノートはダイエットカテゴリへ移動しました。">
+  <title>ダイエットへ移動します | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="running-theme">
+<body class="diet-theme">
 <div class="shell"><div class="site-frame">
-  <aside class="rail"><span>走ることで、思考と体をリセットする。</span></aside>
+  <aside class="rail"><span>無理をせず、比べず、続ける。</span></aside>
   <div class="main">
 
     <header class="topbar">
@@ -18,7 +24,7 @@
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="index.html">はじめに</a>
         <a href="dance.html">ダンス</a>
-        <a href="running.html" class="active">ランニング</a>
+        <a href="diet.html" class="active">ダイエット</a>
         <a href="ai.html">AI開発</a>
         <a href="column.html">コラム</a>
       </nav>
@@ -27,15 +33,17 @@
     <div class="page">
       <div class="subhead">
         <div>
-          <div class="crumb"><a href="index.html">ホーム</a>　›　ランニング</div>
-          <h1>ランニング</h1>
-          <p class="lead">フォーム・トレーニングメニュー・補強。</p>
+          <div class="crumb"><a href="index.html">ホーム</a>　›　ページの移動</div>
+          <h1>ダイエットへ移動しました</h1>
+          <p class="lead">ランニングのノートは、ダイエットカテゴリにまとめました。自動で移動します。</p>
         </div>
-        <span class="eyebrow">RUNNING</span>
+        <span class="eyebrow">MOVED</span>
       </div>
 
-      <div class="filterbar" id="filterbar"></div>
-      <div class="archive-grid" id="archive"></div>
+      <p class="empty-msg">
+        切り替わらない場合は、こちらから移動してください。<br>
+        <a href="diet.html">ダイエットのページを開く →</a>
+      </p>
     </div>
 
     <footer class="site-footer">
@@ -43,31 +51,5 @@
     </footer>
   </div>
 </div></div>
-
-<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal">
-    <button class="modal-close" id="modalClose" aria-label="閉じる">✕</button>
-    <div class="modal-category" id="modalCategory"></div>
-    <h2 id="modalTitle"></h2>
-    <div class="modal-tags" id="modalTags"></div>
-    <div class="modal-points" id="modalPoints"></div>
-  </div>
-</div>
-
-<script src="notes-running.js"></script>
-<script>
-  window.CATEGORY_CONFIG = {
-    key: 'running',
-    label: 'ランニング',
-    data: typeof NOTES_RUNNING !== 'undefined' ? NOTES_RUNNING : [],
-    sections: [
-      { field: 'form',     label: 'フォーム' },
-      { field: 'training', label: 'トレーニング' },
-      { field: 'strength', label: '補強' },
-      { field: 'notes',    label: 'メモ' }
-    ]
-  };
-</script>
-<script src="category.js"></script>
 </body>
 </html>

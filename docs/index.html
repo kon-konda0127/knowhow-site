@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="アラフォーから始める趣味。ダンス・ランニング・AI開発の学習ノートと、実体験を事実と考察に分けて振り返るコラム。">
-  <title>アラフォーから始める趣味 — ダンス・ランニング・AI開発</title>
+  <meta name="description" content="アラフォーから始める趣味。ダンス・ダイエット・AI開発の学習ノートと、実体験を事実と考察に分けて振り返るコラム。">
+  <title>アラフォーから始める趣味 — ダンス・ダイエット・AI開発</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="index.html" class="active">はじめに</a>
         <a href="dance.html">ダンス</a>
-        <a href="running.html">ランニング</a>
+        <a href="diet.html">ダイエット</a>
         <a href="ai.html">AI開発</a>
         <a href="column.html">コラム</a>
       </nav>
@@ -30,7 +30,7 @@
           <p class="eyebrow">今日のわたしを、少し更新する</p>
           <h1>動画とXから、<br><em>学びを拾う。</em></h1>
           <p class="lead">
-            ダンス・ランニング・AI開発の3カテゴリで、動画やXのポストから得た知見を論点ごとに整理した個人学習ノート。
+            ダンス・ダイエット・AI開発の3カテゴリで、動画やXのポストから得た知見を論点ごとに整理した個人学習ノート。
             あわせて、実体験を事実と考察に分けて振り返るコラムを置いています。
           </p>
         </div>
@@ -46,7 +46,7 @@
             <path d="M248 251h47m-43 0 8-34h29l7 34m-40-30h35m-19-5v-14m0 14 10-6" stroke="var(--indigo)" stroke-width="2"/>
           </svg>
           <span class="route-label dance">dance</span>
-          <span class="route-label run">running</span>
+          <span class="route-label diet">diet</span>
           <span class="route-label ai">ai build</span>
         </div>
       </section>
@@ -65,11 +65,11 @@
           <span class="mini-figure" aria-hidden="true">♧</span>
           <div class="go"><span>ノートを見る</span><span>›</span></div>
         </a>
-        <a class="category-card running" href="running.html">
+        <a class="category-card diet" href="diet.html">
           <div class="copy">
-            <div class="kicker">RUNNING</div>
-            <h2>ランニング</h2>
-            <p>フォーム・トレーニングメニュー・補強</p>
+            <div class="kicker">DIET</div>
+            <h2>ダイエット</h2>
+            <p>運動・食事・記録・習慣化</p>
           </div>
           <span class="mini-figure" aria-hidden="true">∿</span>
           <div class="go"><span>ノートを見る</span><span>›</span></div>
@@ -110,7 +110,7 @@
 </div></div>
 
 <script src="notes-dance.js"></script>
-<script src="notes-running.js"></script>
+<script src="notes-diet.js"></script>
 <script src="notes-ai.js"></script>
 <script src="notes-column.js"></script>
 <script>
@@ -126,7 +126,7 @@
   // 4カテゴリのデータを1つにまとめ、新しい順に並べる
   const groups = [
     { key: 'dance',   label: 'ダンス',      mark: '♧', page: 'dance.html',   data: typeof NOTES_DANCE   !== 'undefined' ? NOTES_DANCE   : [] },
-    { key: 'running', label: 'ランニング',  mark: '∿', page: 'running.html', data: typeof NOTES_RUNNING !== 'undefined' ? NOTES_RUNNING : [] },
+    { key: 'diet',    label: 'ダイエット',  mark: '∿', page: 'diet.html',    data: typeof NOTES_DIET !== 'undefined' ? NOTES_DIET : [] },
     { key: 'ai',      label: 'AI開発',      mark: '⌘', page: 'ai.html',      data: typeof NOTES_AI      !== 'undefined' ? NOTES_AI      : [] },
     { key: 'column',  label: 'コラム',      mark: '✎', page: 'column.html',  data: typeof NOTES_COLUMN  !== 'undefined' ? NOTES_COLUMN  : [] }
   ];
@@ -149,7 +149,8 @@
 
   // 一覧の1行目に出す要約は、カテゴリごとに持っている項目が違うため順に拾う
   const previewOf = (note) => {
-    const source = note.points || note.form || note.mistakes || note.notes || [];
+    const source = note.points || note.training || note.meal || note.record
+                || note.habit || note.form || note.mistakes || note.notes || [];
     return Array.isArray(source) && source.length ? source[0] : '';
   };
 

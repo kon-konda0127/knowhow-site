@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ダンスの基礎・アイソレーション・振り付けのコツを論点ごとに整理した学習ノート。">
-  <title>ダンス | アラフォーから始める趣味</title>
+  <meta name="description" content="ダイエットの運動・食事・記録・習慣化を論点ごとに整理した学習ノート。続けられるやり方を、事実と実感に分けて記録する。">
+  <title>ダイエット | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="dance-theme">
+<body class="diet-theme">
 <div class="shell"><div class="site-frame">
-  <aside class="rail"><span>体の使い方を、ひとつずつ覚える。</span></aside>
+  <aside class="rail"><span>無理をせず、比べず、続ける。</span></aside>
   <div class="main">
 
     <header class="topbar">
@@ -17,8 +17,8 @@
       <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="index.html">はじめに</a>
-        <a href="dance.html" class="active">ダンス</a>
-        <a href="diet.html">ダイエット</a>
+        <a href="dance.html">ダンス</a>
+        <a href="diet.html" class="active">ダイエット</a>
         <a href="ai.html">AI開発</a>
         <a href="column.html">コラム</a>
       </nav>
@@ -27,11 +27,11 @@
     <div class="page">
       <div class="subhead">
         <div>
-          <div class="crumb"><a href="index.html">ホーム</a>　›　ダンス</div>
-          <h1>ダンス</h1>
-          <p class="lead">アイソレーション・基礎・振り付けのコツ。</p>
+          <div class="crumb"><a href="index.html">ホーム</a>　›　ダイエット</div>
+          <h1>ダイエット</h1>
+          <p class="lead">運動・食事・記録・習慣化。続いた方法と、続かなかった理由を残す。</p>
         </div>
-        <span class="eyebrow">DANCE</span>
+        <span class="eyebrow">DIET</span>
       </div>
 
       <div class="filterbar" id="filterbar"></div>
@@ -54,16 +54,18 @@
   </div>
 </div>
 
-<script src="notes-dance.js"></script>
+<script src="notes-diet.js"></script>
 <script>
   window.CATEGORY_CONFIG = {
-    key: 'dance',
-    label: 'ダンス',
-    data: typeof NOTES_DANCE !== 'undefined' ? NOTES_DANCE : [],
+    key: 'diet',
+    label: 'ダイエット',
+    data: typeof NOTES_DIET !== 'undefined' ? NOTES_DIET : [],
     sections: [
-      { field: 'points',   label: 'ポイント' },
-      { field: 'mistakes', label: 'よくあるミス' },
-      { field: 'drills',   label: '練習ドリル' }
+      { field: 'training', label: '運動' },
+      { field: 'meal',     label: '食事' },
+      { field: 'record',   label: '記録' },
+      { field: 'habit',    label: '習慣' },
+      { field: 'notes',    label: 'メモ' }
     ]
   };
 </script>

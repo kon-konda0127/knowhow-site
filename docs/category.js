@@ -1,8 +1,8 @@
 /**
- * カテゴリ一覧ページの共通ロジック（ダンス／ランニング／AI開発／コラムで共用）
+ * カテゴリ一覧ページの共通ロジック（ダンス／ダイエット／AI開発／コラムで共用）
  *
  * 各ページは読み込み前に window.CATEGORY_CONFIG を定義しておく:
- *   key      : 'dance' | 'running' | 'ai' | 'column'（色テーマとタグの見た目に使う）
+ *   key      : 'dance' | 'diet' | 'ai' | 'column'（色テーマとタグの見た目に使う）
  *   label    : 画面に出すカテゴリ名
  *   data     : notes-*.js が定義した配列（NOTES_DANCE 等）
  *   sections : モーダルに出す項目の定義 [{ field, label }, ...]
@@ -31,7 +31,8 @@
 
   // 一覧カードのプレビュー。カテゴリごとに持つ項目が違うので、あるものを順に拾う
   const previewOf = (note) => {
-    const source = note.points || note.form || note.mistakes || note.notes || [];
+    const source = note.points || note.training || note.meal || note.record
+                || note.habit || note.form || note.mistakes || note.notes || [];
     return Array.isArray(source) && source.length ? source[0] : '';
   };
 

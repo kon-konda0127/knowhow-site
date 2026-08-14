@@ -15,7 +15,7 @@
   --line-soft: #e6dfd2;
 
   --rust: #a84f32;    /* ダンス */
-  --moss: #596b45;    /* ランニング */
+  --moss: #596b45;    /* ダイエット */
   --indigo: #344557;  /* AI開発 */
   --ochre: #bd7d16;   /* コラム */
 
@@ -31,7 +31,7 @@
 }
 
 body.dance-theme   { --theme: var(--rust);   --theme-tint: rgba(168, 79, 50, .08); }
-body.running-theme { --theme: var(--moss);   --theme-tint: rgba(89, 107, 69, .08); }
+body.diet-theme    { --theme: var(--moss);   --theme-tint: rgba(89, 107, 69, .08); }
 body.ai-theme      { --theme: var(--indigo); --theme-tint: rgba(52, 69, 87, .08); }
 body.column-theme  { --theme: var(--ochre);  --theme-tint: rgba(189, 125, 22, .09); }
 
@@ -162,7 +162,7 @@ button { font: inherit; cursor: pointer; }
 .route-art svg { width: 100%; height: 100%; min-height: 340px; }
 .route-label { position: absolute; font-family: var(--serif); font-style: italic; font-size: 14px; }
 .route-label.dance { left: 16%; bottom: 25%; }
-.route-label.run { right: 3%; top: 21%; }
+.route-label.diet { right: 3%; top: 21%; }
 .route-label.ai { right: 8%; bottom: 3%; }
 
 .section-head {
@@ -212,7 +212,7 @@ button { font: inherit; cursor: pointer; }
   opacity: .42;
 }
 .category-card.dance { background: var(--rust); }
-.category-card.running { background: var(--moss); }
+.category-card.diet { background: var(--moss); }
 .category-card.ai { background: var(--indigo); }
 .category-card.column { background: var(--ochre); }
 
@@ -237,7 +237,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 26px;
 }
 .thumb.dance { background: linear-gradient(135deg, #c98063, var(--rust)); }
-.thumb.running { background: linear-gradient(135deg, #8fa376, var(--moss)); }
+.thumb.diet { background: linear-gradient(135deg, #8fa376, var(--moss)); }
 .thumb.ai { background: linear-gradient(135deg, #6d8199, var(--indigo)); }
 .thumb.column { background: linear-gradient(135deg, #dcae62, var(--ochre)); }
 
@@ -249,7 +249,7 @@ button { font: inherit; cursor: pointer; }
   font-size: 11px;
 }
 .tag.dance { background: var(--rust); }
-.tag.running { background: var(--moss); }
+.tag.diet { background: var(--moss); }
 .tag.ai { background: var(--indigo); }
 .tag.column { background: var(--ochre); }
 
