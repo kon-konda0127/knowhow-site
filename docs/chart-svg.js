@@ -218,12 +218,27 @@
       });
     }
 
-    // X軸ラベル（多いときは間引く）
-    var step = pts.length > 10 ? Math.ceil(pts.length / 5) : 1;
+    // X軸ラベル（重ならないように間引く）
+    // 点の横位置は日付に応じて決まるため間隔が一定でない。「何個おき」で間引くと
+    // 記録が混んでいる時期で文字が重なるので、実際の距離を見て間引く。
+    // またSVGはviewBoxで縮尺されるので、画面上の距離をviewBoxの単位に換算して判定する
+    var shownW = (container.getBoundingClientRect && container.getBoundingClientRect().width) || W;
+    var minGap = 70 * (W / (shownW || W));
+    var lastIdx = pts.length - 1;
+    var idxs = [];
+    var prevX = -Infinity;
     pts.forEach(function (p, i) {
-      if (i % step !== 0 && i !== pts.length - 1) return;
-      var t2 = el('text', { x: xAt(i), y: H - padB + 24, class: 'chart-xtick', 'text-anchor': 'middle' });
-      t2.textContent = p.label || shortMonth(p.x);
+      if (i === lastIdx) return;
+      if (xAt(i) - prevX >= minGap) { idxs.push(i); prevX = xAt(i); }
+    });
+    // 最後のラベルは必ず描く。近すぎる手前のラベルは落とす（先頭は残す）
+    while (idxs.length > 1 && xAt(lastIdx) - xAt(idxs[idxs.length - 1]) < minGap) idxs.pop();
+    idxs.push(lastIdx);
+    idxs.forEach(function (i) {
+      // 両端は中央寄せだと文字の半分がSVGの外へ出て切れるため、内側へ寄せる
+      var anchor = i === 0 ? 'start' : (i === lastIdx ? 'end' : 'middle');
+      var t2 = el('text', { x: xAt(i), y: H - padB + 24, class: 'chart-xtick', 'text-anchor': anchor });
+      t2.textContent = pts[i].label || shortMonth(pts[i].x);
       svg.appendChild(t2);
     });
 

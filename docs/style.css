@@ -429,6 +429,11 @@ button { font: inherit; cursor: pointer; }
 .toc-list { margin: 0; padding-left: 18px; color: var(--muted); font-size: 12px; line-height: 1.9; }
 .toc-list a:hover { color: var(--theme); text-decoration: underline; }
 
+/* グリッドの子要素は既定が min-width:auto のため、中身の最小幅（表460px・グラフ420px）に
+   記事全体が押し広げられ、狭い画面で本文が画面外へはみ出す。0を明示することで、
+   はみ出しは受け皿（.table-wrap / .chart-wrap）の横スクロールの中だけに閉じ込められる */
+.note-page-layout > *, .note-body { min-width: 0; }
+
 .note-page { max-width: 780px; margin: 0 auto; padding: 40px 58px 90px; }
 
 .note-body, .note-page { font-size: 16px; }
@@ -483,7 +488,7 @@ figcaption { margin-top: 8px; color: var(--muted); font-size: 12px; line-height:
 .tldr-box li { margin-bottom: 8px; font-size: 14px; line-height: 1.8; }
 
 .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 30px 0; }
-.stat-tile { padding: 17px 16px; background: var(--paper-2); border-left: 3px solid var(--theme); }
+.stat-tile { padding: 17px 16px; background: var(--paper-2); border-left: 3px solid var(--theme); min-width: 0; }
 .stat-value { display: block; font-family: var(--serif); font-size: 27px; font-weight: 700; line-height: 1.15; }
 .stat-label { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
 
@@ -680,6 +685,19 @@ code {
   .stat-row { grid-template-columns: 1fr 1fr; }
   .tldr-box { padding: 18px 18px; }
   .modal { padding: 24px 20px; }
+
+  /* 表は2列構成なので、狭い画面でも横スワイプなしで収める */
+  table { min-width: 0; font-size: 12px; }
+  th, td { padding: 8px 9px; }
+  /* 1列目は「時間」「間食」のような短い見出しが縦に割れないようにする
+     （長い語が入る表では受け皿 .table-wrap の横スクロールが受け止める） */
+  th:first-child, td:first-child { white-space: nowrap; }
+}
+
+/* 旧iPhone SE（横320px）など特に狭い端末。数値タイルは2列だと
+   長いラベルが収まらないため1列に落とす */
+@media (max-width: 360px) {
+  .stat-row { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -773,3 +791,14 @@ code {
 }
 
 .chart-lead { font-size: 13px; color: var(--muted); margin: -6px 0 14px; line-height: 1.8; }
+
+/* 狭い画面のグラフ。この指定は上のチャート定義より後ろに置く必要がある
+   （同じ詳細度なので、先に書くと後ろの min-width: 420px に上書きされてしまう）。
+   幅いっぱいまで縮めてグラフ全体を見せ、縮小されるぶん SVG 内部の文字を
+   大きくして実際の表示サイズを保つ（viewBox の横720に対する指定値） */
+@media (max-width: 560px) {
+  .chart-svg { min-width: 0; }
+  .chart-xtick, .chart-ytick { font-size: 23px; }
+  .chart-point-label { font-size: 25px; }
+  .chart-note, .chart-baseline-label { font-size: 22px; }
+}
