@@ -42,7 +42,7 @@ const NOTES_COLUMN = [
     ],
     url: "notes/column/20260813_ai-design-outsourcing.html",
     date: "2026-08-13",
-    version: 1
+    version: 2
   },
   {
     id: "20260812_max-plan-1week",
@@ -50,13 +50,13 @@ const NOTES_COLUMN = [
     category: "コラム > AI活用",
     tags: ["#AI活用", "#Claude", "#はじめてのAI", "#振り返り"],
     points: [
-      "1週間でアプリ4本と公開サイト1つ。ただし一番効いたのは「最初の1日で体制を作ったこと」だったと考えられる",
+      "1週間でアプリ4本と公開サイト1つ。ただし一番効いたのは「最初の1日で体制を作ったこと」だった",
       "失敗5件はすべて「作る前に前提を検証していれば防げた」型。AIの実装能力そのものの失敗は0件",
       "「作るAI」と「チェックするAI」を分けたら、公開前に7件以上の問題が見つかった",
       "安全対策は「危険を検知する」より「できることを許可リストで絞る」方が強い"
     ],
     url: "notes/column/20260812_max-plan-1week.html",
     date: "2026-08-12",
-    version: 1
+    version: 3
   }
 ];
