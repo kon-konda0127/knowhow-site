@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="外出先から自宅のアプリを開きたくて、有料ドメインが必要な方式を導入しかけた話。無料の別方式に切り替えたあと、外部AI監査で「リンクを隠す」と「実際に塞ぐ」は別問題だと分かった記録。">
+  <title>外出先から自宅のアプリを開きたい。有料ドメインを買いかけて、無料の道に気づいた話 | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="column-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>考えを言葉にして、暮らしを整える。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../../index.html">はじめに</a>
+        <a href="../../dance.html">ダンス</a>
+        <a href="../../diet.html">ダイエット</a>
+        <a href="../../ai.html">AI開発</a>
+        <a href="../../column.html" class="active">コラム</a>
+      </nav>
+    </header>
+
+    <header class="page-header header-column">
+      <div class="page-header-inner">
+        <a href="../../column.html" class="page-header-back">← コラム一覧へ</a>
+        <h1>外出先から自宅のアプリを開きたい。有料ドメインを買いかけて、無料の道に気づいた話</h1>
+        <div class="note-meta">
+          <span>カテゴリ: コラム &gt; AI活用</span>
+          <span>公開: 2026-08-14</span>
+          <span class="reading-time">📖 流し読み1分・全文7分</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#AI活用</span>
+          <span class="note-tag">#Claude</span>
+          <span class="note-tag">#ネットワーク</span>
+          <span class="note-tag">#セキュリティ</span>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこの記事</div>
+          <ul>
+            <li>自宅のパソコンで動かしている自作アプリを、外出先のスマホからも使えるようにしたかった（n=1）</li>
+            <li>最初に選んだ方式は、固定のURLと引き換えに<strong>年1,000〜2,000円のドメイン代</strong>が必要だった</li>
+            <li>「無料でできないか」と聞き直したことで、<strong>完全無料の別方式</strong>に切り替えた</li>
+            <li>切り替え後、外部AIの監査で「見た目のリンクを隠しただけでは、実は繋がってしまう」という<strong>構造的な見落とし</strong>が見つかった</li>
+            <li>「何を隠すか」と「何に到達できるか」は別問題だと、身をもって学んだ</li>
+          </ul>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-tile"><div class="stat-value">3<span>つ</span></div><div class="stat-label">検討した方式</div></div>
+          <div class="stat-tile"><div class="stat-value">5<span>件</span></div><div class="stat-label">外部AI監査の指摘</div></div>
+          <div class="stat-tile"><div class="stat-value">103<span>件</span></div><div class="stat-label">累計の自動テスト</div></div>
+          <div class="stat-tile"><div class="stat-value">0<span>円</span></div><div class="stat-label">最終的な追加費用</div></div>
+        </div>
+
+        <p>自宅のWi-Fi内でしか使えないアプリを、外出先からも開けるようにしたい。よくある要望だと思う。</p>
+
+        <p>方法はいくつかある。今回はそのうち2つを実際に手を動かして試し、片方から片方へ乗り換えることになった。</p>
+
+        <p>この記事は、その乗り換えの理由と、乗り換えた先で見つかった「気づいていなかった穴」の記録。</p>
+
+        <h2 id="background">背景<a href="#background" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>自宅のWi-Fi内でしか使えないアプリ（レシピ管理・使用状況の確認画面など、非機微なもの数本）を、外出先のモバイル回線からも開けるようにしたい。これが今回の出発点でした。</p>
+
+        <p>自宅サーバーを外から触れるようにする方法はいくつかあります。有名どころだけでも、自分専用のプライベートなネットワークを作る方式（Tailscale）、クラウド事業者の仲介で公開する方式（Cloudflare Tunnel）、自分でVPNサーバーを立てる方式（自前WireGuard）の3つが候補に挙がりました。この記事は、そのうち2つを実際に手を動かして試した記録です。</p>
+
+        <h2 id="facts">事実：何が起きたか<a href="#facts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>ここは「起きたこと」だけを書きます。評価は次の章から。</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <span class="tl-date">事前</span><span class="tl-head">3方式を比較検討し、いったん保留</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>コスト・難易度・セキュリティ・アプリ側の変更要否で3方式を比較し、設定の単純さを理由にTailscaleを推奨案としてまとめた。ただしこの時点では実装に着手せず保留にしていた。</p>
+                <p>出典: 仕様書ドラフト（2026-08-10）</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/14</span><span class="tl-head">Cloudflare Tunnelで着手</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>改めて要望を受け、仕様書を作成。固定のURL・きれいなドメイン名・メール認証（ワンタイムPIN）という設計で承認を得て、必要なプログラム（cloudflared）のインストールまで完了させた。</p>
+                <p>出典: 作業日報 2026-08-14</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/14</span><span class="tl-head">「無料でできない？」で方式転換</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>調べ直すと、Cloudflare Tunnelで固定URLを使うには<strong>独自ドメインの取得が必須</strong>（年1,000〜2,000円程度）だと分かった。一方、比較検討段階で候補に挙がっていたTailscaleは、個人利用なら6ユーザー・台数無制限まで完全無料（無料枠が数ヶ月前に拡大されていた）。ドメイン代の要否という一点で、方式を丸ごと切り替えることにした。</p>
+                <p>出典: 作業日報 2026-08-14</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/14</span><span class="tl-head">実装：どのアプリを外に出すか仕分け</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>外に出してよいアプリと出してはいけないアプリを、「個人情報や家計データなど機微な内容を扱っていないか」を基準に仕分けた。機微なアプリは、そもそも自分のパソコン以外からは開けない設定になっていることを実際に確認し、対象から外した。</p>
+                <p>アプリの入口となる画面には、「自宅Wi-Fi内から開いた時」と「外出先から開いた時」を自動判定し、外出先では対象アプリだけにリンクを出す仕組みを実装した。</p>
+                <p>出典: 作業日報 2026-08-14</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/14</span><span class="tl-head">外部AI監査で重大な指摘</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>別系統のAI（Codex）にコードのレビューを依頼したところ、「対象外アプリを『リンクを表示しない』だけで除外しており、ネットワークへの到達自体は防げていない」という指摘が入った。該当アプリは全アドレスで待ち受けているため、URLを直接指定すればアクセスできてしまう状態だった。</p>
+                <p>加えて、「自宅Wi-Fiかどうか」の判定ロジックの穴、リンクの行き先を検証せずそのまま使っている点も指摘された（指摘は計5件、うち重大1件）。</p>
+                <p>出典: Codex社外監査 2026-08-14</p>
+              </details>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-date">8/14</span><span class="tl-head">ネットワーク側でも塞ぐ</span>
+            <div class="tl-body">
+              <details>
+                <summary>詳しく</summary>
+                <p>Tailscale自体が持つアクセス制御機能（ACL）を使い、「スマホからパソコンへは、許可した入口だけを通す」というルールを追加。リンク表示（画面上の防御）とアクセス制御（ネットワーク上の防御）の二重構成にした。判定ロジックも、判定に迷うホスト名はすべて「外出先」として安全側に倒すよう書き換えた。</p>
+                <p>修正後、テスト担当のAIが43件のテストを再実行して合格、最終監査担当のAIが独自に34件のテストを追加実行して合格。スマホのWi-Fiを切った状態で、許可アプリは開けること・対象外アプリには繋がらないことを実機で確認した。</p>
+                <p>出典: 作業日報 2026-08-14</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <h2 id="analysis">分析：何が起きていたのか<a href="#analysis" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>出来事を整理すると、2種類の「見落とし」に分けられます。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>見落としの種類</th><th>具体例</th><th>気づいたきっかけ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>コストの見落とし</td><td>固定URLにはドメイン代が要る、を導入直前まで確認していなかった</td><td>「無料でできない？」という素朴な問い直し</td></tr>
+              <tr><td>セキュリティ設計の見落とし</td><td>「リンクを隠す」＝「到達できなくする」だと思い込んでいた</td><td>別系統AIによる第三者監査</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>どちらも、最初の設計段階では気づきませんでした。共通しているのは、<strong>当事者だけでは見えない前提</strong>が入り込んでいたという点です。コストの見落としは「ざっくり無料だと思っていた」思い込み、セキュリティの見落としは「画面から消せば安全」という思い込み。どちらも、外から一言問い直されて初めて崩れました。</p>
+
+        <h2 id="thoughts">考察：何を持ち帰れるか<a href="#thoughts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>以下、限定的な経験からの示唆として書きます。</p>
+
+        <ol class="claim-list">
+          <li>
+            <strong>「無料か」を最初に聞く</strong><br>
+            方式の比較検討はしていたのに、実装が進んでから「無料でできないか」と聞き直す形になりました。コスト条件は、比較表を作る前に確認しておく方が手戻りが少なかっただろうと考えられます。
+          </li>
+          <li>
+            <strong>「隠す」と「塞ぐ」は別レイヤーの話だと意識する</strong><br>
+            画面上の防御（表示制御）とネットワーク上の防御（アクセス制御）は独立しています。片方だけでは「見えないけど繋がる」状態が普通に起こりうると分かりました。
+          </li>
+          <li>
+            <strong>第三者にレビューさせる価値は、思い込みの検出にある</strong><br>
+            自分は「隠したから安全」という前提の中でしか考えられません。前提そのものを疑う役割は、その前提を共有していない第三者にしか担えないと言えそうです。
+          </li>
+          <li>
+            <strong>無料枠は定期的に見直す価値がある</strong><br>
+            今回使ったTailscaleの無料枠は、調べた時点で数ヶ月前に拡大されたばかりでした。「昔調べた時は微妙だった」選択肢が、今は変わっているかもしれません。
+          </li>
+        </ol>
+
+        <h2 id="comparison">使い分けの整理（比較表）<a href="#comparison" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>今回検討した3方式を、実際に手を動かした範囲でまとめます。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>方式</th><th>費用</th><th>難易度</th><th>見た目のURL</th><th>向いているケース</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Tailscale</strong>（今回採用）</td><td>無料</td><td>やさしい（両端末にアプリを入れてログインするだけ）</td><td>機械的な文字列（例: 端末名.tailnet名.ts.net）</td><td>個人・少人数で、費用をかけずに自分の端末だけがアクセスできればよい場合</td></tr>
+              <tr><td>Cloudflare Tunnel</td><td>ドメイン代（年1,000〜2,000円程度）＋無料枠</td><td>やや複雑（ドメイン取得・認証設定が必要）</td><td>好きな文字列にできる（例: myapp.じぶんのドメイン）</td><td>きれいなURLが欲しい・スマホ側に専用アプリを入れたくない場合</td></tr>
+              <tr><td>自前VPN（WireGuard等）</td><td>無料</td><td>難しい（ルーターの設定変更・サーバー構築が必要）</td><td>機械的な文字列</td><td>外部サービスに一切依存したくない・技術的な自由度を最優先する場合</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>3つとも「外部にサーバーを公開しない」という土台は共通しています。違うのは、<strong>その手前に何を挟むか</strong>（専用ネットワークか、クラウド事業者の仲介か、自前の暗号化トンネルか）と、<strong>それに何を払うか</strong>（時間か、お金か、運用の手間か）。今回は「スマホ側にアプリを入れる一手間」を払って、お金と設定の複雑さを節約した形になります。</p>
+
+        <h2 id="limits">この記事の限界<a href="#limits" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ul>
+          <li>筆者1人・1プロジェクトの記録です（n=1）。組織規模や、扱うアプリの性質が変われば最適な選択も変わりうる</li>
+          <li>自前VPN（WireGuard）は比較表のみで、実際には試していません。難易度の評価は文献・仕様検討時点の情報に基づく推測を含みます</li>
+          <li>無料枠の条件（ユーザー数・台数上限）は提供事業者の都合で変わりうる。この記事の数字は執筆時点のものです</li>
+          <li>セキュリティ監査は今回1回・1AIによるもの。指摘された5件がすべてだった保証はありません</li>
+        </ul>
+
+        <h2 id="summary">まとめ：今日からできる3つ<a href="#summary" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ol>
+          <li>外部アクセスの方式を選ぶ前に、「無料でできる選択肢はどれか」を最初に確認する</li>
+          <li>「画面から消した」「リンクを外した」という対策は、ネットワーク的にも到達できなくなっているかを必ず別途確認する</li>
+          <li>「隠したから安全」で終わらせず、隠したはずの入り口へ直接アクセスを試す（自分でダメなら、他人や別のAIに試させる）</li>
+        </ol>
+      </article>
+
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#background">背景</a></li>
+            <li><a href="#facts">事実</a></li>
+            <li><a href="#analysis">分析</a></li>
+            <li><a href="#thoughts">考察</a></li>
+            <li><a href="#comparison">使い分けの整理</a></li>
+            <li><a href="#limits">この記事の限界</a></li>
+            <li><a href="#summary">まとめ</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../../column.html">← コラム一覧へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // 目次のアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>

@@ -15,6 +15,21 @@
  */
 const NOTES_COLUMN = [
   {
+    id: "20260814_tailscale-vs-cloudflare",
+    title: "外出先から自宅のアプリを開きたい。有料ドメインを買いかけて、無料の道に気づいた話",
+    category: "コラム > AI活用",
+    tags: ["#AI活用", "#Claude", "#ネットワーク", "#セキュリティ"],
+    points: [
+      "自宅アプリを外出先から使いたくて、固定URLと引き換えに年1,000〜2,000円のドメイン代が要る方式を導入しかけた",
+      "「無料でできない？」の一言で、完全無料の別方式へ切り替えた",
+      "切り替え後、外部AI監査で「リンクを隠す」と「実際に塞ぐ」は別問題だという構造的な見落としが見つかった",
+      "Tailscale・Cloudflare Tunnel・自前VPNの3方式を、費用と難易度で比較"
+    ],
+    url: "notes/column/20260814_tailscale-vs-cloudflare.html",
+    date: "2026-08-14",
+    version: 1
+  },
+  {
     id: "20260813_ai-design-outsourcing",
     title: "デザインをAIに外注したら、見た目は上がって、数字だけが嘘だった",
     category: "コラム > AI活用",
