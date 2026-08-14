@@ -15,7 +15,7 @@ Manus案という決定版が採用され、比較検討ページを公開し続
 削除ではなく移動なので、いつでも戻せます。ターミナルで以下を実行してください。
 
 ```bash
-cd apps/knowhow-site
+cd ~/Documents/claude/apps/knowhow-site
 git mv _archive/design-compare-2026-08/design-compare.html docs/
 for d in _archive/design-compare-2026-08/pattern-*; do git mv "$d" docs/; done
 ```
