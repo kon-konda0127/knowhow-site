@@ -311,6 +311,47 @@ button { font: inherit; cursor: pointer; }
 }
 .archive-card.hiding { opacity: 0; transform: translateY(6px); }
 
+/* --- 採否ラベル（AI開発カテゴリ。読んだ人が「自分に必要か」を判断するための表示） --- */
+.card-labels { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.verdict {
+  display: inline-block;
+  padding: 2px 9px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--paper-2);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+.verdict-adopt { border-color: var(--theme); background: var(--theme-tint); color: var(--theme); font-weight: 700; }
+.verdict-pending { border-style: dashed; background: transparent; }
+.archive-card .verdict-reason {
+  margin: 0 0 10px;
+  padding-left: 10px;
+  border-left: 2px solid var(--line);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.archive-card:has(.verdict-adopt) .verdict-reason { border-left-color: var(--theme); }
+
+/* ノート本文の冒頭に置く採否パネル */
+.verdict-panel {
+  margin: 0 0 26px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  background: var(--paper-2);
+}
+.verdict-panel.is-adopt { border-left-color: var(--theme); }
+.verdict-panel dl { display: grid; grid-template-columns: 6.5em 1fr; gap: 6px 14px; margin: 0; }
+.verdict-panel dt { color: var(--muted); font-size: 12px; letter-spacing: .06em; }
+.verdict-panel dd { margin: 0; font-size: 14px; line-height: 1.8; }
+@media (max-width: 640px) {
+  .verdict-panel dl { grid-template-columns: 1fr; gap: 2px; }
+  .verdict-panel dt { margin-top: 8px; }
+}
+
 .empty-msg {
   grid-column: 1 / -1;
   padding: 60px 20px;
@@ -647,4 +688,85 @@ code {
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ============================================================
+   ダイエット記事の可視化部品（2026-08-14・spec_diet_articles_visual.md）
+   設計宣言: 紙色の地に墨色の罫線、データ線はカテゴリ色1色。
+             数値を叫ばず、形で変化を見せる。
+   ============================================================ */
+
+/* 文頭フック: 3秒で内容を掴ませる。H1直下・タグ行より前 */
+.hero-hook {
+  font-family: var(--serif, "Hiragino Mincho ProN", "Yu Mincho", serif);
+  font-size: clamp(19px, 3.4vw, 27px);
+  line-height: 1.5;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 18px 0 6px;
+  max-width: 30em;
+}
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 12px 0 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.hero-stat .hero-stat-value {
+  font-family: var(--serif, "Hiragino Mincho ProN", "Yu Mincho", serif);
+  font-size: clamp(38px, 9vw, 62px);
+  font-weight: 500;
+  letter-spacing: -.05em;
+  line-height: 1;
+  color: var(--theme);
+  font-variant-numeric: tabular-nums;
+}
+.hero-stat .hero-stat-unit { font-size: 15px; font-weight: 700; color: var(--theme); }
+.hero-stat .hero-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-left: 4px;
+}
+
+/* グラフ */
+.chart-figure { margin: 26px 0 30px; }
+.chart-figure .chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 14px;
+}
+.chart-figure .chart-title { font-weight: 700; font-size: 15px; }
+.chart-figure .chart-eyebrow {
+  font-size: 10px; font-weight: 800; letter-spacing: .17em; color: var(--muted);
+}
+.chart-wrap { overflow-x: auto; }
+.chart-svg { width: 100%; height: auto; display: block; min-width: 280px; }
+.chart-grid { stroke: var(--line); stroke-width: 1; }
+.chart-baseline { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 3; opacity: .55; }
+.chart-baseline-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em; fill: var(--muted);
+}
+.chart-line { stroke: var(--theme); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.chart-dot { fill: var(--theme); }
+.chart-dot.is-key { fill: var(--theme); stroke: var(--paper, #f6f4ef); stroke-width: 2; }
+.chart-bar { fill: var(--theme); }
+.chart-point-label {
+  font-size: 11px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums;
+}
+.chart-note { font-size: 10px; font-weight: 700; fill: var(--muted); }
+.chart-xtick, .chart-ytick {
+  font-size: 10px; fill: var(--muted); font-variant-numeric: tabular-nums;
+}
+.chart-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-svg * { transition: none !important; animation: none !important; }
 }
