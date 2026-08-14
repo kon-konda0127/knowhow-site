@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="デザインを外注していた別のAIの作風を、手元のAIに学ばせた1日の記録。同じお題で公平に勝負して4連敗したが、いちばんの収穫は勝敗ではなく「教材が偏るとルールも偏る」と気づけたことだった。">
+  <title>AIに、別のAIの作風を学ばせた。4連敗して分かったこと | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="column-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>考えを言葉にして、暮らしを整える。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../../index.html">はじめに</a>
+        <a href="../../dance.html">ダンス</a>
+        <a href="../../diet.html">ダイエット</a>
+        <a href="../../ai.html">AI開発</a>
+        <a href="../../column.html" class="active">コラム</a>
+      </nav>
+    </header>
+
+    <header class="page-header header-column">
+      <div class="page-header-inner">
+        <a href="../../column.html" class="page-header-back">← コラム一覧へ</a>
+        <h1>AIに、別のAIの作風を学ばせた。4連敗して分かったこと</h1>
+        <div class="note-meta">
+          <span>カテゴリ: コラム &gt; AI活用</span>
+          <span>公開: 2026-08-14</span>
+          <span class="reading-time">📖 流し読み1分・全文8分</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#AI活用</span>
+          <span class="note-tag">#デザイン</span>
+          <span class="note-tag">#学習</span>
+          <span class="note-tag">#検証</span>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこの記事</div>
+          <ul>
+            <li>デザインを外注していた別のAIサービスの「作風」を、手元のAIに学ばせる試みを1日やった</li>
+            <li>同じお題で公平に勝負したら<strong>4連敗</strong>。ただし負け方の中身は毎回変わり、最後は両者が独立に同じ発想へたどり着いた</li>
+            <li>いちばんの収穫は勝敗ではなく、<strong>教材が偏ると、学んだルールもそのまま偏る</strong>と気づけたこと</li>
+          </ul>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-tile"><div class="stat-value">11<span>点</span></div><div class="stat-label">分析した教材</div></div>
+          <div class="stat-tile"><div class="stat-value">8<span>版</span></div><div class="stat-label">ルールの改訂</div></div>
+          <div class="stat-tile"><div class="stat-value">4<span>回</span></div><div class="stat-label">公平な勝負（全敗）</div></div>
+          <div class="stat-tile"><div class="stat-value">3<span>倍</span></div><div class="stat-label">用途による見出しサイズの差</div></div>
+        </div>
+
+        <p>前に「デザインを別のAIに外注したら、見た目は上がった」という記事を書きました。あれは本当で、外注したページは自分で見ても明らかに良くなりました。</p>
+
+        <p>ただ、外注には毎回お金と時間がかかります。そこで思いました。<strong>作ってもらったものから、作り方そのものを学べないだろうか。</strong></p>
+
+        <p>この記事は、その1日の記録です。結論から言うと、勝負には勝てませんでした。</p>
+
+        <h2 id="background">背景<a href="#background" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>私はプログラミング初心者で、コードもデザインもAI（Claude）に作ってもらっています。</p>
+
+        <p>前回わかったのは「手元のAIに任せると、無難で没個性な見た目に寄る」ということでした。だから0→1のデザインだけ別のAIサービス（Manus）に外注する、という運用にしていました。</p>
+
+        <p>でも外注は永続しません。試用できる期間には限りがあるし、そもそも自分のアプリは自分たちでメンテしたい。</p>
+
+        <p>そこで、手元のAIにこう指示しました。<strong>外注先の納品物を教材にして、作風のルールを言葉にして蓄積していってくれ。</strong> ゆくゆくは外注なしで同じ品質を出せるようにしたい、と。</p>
+
+        <h2 id="facts">事実：何が起きたか<a href="#facts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <h3>ルールを溜める仕組みを先に作った</h3>
+
+        <p>いきなり真似させるのではなく、教材を分析して「2回以上くり返し観察できたパターンだけ」をルールに昇格させる仕組みにしました。1回しか見ていないものは「観察1件」と札を付けて参考どまり。根拠になった実測値も一緒に残します。</p>
+
+        <p>これは後で効きました。1回だけの偶然を法則だと思い込むのを防げるからです。</p>
+
+        <h3>同じお題で勝負させた</h3>
+
+        <p>学んだルールが本物かどうかは、作らせてみないと分かりません。そこで、どちらも見たことのない新しいお題を用意して、外注先と手元のAIに同じ依頼文を渡し、私が見比べて判定する形にしました。</p>
+
+        <p>ここで大事なのは<strong>公平さを仕組みで担保すること</strong>です。手元のAIは自己採点になりがちなので、次の2つを条件にしました。</p>
+
+        <ul>
+          <li><strong>先に作って封印する</strong>: 手元のAIの作品を先に完成させ、内容から計算される固有の文字列（ハッシュ値）を記録しておく。相手の作品を見た後で手直ししていないことを、後から数学的に証明できます</li>
+          <li><strong>どちらが作ったか伏せて見せる</strong>: 2つの案を「案A」「案B」とだけ名付けて私に提示する。対応表は別ファイルにだけ書き、判定が終わってから開示する（この無記名方式は4回中3回。初回だけは外注先の成果物がファイルとして手元に残っておらず、画面を直接見比べて判定しました。なお封印は4回とも実施しています）</li>
+        </ul>
+
+        <p>実際、この仕組みがないうちに1回「互角」の判定を出したことがありました。しかしそれは手元のAIが相手の答案を見た後に同じ問題を解き直したもので、<strong>判定として無効</strong>にしました。</p>
+
+        <h3>4連敗した</h3>
+
+        <p>お題は、架空の窯元・架空の銭湯・架空の朝市・架空の映画館の案内ページ。4回とも外注先の勝ちでした。</p>
+
+        <p>ただ、負け方は毎回違いました。</p>
+
+        <p>1回目の私の感想は「テイストは似ているけど、配置とアイコンが向こうの方が上」。2回目は「全部やってはいるが、やり切りが足りない」。3回目にはもう、両方とも夜明けの暗い画面から始まり、時刻で章を区切り、色の面にイラストを載せる、という<strong>ほぼ同じ構成</strong>になっていました。</p>
+
+        <p>4回目に至っては、両者が独立に<strong>巨大な「夜」という一文字</strong>を画面の主役に選んでいました。発想はもう同じ場所に立っていて、差は「どこまで振り切るか」だけでした（相手の「夜」は画面からはみ出す大きさで、こちらは画面に収まる大きさでした）。</p>
+
+        <h3>私が見つけた不具合</h3>
+
+        <p>3回目のとき、手元のAIが作ったページの見出しが、変な位置で改行されていました。指摘すると原因はすぐ判明しました。文字を大きくしたのに、<strong>1行が枠に収まるかの計算をしていなかった</strong>のです。</p>
+
+        <p>これは「文字サイズを上げたら行の幅を必ず計算し、改行位置は自分で指定する」という決まりごとになり、以後のルールに永久に組み込まれました。</p>
+
+        <h3>最後に見つかった、いちばん大きな問題</h3>
+
+        <p>一区切りついたところで、手元のAIが自分から報告してきました。</p>
+
+        <blockquote>
+          <p>これまで貯めたルールは、全部「宣伝ページ」の教材から作られています。このまま在庫管理や家計簿のような道具アプリに当てると、使いにくい画面になります</p>
+        </blockquote>
+
+        <p>実際に手元にあった教材を用途別に測り直すと、外注先自身が用途で明確に作り分けていました。</p>
+
+        <ul>
+          <li><strong>見せる</strong>（宣伝ページ・教材4点）… 見出しの最大サイズは90〜112ピクセル</li>
+          <li><strong>読む</strong>（読み物サイト・1点）… 82ピクセル</li>
+          <li><strong>記録する</strong>（記録アプリ・2点）… 52〜56ピクセル</li>
+          <li><strong>操作する</strong>（道具アプリ・1点）… <strong>38ピクセル</strong></li>
+        </ul>
+
+        <p>3倍近い差です。しかもアプリ側の教材には、宣伝ページには一つもなかった「まだ記録がありません」という空っぽの状態の表示が入っていました（アプリ系4点のうち3点。宣伝ページは4点とも0件）。逆に、宣伝ページの必須テクニックである「章ごとに背景色を大きく変える」は、アプリ側では1件も使われていませんでした。</p>
+
+        <p>つまり、<strong>このまま道具アプリを作らせていたら、大きすぎる見出しと派手な背景の、使いにくい画面ができていた</strong>わけです。ルールに「これは宣伝ページ用です」という適用範囲の但し書きを足して、道具アプリ用の項目を別立てにしました。</p>
+
+        <h2 id="thoughts">考察<a href="#thoughts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <h3>1. 勝ち負けより、負け方の変化を見る</h3>
+
+        <p>4連敗と聞くと失敗に見えますが、負けの理由は「そもそも要素が足りない」→「やり切りが足りない」→「度胸と仕上げ」と、明らかに高度化していきました。</p>
+
+        <p>学習が進んでいるかは、勝敗ではなく<strong>敗因が前回より細かくなっているか</strong>で判断できます。毎回1つでもルールを持ち帰れていれば、その日は成功です。</p>
+
+        <h3>2. 当たった観察だけ集めると、ルールは歪む</h3>
+
+        <p>途中で「信頼感が大事な業種は明朝体を使うはずだ」という仮説を立てましたが、実物を測ったら外れていました。この時、外れた記録を消さずに「そうではなかった」と残したことで、より正確な別のルールに置き換わりました。</p>
+
+        <p>外れた予想の記録は、当たった観察と同じ価値があります。</p>
+
+        <h3>3. 自己採点にしない仕組みが要る</h3>
+
+        <p>AIに「うまくできた？」と聞けば、たいてい「できました」と返ってきます。封印と無記名は面倒でしたが、これがないと<strong>何も測れていないのに測った気になる</strong>と実感しました。</p>
+
+        <h3>4. 教材の偏りは、そのままルールの偏りになる</h3>
+
+        <p>これが一番の学びです。宣伝ページばかりを教材にすれば「大きな文字・派手な色」が正解として定着します。それ自体は間違いではないのに、別の用途に持ち込んだ瞬間に害になる。</p>
+
+        <p><strong>ルールには必ず「どの種類の教材から学んだか」を書いておく必要がある</strong>、というのが今日の結論です。</p>
+
+        <h2 id="limits">まだ分からないこと<a href="#limits" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ul>
+          <li>4連敗のまま、この学習を実務に使ってよいのか。品質の担保は「ルール＋人間の確認＋独立した監査」の3段構えで運用しながら磨く、という方針にしていますが、正解かどうかは分かりません</li>
+          <li>外注先が使えなくなった後、教材の供給が止まったらどう学び続けるのか</li>
+          <li>そもそも「作風を学ぶ」ことがどこまで許されるのか。考え方や技法は学んでよく、表現の複製や内部資料の書き写しはしない、という線を引いて進めていますが、これは自分たちで決めた線です</li>
+        </ul>
+
+        <h2 id="summary">まとめ<a href="#summary" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>外注をやめるために外注先から学ぶ、という試みを1日やって、勝負には4連敗しました。</p>
+
+        <p>それでも、負ける理由が毎回変わり、最後には同じ発想にたどり着き、そして<strong>自分たちのルールに致命的な偏りがあることを、実務で使う前に見つけられました</strong>。</p>
+
+        <p>勝てなかった日にも、持ち帰るものはありました。</p>
+
+      </article>
+
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#background">背景</a></li>
+            <li><a href="#facts">事実</a></li>
+            <li><a href="#thoughts">考察</a></li>
+            <li><a href="#limits">まだ分からないこと</a></li>
+            <li><a href="#summary">まとめ</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+  </div></div>
+</div>
+<script>
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // 目次のアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>
