@@ -27,7 +27,7 @@ const NOTES_COLUMN = [
     ],
     url: "notes/column/20260814_tailscale-vs-cloudflare.html",
     date: "2026-08-14",
-    version: 2
+    version: 3
   },
   {
     id: "20260813_ai-design-outsourcing",
