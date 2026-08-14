@@ -19,11 +19,11 @@
 const NOTES_AI = [
   {
     id: "claude-code-html-report-skill",
-    title: "【未判定】Claude Code HTML出力をコンサル品質に整えるスキル",
-    verdict: "未判定",
-    verdictReason: "採否ラベルの運用開始（2026-08-14）より前に取り込んだノート。導入するかは未判断",
+    title: "【採用】Claude Code HTML出力をコンサル品質に整えるスキル",
+    verdict: "採用",
+    verdictReason: "判断基準を作法書として渡す発想を、資料づくりにも取り入れる（導入はこれから）",
     category: "AI開発 > Claude Code活用",
-    tags: ["#ClaudeCode", "#スキル", "#HTML出力", "#資料作成"],
+    tags: ["#ClaudeCode", "#スキル", "#HTML出力", "#資料作成", "#採用"],
     points: [
       "スキル1つで、AIのHTML資料が「枠と箱だらけ」から「余白と階層で見せるコンサル資料級」に変わる",
       "「HTMLで出して」と言った瞬間だけ働き、枠・グラデ・絵文字を禁止し完成済みCSSを使わせる",
@@ -36,11 +36,11 @@ const NOTES_AI = [
   },
   {
     id: "codex-model-router",
-    title: "【未判定】Codex subagent のモデルルーティング（model-router）",
-    verdict: "未判定",
-    verdictReason: "考え方は人力で実践中だが、ツール自体を導入するかは未判断",
+    title: "【採用】Codex subagent のモデルルーティング（model-router）",
+    verdict: "採用",
+    verdictReason: "人力で実践してきた振り分けを、ツールでも取り入れる（導入はこれから）",
     category: "AI開発 > Codex活用",
-    tags: ["#Codex", "#subagent", "#モデル選択", "#コスト最適化"],
+    tags: ["#Codex", "#subagent", "#モデル選択", "#コスト最適化", "#採用"],
     points: [
       "タスクの重さでモデルを自動で使い分けると、品質を保ったままAI利用コストの構造が変わる",
       "重い判断（設計・レビュー）は上位モデル、定型的な量産作業は軽量モデルに振り分け",
