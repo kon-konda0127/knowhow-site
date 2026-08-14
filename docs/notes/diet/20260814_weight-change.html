@@ -14,7 +14,7 @@
 
     <header class="topbar">
       <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
-      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <button class="menu" id="menu" aria-label="メニュー" aria-controls="nav" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="../../index.html">はじめに</a>
         <a href="../../dance.html">ダンス</a>
@@ -63,14 +63,15 @@
         <p>ダイエットを始めようと思ったとき、最初にやったのは運動でも食事制限でもなかった。</p>
         <p>iPhoneのヘルスケアに、2018年からの体重が残っていた。まずそれを全部見返した。</p>
         <p>理由は単純で、<strong>いま自分がどこにいるのか分からないまま走り出しても、続かないと思った</strong>から。</p>
-        <h2 id="facts">8年分のグラフ</h2>
+        <h2 id="facts">記録をグラフにしてみた</h2>
         <p>見返して分かったのは、「太った」というより<strong>「平均より重い状態が続いていた」</strong>ということだった。</p>
+        <p class="chart-lead">グラフは<strong>2022年5月から2026年8月まで</strong>。それ以前は記録が年に数回しかなく、線にすると実態より滑らかに見えてしまうので省いた（平均の計算には8年分すべてを使っている）。</p>
         <figure class="chart-figure">
           <div class="chart-head">
             <span class="chart-title">長期平均からの離れ方</span>
             <span class="chart-eyebrow">WEIGHT</span>
           </div>
-          <div class="chart-wrap" data-chart="weight"></div>
+          <div class="chart-wrap" data-chart="profile-weight-change"></div>
         </figure>
         <p>2022年の秋に一度下がって、そこから2年かけてじわじわ戻っている。2026年3月はその延長線上で、<strong>8年間の平均より約5kg重い</strong>ところにいた。</p>
         <div class="stat-row">
@@ -107,7 +108,7 @@
           <div class="toc-title">目次</div>
           <ul class="toc-list">
             <li><a href="#why">なぜ記録から始めたか</a></li>
-            <li><a href="#facts">8年分のグラフ</a></li>
+            <li><a href="#facts">記録をグラフにしてみた</a></li>
             <li><a href="#found">気づいたこと</a></li>
             <li><a href="#limits">この記事の限界</a></li>
             <li><a href="#summary">結局、何をしていたか</a></li>
@@ -130,123 +131,7 @@
     });
   })();
 </script>
-<script>
-  window.CHART_DATA = {
-    "weight": {
-      "type": "line",
-      "ariaLabel": "2022年5月から2026年8月までの体重の推移。長期平均を0とした差分で示す。2026年3月に平均より5キロ重い状態から始まり、8月には平均より4キロ軽いところまで下がっている",
-      "desc": "縦軸は長期平均からの差（キログラム）。実際の体重は表示していない。記録が2か月以上ない期間は線をつないでいない。",
-      "baselineLabel": "8年の平均",
-      "showYValues": false,
-      "caption": "縦軸は「8年間の平均からどれだけ離れているか」。体重そのものの数値は載せていない。記録が2か月以上ない期間は線をつないでいない（データが無いところを想像で埋めていない）。",
-      "points": [
-        {
-          "x": "2022-05",
-          "y": 1
-        },
-        {
-          "x": "2022-06",
-          "y": 1
-        },
-        {
-          "x": "2022-07",
-          "y": 0
-        },
-        {
-          "x": "2022-08",
-          "y": 0
-        },
-        {
-          "x": "2022-09",
-          "y": -2
-        },
-        {
-          "x": "2022-10",
-          "y": -3
-        },
-        {
-          "x": "2022-11",
-          "y": -3
-        },
-        {
-          "x": "2022-12",
-          "y": -3
-        },
-        {
-          "x": "2023-01",
-          "y": -4
-        },
-        {
-          "x": "2023-02",
-          "y": -4
-        },
-        {
-          "x": "2023-03",
-          "y": -3
-        },
-        {
-          "x": "2023-06",
-          "y": 0,
-          "gapBefore": true,
-          "note": "記録が少ない期間"
-        },
-        {
-          "x": "2024-01",
-          "y": 3,
-          "gapBefore": true
-        },
-        {
-          "x": "2024-07",
-          "y": 2,
-          "gapBefore": true
-        },
-        {
-          "x": "2024-08",
-          "y": 2
-        },
-        {
-          "x": "2024-09",
-          "y": 2
-        },
-        {
-          "x": "2024-10",
-          "y": 1
-        },
-        {
-          "x": "2025-09",
-          "y": 3,
-          "gapBefore": true
-        },
-        {
-          "x": "2026-03",
-          "y": 5,
-          "gapBefore": true,
-          "note": "ここから開始"
-        },
-        {
-          "x": "2026-04",
-          "y": 3
-        },
-        {
-          "x": "2026-05",
-          "y": 1
-        },
-        {
-          "x": "2026-06",
-          "y": -1
-        },
-        {
-          "x": "2026-07",
-          "y": -2
-        },
-        {
-          "x": "2026-08",
-          "y": -4
-        }
-      ]
-    }
-  };
-</script>
+<script src="../../notes-diet.js"></script>
 <script src="../../chart-svg.js"></script>
 </body>
 </html>

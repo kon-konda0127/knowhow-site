@@ -14,7 +14,7 @@
 
     <header class="topbar">
       <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
-      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <button class="menu" id="menu" aria-label="メニュー" aria-controls="nav" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="../../index.html">はじめに</a>
         <a href="../../dance.html">ダンス</a>
@@ -70,7 +70,7 @@
             <span class="chart-title">2026年の月別走行距離</span>
             <span class="chart-eyebrow">DISTANCE</span>
           </div>
-          <div class="chart-wrap" data-chart="distance"></div>
+          <div class="chart-wrap" data-chart="running-restart-2026"></div>
         </figure>
         <p>1回から10回へ。距離も、1本目が7kmで月の後半には11km台まで伸びた。</p>
         <p>走り始めた動機のひとつは、<strong>副次的に体重の減少も見込める</strong>と考えたこと。先に食事を見直して減り始めていたので、そこに運動を足す形だった。</p>
@@ -124,50 +124,7 @@
     });
   })();
 </script>
-<script>
-  window.CHART_DATA = {
-    "distance": {
-      "type": "bar",
-      "ariaLabel": "2026年の月別の走行距離。3月と4月は1回ずつでほぼ走っていないが、5月に10回81キロへ跳ね上がり、以降も続いている",
-      "desc": "棒の高さが月の合計走行距離（キロメートル）。棒の上の数字は距離、その上は走った回数。",
-      "showYValues": true,
-      "valueSuffix": "km",
-      "caption": "棒の高さが月の合計距離、上のラベルが走った回数。5月にランニング専用のシューズを買った。",
-      "points": [
-        {
-          "x": "2026-03",
-          "y": 2.7,
-          "note": "1回"
-        },
-        {
-          "x": "2026-04",
-          "y": 3.0,
-          "note": "1回"
-        },
-        {
-          "x": "2026-05",
-          "y": 81.1,
-          "note": "10回"
-        },
-        {
-          "x": "2026-06",
-          "y": 42.6,
-          "note": "5回"
-        },
-        {
-          "x": "2026-07",
-          "y": 12.0,
-          "note": "1回"
-        },
-        {
-          "x": "2026-08",
-          "y": 51.9,
-          "note": "8回"
-        }
-      ]
-    }
-  };
-</script>
+<script src="../../notes-diet.js"></script>
 <script src="../../chart-svg.js"></script>
 </body>
 </html>

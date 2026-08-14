@@ -14,7 +14,7 @@
 
     <header class="topbar">
       <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
-      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <button class="menu" id="menu" aria-label="メニュー" aria-controls="nav" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="../../index.html">はじめに</a>
         <a href="../../dance.html">ダンス</a>
@@ -75,7 +75,7 @@
             <span class="chart-title">2026年5月のペース推移</span>
             <span class="chart-eyebrow">PACE</span>
           </div>
-          <div class="chart-wrap" data-chart="pace"></div>
+          <div class="chart-wrap" data-chart="running-form-coaching"></div>
         </figure>
         <div class="stat-row">
           <div class="stat-tile"><div class="stat-value">8:17<span>/km</span></div><div class="stat-label">指導前（5/1）</div></div>
@@ -131,53 +131,7 @@
     });
   })();
 </script>
-<script>
-  window.CHART_DATA = {
-    "pace": {
-      "type": "line",
-      "ariaLabel": "2026年5月のランニングのペース推移。5月1日は1キロあたり8分17秒だったが、フォーム指導の翌日である5月8日は6分35秒、以降は6分前後で安定している",
-      "desc": "縦軸は1キロあたりの所要時間（分）。下にいくほど速い。",
-      "showYValues": true,
-      "caption": "縦軸は1kmあたりの分数（下にいくほど速い）。3km未満の短い運動は除いている。",
-      "points": [
-        {
-          "x": "5/1",
-          "y": 8.28,
-          "note": "指導前"
-        },
-        {
-          "x": "5/8",
-          "y": 6.58,
-          "note": "指導の翌日"
-        },
-        {
-          "x": "5/9",
-          "y": 5.99
-        },
-        {
-          "x": "5/12",
-          "y": 6.29
-        },
-        {
-          "x": "5/16",
-          "y": 6.17
-        },
-        {
-          "x": "5/17",
-          "y": 6.03
-        },
-        {
-          "x": "5/23",
-          "y": 6.27
-        },
-        {
-          "x": "5/25",
-          "y": 5.87
-        }
-      ]
-    }
-  };
-</script>
+<script src="../../notes-diet.js"></script>
 <script src="../../chart-svg.js"></script>
 </body>
 </html>

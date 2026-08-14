@@ -748,25 +748,28 @@ code {
   font-size: 10px; font-weight: 800; letter-spacing: .17em; color: var(--muted);
 }
 .chart-wrap { overflow-x: auto; }
-.chart-svg { width: 100%; height: auto; display: block; min-width: 280px; }
+.chart-svg { width: 100%; height: auto; display: block; min-width: 420px; }
+/* 320px幅では横スクロールで実寸を確保する（縮小しすぎて文字が読めなくなるのを防ぐ） */
 .chart-grid { stroke: var(--line); stroke-width: 1; }
 .chart-baseline { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 4 3; opacity: .55; }
 .chart-baseline-label {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; fill: var(--muted);
+  font-size: 13px; font-weight: 700; letter-spacing: .1em; fill: var(--muted);
 }
 .chart-line { stroke: var(--theme); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .chart-dot { fill: var(--theme); }
 .chart-dot.is-key { fill: var(--theme); stroke: var(--paper, #f6f4ef); stroke-width: 2; }
 .chart-bar { fill: var(--theme); }
 .chart-point-label {
-  font-size: 11px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums;
+  font-size: 14px; font-weight: 700; fill: var(--ink); font-variant-numeric: tabular-nums;
 }
-.chart-note { font-size: 10px; font-weight: 700; fill: var(--muted); }
+.chart-note { font-size: 13px; font-weight: 700; fill: var(--muted); }
 .chart-xtick, .chart-ytick {
-  font-size: 10px; fill: var(--muted); font-variant-numeric: tabular-nums;
+  font-size: 13px; fill: var(--muted); font-variant-numeric: tabular-nums;
 }
 .chart-caption { font-size: 12px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
 
 @media (prefers-reduced-motion: reduce) {
   .chart-svg * { transition: none !important; animation: none !important; }
 }
+
+.chart-lead { font-size: 13px; color: var(--muted); margin: -6px 0 14px; line-height: 1.8; }
