@@ -1,6 +1,6 @@
 # 【採用】Claude Code HTML出力をコンサル品質に整えるスキル
 
-カテゴリ: AI開発 > Claude Code活用
+カテゴリ: AI検証 > Claude Code活用
 タグ: #ClaudeCode #スキル #HTML出力 #資料作成 #採用
 
 判定: 採用（2026-08-14）

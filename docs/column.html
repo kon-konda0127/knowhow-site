@@ -17,9 +17,8 @@
       <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="index.html">はじめに</a>
-        <a href="dance.html">ダンス</a>
         <a href="diet.html">ダイエット</a>
-        <a href="ai.html">AI開発</a>
+        <a href="ai.html">AI検証</a>
         <a href="column.html" class="active">コラム</a>
       </nav>
     </header>
@@ -34,7 +33,12 @@
         <span class="eyebrow">COLUMN</span>
       </div>
 
+      <div id="featured"></div>
       <div class="filterbar" id="filterbar"></div>
+      <div class="list-head-row" id="listHead" hidden>
+        <span class="list-head-title">記事一覧</span>
+        <span class="list-head-count" id="listCount" aria-live="polite"></span>
+      </div>
       <div class="archive-grid" id="archive"></div>
     </div>
 
@@ -60,7 +64,10 @@
     key: 'column',
     label: 'コラム',
     data: typeof NOTES_COLUMN !== 'undefined' ? NOTES_COLUMN : [],
-    sections: [{ field: 'points', label: 'この記事の要点' }]
+    sections: [{ field: 'points', label: 'この記事の要点' }],
+    // 2026-08-15 可読性向上: 先頭記事を舞台パネルに出し、要点を3行まで見せる
+    featured: true,
+    previewLines: 3
   };
 </script>
 <script src="category.js"></script>

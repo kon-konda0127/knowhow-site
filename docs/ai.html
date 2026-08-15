@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="プロンプト設計・ツール活用・開発ノウハウを論点ごとに整理したAI開発の学習ノート。">
-  <title>AI開発 | アラフォーから始める趣味</title>
+  <meta name="description" content="SNSで見たAI情報を、実際に試して採るか見送るかまで判定した記録。採用・見送りの理由まで残しています。">
+  <title>AI検証 | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="ai-theme">
 <div class="shell"><div class="site-frame">
-  <aside class="rail"><span>学びと、作る喜びで、未来を広げる。</span></aside>
+  <aside class="rail"><span>試して、確かめて、採否を決める。</span></aside>
   <div class="main">
 
     <header class="topbar">
@@ -17,9 +17,8 @@
       <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <a href="index.html">はじめに</a>
-        <a href="dance.html">ダンス</a>
         <a href="diet.html">ダイエット</a>
-        <a href="ai.html" class="active">AI開発</a>
+        <a href="ai.html" class="active">AI検証</a>
         <a href="column.html">コラム</a>
       </nav>
     </header>
@@ -27,18 +26,18 @@
     <div class="page">
       <div class="subhead">
         <div>
-          <div class="crumb"><a href="index.html">ホーム</a>　›　AI開発</div>
-          <h1>AI開発</h1>
-          <p class="lead">プロンプト設計・ツール活用・開発ノウハウ。</p>
+          <div class="crumb"><a href="index.html">ホーム</a>　›　AI検証</div>
+          <h1>AI検証</h1>
+          <p class="lead">SNSで見たAI情報を、実際に試して採るか見送るかまで判定した記録。</p>
         </div>
-        <span class="eyebrow">AI BUILD</span>
+        <span class="eyebrow">AI VERIFY</span>
       </div>
 
       <div class="cat-stats" id="catStats"></div>
       <div id="featured"></div>
       <div class="filterbar" id="filterbar"></div>
       <div class="list-head-row" id="listHead" hidden>
-        <span class="list-head-title">記事一覧</span>
+        <span class="list-head-title">検証一覧</span>
         <span class="list-head-count" id="listCount" aria-live="polite"></span>
       </div>
       <div class="archive-grid" id="archive"></div>
@@ -64,12 +63,13 @@
 <script>
   window.CATEGORY_CONFIG = {
     key: 'ai',
-    label: 'AI開発',
+    label: 'AI検証',
     data: typeof NOTES_AI !== 'undefined' ? NOTES_AI : [],
     sections: [{ field: 'points', label: 'ポイント' }],
-    // 2026-08-15 designerリデザイン統合（AI開発ページ限定のオプトイン。他カテゴリは未指定＝従来表示）
+    // 2026-08-15 designerリデザイン統合（AI検証ページ限定のオプトイン。他カテゴリは未指定＝従来表示）
     featured: true,   // 先頭記事を藍の舞台パネルで上部中央に表示
-    tagFold: true     // タグを「上位チップ1行＋展開パネル」に畳む
+    tagFold: true,    // タグを「上位チップ1行＋展開パネル」に畳む
+    statsUnit: '検証' // 統計行の単位ラベル（AI検証カテゴリは「記事」ではなく「検証」）
   };
 </script>
 <script src="category.js"></script>

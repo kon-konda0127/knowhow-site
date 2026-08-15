@@ -1,13 +1,13 @@
 /**
- * カテゴリ一覧ページの共通ロジック（ダンス／ダイエット／AI開発／コラムで共用）
+ * カテゴリ一覧ページの共通ロジック（ダイエット／AI検証／コラムで共用）
  *
  * 各ページは読み込み前に window.CATEGORY_CONFIG を定義しておく:
- *   key      : 'dance' | 'diet' | 'ai' | 'column'（色テーマとタグの見た目に使う）
+ *   key      : 'diet' | 'ai' | 'column'（色テーマとタグの見た目に使う）
  *   label    : 画面に出すカテゴリ名
- *   data     : notes-*.js が定義した配列（NOTES_DANCE 等）
+ *   data     : notes-*.js が定義した配列（NOTES_DIET 等）
  *   sections : モーダルに出す項目の定義 [{ field, label }, ...]
  *
- * ノートは任意で採否ラベルを持てる（AI開発カテゴリで使用。他カテゴリは未定義なので何も出ない）:
+ * ノートは任意で採否ラベルを持てる（AI検証カテゴリで使用。他カテゴリは未定義なので何も出ない）:
  *   verdict       : "採用" | "見送り" | "未判定"
  *   verdictReason : そう判断した理由（1行）
  *
@@ -34,11 +34,17 @@
   const filterbar = document.getElementById('filterbar');
 
   // 一覧カードのプレビュー。カテゴリごとに持つ項目が違うので、あるものを順に拾う
-  const previewOf = (note) => {
+  const sourceOf = (note) => {
     const source = note.points || note.training || note.meal || note.record
                 || note.habit || note.form || note.mistakes || note.notes || [];
-    return Array.isArray(source) && source.length ? source[0] : '';
+    return Array.isArray(source) ? source : [];
   };
+  const previewOf = (note) => {
+    const source = sourceOf(note);
+    return source.length ? source[0] : '';
+  };
+  // 舞台パネル用。config.previewLines を指定したカテゴリだけ複数行になる（既定は1行）
+  const previewListOf = (note) => sourceOf(note).slice(0, Math.max(1, config.previewLines || 1));
 
   /* ---------- ノートが1件も無い場合 ---------- */
   if (!notes.length) {
@@ -108,6 +114,7 @@
       <h3>${escapeHtml(note.title)}</h3>
       ${note.verdictReason ? `<p class="verdict-reason">${escapeHtml(note.verdictReason)}</p>` : ''}
       ${preview ? `<p class="preview">${escapeHtml(preview)}</p>` : ''}
+      ${note.readingTime ? `<p class="card-reading">${escapeHtml(note.readingTime)}</p>` : ''}
       <span class="card-foot">
         <span>${(note.tags || []).map(escapeHtml).join('　')}</span>
         <span>${escapeHtml(note.date || '')}</span>
@@ -129,7 +136,7 @@
     const first = notes[0];
     // タイトル先頭の【採用】等の接頭辞は、舞台では採否バッジと二重になるため表示上だけ外す（データは無変更）
     const stageTitle = String(first.title || '').replace(/^【[^】]*】/, '');
-    const firstPreview = previewOf(first);
+    const firstPoints = previewListOf(first);
     const pad2 = n => String(n).padStart(2, '0');
     const cta = first.url
       ? `<a class="f-cta" href="${escapeHtml(first.url)}">この記事を読む <span aria-hidden="true">→</span></a>`
@@ -147,7 +154,10 @@
         ${verdictHtml(first)}
         <h2 class="f-title">${escapeHtml(stageTitle)}</h2>
         ${first.verdictReason ? `<p class="f-note"><span>判定メモ —</span> ${escapeHtml(first.verdictReason)}</p>` : ''}
-        ${firstPreview ? `<p class="f-point">${escapeHtml(firstPreview)}</p>` : ''}
+        ${firstPoints.length > 1
+          ? `<ul class="f-points">${firstPoints.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>`
+          : (firstPoints.length ? `<p class="f-point">${escapeHtml(firstPoints[0])}</p>` : '')}
+        ${first.readingTime ? `<p class="f-reading">${escapeHtml(first.readingTime)}</p>` : ''}
         ${cta}
       </section>`;
   }
@@ -156,7 +166,7 @@
   if (statsEl && notes.length) {
     const adopted = notes.filter(n => n.verdict === '採用').length;
     statsEl.innerHTML = `
-      <div class="cs-cell"><span class="cs-num">${notes.length}<i>件</i></span><span class="cs-label">記事</span></div>
+      <div class="cs-cell"><span class="cs-num">${notes.length}<i>件</i></span><span class="cs-label">${escapeHtml(config.statsUnit || '記事')}</span></div>
       <div class="cs-cell"><span class="cs-num">${allTags.length}<i>種</i></span><span class="cs-label">タグ</span></div>
       <div class="cs-cell"><span class="cs-num">${adopted}<i>件</i></span><span class="cs-label">採用</span></div>`;
   }

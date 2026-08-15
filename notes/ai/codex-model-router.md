@@ -1,6 +1,6 @@
 # 【採用】Codex subagent のモデルルーティング（model-router）
 
-カテゴリ: AI開発 > Codex活用
+カテゴリ: AI検証 > Codex活用
 タグ: #Codex #subagent #モデル選択 #コスト最適化 #採用
 
 判定: 採用（2026-08-14）

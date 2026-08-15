@@ -10,6 +10,7 @@
  *   tags     : タグの配列
  *   points   : 一覧カード・モーダルに出す要点（先頭がカードのプレビューになる）
  *   url      : 詳細ページへの相対パス
+ *   readingTime : 読了時間（例 "流し読み1分・全文8分"）。詳細ページHTMLの reading-time と同じ値を書く
  *   date     : 公開日
  *   version  : 版数（追記・改稿したら上げる）
  */
@@ -26,6 +27,7 @@ const NOTES_COLUMN = [
       "うち18%は前世代のモデルが処理していた。切り替え忘れに、数えて初めて気づいた"
     ],
     url: "notes/column/20260814_max-plan-usage-limit.html",
+    readingTime: "流し読み1分・全文6分",
     date: "2026-08-14",
     version: 2
   },
@@ -41,6 +43,7 @@ const NOTES_COLUMN = [
       "いちばんの収穫は勝敗ではなく、教材が偏るとルールもそのまま偏ると気づけたこと"
     ],
     url: "notes/column/20260814_ai-distillation.html",
+    readingTime: "流し読み1分・全文8分",
     date: "2026-08-14",
     version: 1
   },
@@ -56,6 +59,7 @@ const NOTES_COLUMN = [
       "Tailscale・Cloudflare Tunnel・自前VPNの3方式を、費用と難易度で比較"
     ],
     url: "notes/column/20260814_tailscale-vs-cloudflare.html",
+    readingTime: "流し読み1分・全文7分",
     date: "2026-08-14",
     version: 3
   },
@@ -71,6 +75,7 @@ const NOTES_COLUMN = [
       "外注で買えるのは見た目まで。事実の正しさは受け取った側が確かめるしかない"
     ],
     url: "notes/column/20260813_ai-design-outsourcing.html",
+    readingTime: "流し読み1分・全文6分",
     date: "2026-08-13",
     version: 2
   },
@@ -86,6 +91,7 @@ const NOTES_COLUMN = [
       "安全対策は「危険を検知する」より「できることを許可リストで絞る」方が強い"
     ],
     url: "notes/column/20260812_max-plan-1week.html",
+    readingTime: "流し読み1分・全文5分",
     date: "2026-08-12",
     version: 3
   }
