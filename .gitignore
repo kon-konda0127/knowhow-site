@@ -3,3 +3,6 @@ inbox/
 processed/
 *.env
 tmp_designer_draft/
+# 承認前の試行錯誤用（メインリポジトリ docs/spec_approval_write_scope.md のZ0＝承認不要ゾーン）
+# ここは公開リポジトリ（GitHub Pages）のため、承認前の成果物は必ずこの配下に置く
+tmp_*/
