@@ -2,3 +2,4 @@
 inbox/
 processed/
 *.env
+tmp_designer_draft/

@@ -34,7 +34,13 @@
         <span class="eyebrow">AI BUILD</span>
       </div>
 
+      <div class="cat-stats" id="catStats"></div>
+      <div id="featured"></div>
       <div class="filterbar" id="filterbar"></div>
+      <div class="list-head-row" id="listHead" hidden>
+        <span class="list-head-title">記事一覧</span>
+        <span class="list-head-count" id="listCount" aria-live="polite"></span>
+      </div>
       <div class="archive-grid" id="archive"></div>
     </div>
 
@@ -60,7 +66,10 @@
     key: 'ai',
     label: 'AI開発',
     data: typeof NOTES_AI !== 'undefined' ? NOTES_AI : [],
-    sections: [{ field: 'points', label: 'ポイント' }]
+    sections: [{ field: 'points', label: 'ポイント' }],
+    // 2026-08-15 designerリデザイン統合（AI開発ページ限定のオプトイン。他カテゴリは未指定＝従来表示）
+    featured: true,   // 先頭記事を藍の舞台パネルで上部中央に表示
+    tagFold: true     // タグを「上位チップ1行＋展開パネル」に畳む
   };
 </script>
 <script src="category.js"></script>

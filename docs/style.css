@@ -804,3 +804,47 @@ code {
   .chart-point-label { font-size: 25px; }
   .chart-note, .chart-baseline-label { font-size: 22px; }
 }
+
+/* ============================================================
+   AI開発ページのリデザイン（2026-08-15 designer初版の統合）
+   cat-stats: 罫線グリッドの統計行 ／ featured-stage: 先頭記事の舞台
+   tagfold: タグの畳み表示。config.featured / config.tagFold の
+   オプトイン時のみ使われる（他カテゴリページは無影響）
+   ============================================================ */
+.cat-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); margin: 6px 0 26px; }
+.cat-stats .cs-cell { padding: 16px 6px 13px; text-align: center; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.cat-stats .cs-cell:last-child { border-right: none; }
+.cat-stats .cs-num { font-family: var(--serif); font-size: 30px; font-weight: 600; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.cat-stats .cs-num i { font-style: normal; font-family: var(--sans); font-size: 10px; font-weight: 700; color: var(--muted); margin-left: 2px; }
+.cat-stats .cs-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+
+.featured-stage { position: relative; overflow: hidden; background: var(--indigo); color: #f4f2ea; padding: 30px 24px 30px; margin-bottom: 26px; text-align: center; }
+.featured-stage .f-constellation { position: absolute; inset: auto 0 0 0; width: 100%; height: 100%; color: rgba(244, 242, 234, .16); fill: currentColor; pointer-events: none; }
+.featured-stage > * { position: relative; }
+.featured-stage .f-eyebrow { margin: 0 0 10px; font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(244, 242, 234, .75); }
+.featured-stage .f-counter { margin: 0 0 14px; font-family: var(--serif); font-size: 12px; letter-spacing: .3em; color: rgba(244, 242, 234, .6); }
+.featured-stage .verdict { background: #f4f2ea; border-color: #f4f2ea; }
+.featured-stage .verdict-adopt { color: var(--moss); font-weight: 700; }
+.featured-stage .verdict-skip { color: var(--muted); }
+.featured-stage .verdict-pending { color: var(--indigo); border-style: dashed; }
+.featured-stage .f-title { margin: 14px 0 12px; font-family: var(--serif); font-size: clamp(24px, 6.4vw, 34px); font-weight: 500; letter-spacing: .04em; line-height: 1.42; text-wrap: balance; }
+.featured-stage .f-note { margin: 0 auto 12px; max-width: 34em; font-size: 12px; line-height: 1.9; color: rgba(244, 242, 234, .85); }
+.featured-stage .f-note span { font-weight: 700; letter-spacing: .08em; color: rgba(244, 242, 234, .6); }
+.featured-stage .f-point { margin: 0 auto 20px; max-width: 32em; font-size: 12.5px; line-height: 1.9; color: rgba(244, 242, 234, .75); }
+.featured-stage .f-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 22px; border: 1px solid rgba(244, 242, 234, .65); color: #f4f2ea; font-size: 12px; font-weight: 700; letter-spacing: .1em; background: transparent; cursor: pointer; transition: background .2s, color .2s, gap .25s; }
+.featured-stage .f-cta:hover { background: #f4f2ea; color: var(--indigo); gap: 16px; }
+
+.tagfold-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.tagfold-row::-webkit-scrollbar { display: none; }
+.tagfold-row .tag-btn { flex-shrink: 0; }
+.tag-count { font-style: normal; font-size: 10px; color: var(--muted); margin-left: 5px; }
+.tag-btn.active .tag-count { color: inherit; opacity: .7; }
+.tagfold-toggle { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; padding: 0 2px; margin-top: 2px; border: none; border-bottom: 1px solid var(--line); background: none; font-size: 12px; font-weight: 700; letter-spacing: .06em; color: var(--ink); cursor: pointer; }
+.tagfold-toggle:hover { color: var(--theme); }
+.tagfold-panel { padding: 14px 0 6px; border-bottom: 1px solid var(--line); }
+.tagfold-group { margin: 10px 0 8px; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--muted); }
+.tagfold-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.list-head-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 22px 0 4px; padding-bottom: 8px; border-bottom: 1px solid var(--ink); }
+.list-head-row .list-head-title { font-family: var(--serif); font-size: 18px; font-weight: 600; letter-spacing: .04em; }
+.list-head-row .list-head-count { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
