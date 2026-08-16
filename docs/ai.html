@@ -64,7 +64,13 @@
   window.CATEGORY_CONFIG = {
     key: 'ai',
     label: 'AI検証',
-    data: typeof NOTES_AI !== 'undefined' ? NOTES_AI : [],
+    // 2026-08-16 並び順を「新しい記事が先頭」へ（社長判断・8/15）。
+    // notes-ai.js は追記が末尾に積まれる運用のため、配列順のままだと最も古い記事が舞台パネルに出てしまう。
+    // reverse() で「後に追記されたものが先」にしてから日付降順で安定ソートするので、
+    // 結果は「日付の新しい順、同じ日付なら後から追記した順」になる。元データ（NOTES_AI）は書き換えない。
+    data: typeof NOTES_AI !== 'undefined'
+      ? [...NOTES_AI].reverse().sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+      : [],
     sections: [{ field: 'points', label: 'ポイント' }],
     // 2026-08-15 designerリデザイン統合（AI検証ページ限定のオプトイン。他カテゴリは未指定＝従来表示）
     featured: true,   // 先頭記事を藍の舞台パネルで上部中央に表示
