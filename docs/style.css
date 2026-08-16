@@ -18,6 +18,10 @@
   --indigo: #344557;  /* AI検証 */
   --ochre: #bd7d16;   /* コラム */
 
+  /* 注意喚起（カテゴリ色とは別系統。紙の地に馴染むレンガ色） */
+  --alert: #a3452e;
+  --alert-tint: rgba(163, 69, 46, .06);
+
   /* 既定テーマ（トップページ）。各ページで body クラスにより上書きする */
   --theme: var(--indigo);
   --theme-tint: rgba(52, 69, 87, .08);
@@ -345,6 +349,18 @@ button { font: inherit; cursor: pointer; }
   .verdict-panel dl { grid-template-columns: 1fr; gap: 2px; }
   .verdict-panel dt { margin-top: 8px; }
 }
+
+/* 注意喚起パネル（公開後に判明した訂正・警告を本文の先頭に置く。2026-08-16 追加） */
+.note-callout {
+  margin: 0 0 26px;
+  padding: 16px 20px;
+  border: 1px solid var(--alert);
+  border-left: 3px solid var(--alert);
+  background: var(--alert-tint);
+}
+.note-callout p { margin: 0 0 10px; font-size: 14px; line-height: 1.8; }
+.note-callout p:last-child { margin-bottom: 0; }
+.note-callout code { color: var(--alert); }
 
 .empty-msg {
   grid-column: 1 / -1;
