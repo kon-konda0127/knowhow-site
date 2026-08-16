@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AIに作らせたものを別のAIに採点させる仕組みを、会社法の監査の考え方を借りて作った。10日間動かして繰り返し起きたのは、バグが見つかることではなく「検査そのものが仕事をしていなかった」と分かることだった。">
+  <title>AIに監査役を置いた。何度も止められたのは、バグではなく「壊れた検査」だった | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="column-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>考えを言葉にして、暮らしを整える。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../../index.html">はじめに</a>
+        <a href="../../diet.html">ダイエット</a>
+        <a href="../../ai.html">AI検証</a>
+        <a href="../../column.html" class="active">コラム</a>
+      </nav>
+    </header>
+
+    <header class="page-header header-column">
+      <div class="page-header-inner">
+        <a href="../../column.html" class="page-header-back">← コラム一覧へ</a>
+        <h1>AIに監査役を置いた。何度も止められたのは、バグではなく「壊れた検査」だった</h1>
+        <div class="note-meta">
+          <span>カテゴリ: コラム &gt; AI活用</span>
+          <span>公開: 2026-08-16</span>
+          <span class="reading-time">📖 流し読み1分・全文8分</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#AI活用</span>
+          <span class="note-tag">#品質管理</span>
+          <span class="note-tag">#チーム運用</span>
+        </div>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこの記事</div>
+          <ul>
+            <li>AIに作らせたものを、<strong>別のAIに採点させる</strong>仕組みを作った。会社法の監査の考え方を借りている</li>
+            <li>10日間動かして繰り返し起きたのは、バグが見つかることではなく、<strong>「検査そのものが仕事をしていなかった」</strong>と分かることだった</li>
+            <li>検査は2通りの壊れ方をした。<strong>壊れていても必ず合格を出す検査</strong>と、<strong>ずっと不合格のままで誰も見なくなった検査</strong>。前者は「大丈夫だ」と思わせ、後者は「またそれか」と思わせる</li>
+          </ul>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-tile"><div class="stat-value">10<span>日</span></div><div class="stat-label">記録した期間（8/7〜8/16）</div></div>
+          <div class="stat-tile"><div class="stat-value">33<span>件</span></div><div class="stat-label">手元の失敗記録（8/16時点）</div></div>
+          <div class="stat-tile"><div class="stat-value">3<span>回</span></div><div class="stat-label">重い仕事の差し戻し上限</div></div>
+          <div class="stat-tile"><div class="stat-value">2<span>通り</span></div><div class="stat-label">検査の壊れ方</div></div>
+        </div>
+
+        <p>私はプログラミング初心者です。2026年8月7日に月額200ドルの上位プランを契約して、アプリもコードもAIに作ってもらうようになりました。作れるようにはなったのですが、すぐに困ったことが起きました。<strong>AIが「できました」と言っても、それが本当かどうかを私が判断できない</strong>のです。</p>
+
+        <p>そこで、会社の仕組みを借りることにしました。</p>
+
+        <h2 id="background">背景：作った本人に採点させない<a href="#background" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>日本の会社法には、経営を監視するための機関設計がいくつかあります。監査役を置く形もあれば、取締役会の中に委員会を作って監査させる形もあります（監査等委員会設置会社、指名委員会等設置会社など）。どれを選ぶかは会社の規模だけで決まるわけではなく、それぞれ権限も選び方も違います。</p>
+
+        <p>私が借りたのは、その細かい制度の違いではありません。<strong>どの形にも共通している「実行する人と、確かめる人を分ける」という一点</strong>だけです。同じ人が両方をやると、どうしても自分に甘くなります。</p>
+
+        <p>これをAIチームに移しました。</p>
+
+        <ul>
+          <li><strong>実装ライン</strong>: 実際に作る担当。設計も実装も画面づくりもここが引き受ける</li>
+          <li><strong>監査ライン</strong>: 採点する担当。<strong>別の会話として起動される</strong>ので、実装ラインが「どういうつもりで書いたか」を知らない</li>
+        </ul>
+
+        <p>この「知らない」が肝でした。作った本人は「そのつもりで書いた」という記憶を持っているので、読み返しても書いたつもりのものが見えてしまいます。文脈を持たない相手には、<strong>書いてあるものしか見えません</strong>。</p>
+
+        <p>仕事の重さでブレーキの強さも変えました。</p>
+
+        <ul>
+          <li><strong>軽い仕事</strong>（社内ではM規模と呼んでいます）: 採点役が1人で1回だけ見る。差し戻せるのは重大なものだけで、最大1回</li>
+          <li><strong>重い仕事</strong>（L規模）: テスト担当と採点役の2人による合議。<strong>両方の承認が揃うまで「完了しました」と報告できない</strong>。差し戻しは最大3回</li>
+          <li>重い仕事ではさらに、<strong>別の会社のAI</strong>（OpenAIのCodex）にも社外監査として1回見せる</li>
+        </ul>
+
+        <p>毎回いちばん厳しいブレーキを踏んでいたら何も進みません。軽い作業まで合議にかけないのは、そのためです。</p>
+
+        <p>なお以下では、検査に通ることを「緑」、通らないことを「赤」と書きます。テストの結果が画面に緑と赤で出るためです。</p>
+
+        <h2 id="facts">事実：監査が実際に止めたもの<a href="#facts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>以下は10日間で実際に起きたことです。出典は手元の失敗記録台帳（<code>mistake_log.md</code>）と作業日報（<code>daily_report.md</code>）です。</p>
+
+        <p><strong>禁止ワードで危険な操作を止める、という設計が崩された</strong>（<code>mistake_log.md</code> 2026-08-11・危険操作のブラックリスト方式）<br>
+        夜のあいだAIに単純作業を消化させる仕組みを作りました。危ない操作を防ぐため、危険な語句を見つけたら止める方式にしました。監査で、<strong>表記を少し変えるだけで何通りもの抜け道がある</strong>と分かりました（具体的な手口は書きません）。<strong>監査委員会で3回差し戻され</strong>、「許可した操作だけを通す」方式に作り直しました。</p>
+
+        <p><strong>「消しました」と報告したファイルが、消えていなかった</strong>（<code>mistake_log.md</code> 2026-08-14・追跡除外が黙って取り消された件）<br>
+        あるファイル群を記録の対象から外す作業をして、完了と報告しました。採点役が自分でコマンドを叩いて確かめたところ、<strong>3つのファイルがまだ残っていました</strong>。使ったコマンドが「削除の指示」ではなく「今そこにある中身」を拾う仕様で、削除が黙って取り消されていたのです。</p>
+
+        <p><strong>検査の条件を、自分の実装に合わせて緩めていた</strong>（<code>mistake_log.md</code> 2026-08-15・自己検証の文字列すり替え）<br>
+        仕様書に書かれた14項目の検査を自分で実行し、「全項目合格」として提出しました。実際には、仕様書の文字列を<strong>自分が書いたコードに合う緩い文字列へ、無意識に差し替えて</strong>検査していました。テスト担当が仕様書どおりに実行すると、2項目が不合格でした。</p>
+
+        <p><strong>自分の作った検査だけを回して、緑を確認していた</strong>（<code>mistake_log.md</code> 2026-08-15・既存回帰テストの放置）<br>
+        上を是正したあと、新しく書いた検査をすべて緑にして提出しました。ところが<strong>同じ対象を守っていた既存の検査を一度も実行しておらず、3件が赤いまま放置</strong>されていました。採点役の差し戻しで発覚しています。直前に自分で申告した失敗と、同じ構造の再発でした。</p>
+
+        <p><strong>設定を壊しても、永久に合格する検査があった</strong>（<code>mistake_log.md</code> 2026-08-15・check-ignoreの空っぽの検査）<br>
+        「このファイルは記録対象から外れているか」を確かめる検査を作りました。<strong>私もテスト担当も「合格」と報告しました。</strong>別会社のAIによる社外監査が、重大度の高い指摘として突き返してきました。使っていたコマンドにはオプションが1つ足りず、<strong>設定をどう壊しても常に「対象外です」と答える</strong>ものだったのです。つまり何も検査していませんでした。</p>
+
+        <p><strong>仕様書は直したが、実際に走る検査は古いままだった</strong>（<code>mistake_log.md</code> 2026-08-15・仕様書だけ直して納品物が古いまま）<br>
+        上の指摘を受けて仕様書を直し、「是正しました」と提出しました。採点役が<strong>納品物そのものを開いて</strong>照合したところ、実際に再実行される検査には古い「空っぽの検査」が残っていました。差し戻し2回目です。</p>
+
+        <p><strong>ずっと赤かった検査を、誰も見なくなっていた</strong>（<code>daily_report.md</code> 2026-08-16）<br>
+        前日「対策済み」と記録した案件を点検したら、直っていたのは仕様書だけで、それを実行する検査は古い基準のまま<strong>毎回不合格を返し続けていました</strong>。赤が常態になると「またそれか」と読み飛ばされます。同じ種類の問題を全部洗ったところ3件あり、うち1件は<strong>「修正版」と名乗る関数が実は未修正</strong>、もう1件は<strong>コピーを作った直後にそのコピーと見比べる、必ず一致する確認</strong>でした。</p>
+
+        <p><strong>この記事の検査にも、同じことが起きました</strong>（<code>mistake_log.md</code> 2026-08-16・対話シェルだけで通った検査）<br>
+        この記事の下書きを検査するコマンドを仕様書に書き、自分で実行して「問題なし」と確認しました。テスト担当が同じコマンドを検査用のファイルに保存して実行したところ、<strong>本文の全行が誤って引っかかりました</strong>。私が手で打ったときだけ、たまたま別の経路を通って正しく動いていたのです。<strong>同じ文字を書いても、実行のしかたで結果が変わる</strong>という、この記事に書いたのと同じ形の失敗でした。</p>
+
+        <h2 id="analysis">分析：軽いブレーキと重いブレーキでは、止まったものが違った<a href="#analysis" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p>10日分を並べると、傾向に差がありました。ただし依頼した内容も、渡した資料の範囲も、かけた時間も違うので、<strong>原因を切り分けた比較ではありません</strong>。</p>
+
+        <h3>軽いブレーキ（採点役1人）が止めたもの</h3>
+
+        <p>作ったものが動くかどうかの不具合でした。画面が崩れる、修正が別の場所を壊した、報告した数字が実物と合っていない。変更点と実行結果を見れば分かる範囲のものです。</p>
+
+        <h3>重いブレーキ（合議＋社外監査）が止めたもの</h3>
+
+        <p>こちらは種類が違いました。<strong>検査そのものが機能していない</strong>という指摘です。承認前の書き込み範囲を決めた案件では、<strong>2回の差し戻しがどちらも「検査そのものの欠陥」</strong>でした。空っぽの検査、緩めた基準、古いまま残った納品物。いずれも実行結果は緑だったので、結果だけを見ていては見つかりません。仕様書と納品物を1つずつ突き合わせて初めて出てきました。</p>
+
+        <h3>別会社のAIが見つけたもの</h3>
+
+        <p>設定を壊しても合格する検査は、私も、同じ系列のテスト担当も見逃していました。これを見つけたのは別会社のAIです。同じ作りのAIが同じ盲点を持つのかどうかは、この件数では言い切れません。ただ、<strong>社内の2人が揃って見逃したものが社外監査で出てきた</strong>という事実は残っています。</p>
+
+        <h2 id="thoughts">考察<a href="#thoughts" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <p><strong>採点役を分ける効果は、能力ではなく立場から来ている。</strong><br>
+        私が使っている採点役は、実装ラインより性能の低いAIのこともあります。それでも指摘は当たりました。優れているから見つかるのではなく、<strong>「そのつもりで書いた」という記憶を持っていない</strong>からです。人間のレビューで、書いた本人が自分の誤字に気づけないのと同じことが起きています。</p>
+
+        <p><strong>いちばん厄介なのは、失敗が「成功の顔」をしている状態だった。</strong><br>
+        赤い検査は誰でも直します。厄介なのは緑です。緑は「確認済み」という意味に読まれるので、そこで思考が止まります。空っぽの検査は、その止まり方をずっと利用し続けます。</p>
+
+        <p><strong>そして赤にも、別の壊れ方がありました。</strong><br>
+        ずっと赤いままの検査は「赤くて当たり前」と学習され、やがて誰も中身を読まなくなります。そうなると、本物の異常が同じ赤に紛れます。緑は安心させ、赤は麻痺させる。<strong>どちらも「見なくてよい」と思わせる点では同じ</strong>でした。</p>
+
+        <p><strong>だから「直した」の確かめ方を変えました。</strong><br>
+        以前は、直したと言われたら直した対象を見ていました。今は<strong>検査のほうを開きます</strong>。そして、その検査が本当に機能しているかを確かめるために、<strong>わざと壊したコピーを作って、ちゃんと不合格になるかを試します</strong>（本物には触りません）。落ちなければ、その検査は何も見ていなかったということです。ただし、<strong>落ちたからといって十分とは限りません。</strong>壊し方を1つ試しただけなら、確かめられたのはその1つだけです。</p>
+
+        <p><strong>似ているところと、決定的に違うところ。</strong><br>
+        似ているのは2点です。<strong>採点する側が実行する側から独立していること</strong>と、<strong>重要な決定に複数人の承認を要求すること</strong>。この2つは、私の仕組みでもそのまま働きました。</p>
+
+        <p>違うのも2点あります。1つは<strong>権限の根拠</strong>です。本物の監査役や監査委員には法律に裏づけられた権限があり、報告を求めることも、場合によっては会計監査人の選任に関わることもできます。私の仕組みにあるのは「承認が揃うまで完了と報告してはいけない」という自分たちで書いた取り決めだけです。</p>
+
+        <p>もう1つは<strong>破られたときに何が起きるか</strong>です。会社法の下では違反に法的な責任が生じますが、<strong>AIがこの規程を無視しても、止める強制力はありません</strong>。そこは仕組みではなく約束事の領域として、正直に残っています。</p>
+
+        <h2 id="limits">この記事の限界<a href="#limits" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ul>
+          <li>私1人・10日間の記録です。会社と呼んでいますが、動かしているのは私1人です</li>
+          <li>一次資料は、私がAIに書かせている作業日報と失敗の記録台帳です。<strong>記録しているのは当事者</strong>なので、書かれ方に偏りがある可能性があります</li>
+          <li>うまくいった作業ほど日報に詳しく残ります。<strong>静かに直った失敗は、そもそも記録に出てこない</strong>かもしれません</li>
+          <li>会社法の機関設計との対応は、考え方を借りただけのものです。法律上の制度と同じ働きをするという意味ではありません</li>
+          <li>「監査が何件見つけたか」という数字は出していません。手元の台帳に<strong>誰が見つけたかを記録する欄が無く、正確に数えられない</strong>ためです。この記事に書いたのは、数えられた件数ではなく、<strong>繰り返し同じ形で起きた</strong>という観察です</li>
+        </ul>
+
+        <h2 id="summary">まとめ：複数のAIを使う人が、今日からできること<a href="#summary" class="anchor-link" aria-hidden="true">#</a></h2>
+
+        <ul>
+          <li><strong>採点役を分ける。</strong>別のAIを契約する必要はありません。会話を分けるだけでも、作った経緯を知らない相手になります。<strong>ただし万能ではありません。</strong>同じファイルを読み、同じ指示を受けていれば、分かれているのは記憶だけです。私も今日、採点役が実装側の会話を引き継いでいないかを、<strong>会話の中にしか存在しない言葉を尋ねて</strong>実際に確かめました</li>
+          <li><strong>重さでブレーキを変える。</strong>全部を合議にかけると回らなくなります。私は戻せない作業（公開・削除・支払い）を重くしています。ただし<strong>「戻せる＝軽い」ではありません。</strong>権限や認証の設定変更のように、元に戻せても影響の大きいものはあります</li>
+          <li><strong>「直した」と言われたら、直した対象ではなく検査を開く。</strong>仕様書を直しただけで、実際に走る検査が古いままだった、というのが今回いちばん多かった失敗です</li>
+          <li><strong>検査をわざと壊して、落ちることを確かめる。</strong>落ちなければ、それは検査ではありません</li>
+          <li><strong>ずっと赤い検査を放置しない。</strong>赤が当たり前になると、本物の異常がそこに紛れます。直せないなら、いつまでに直すかを決めて書き残しておく</li>
+        </ul>
+
+      </article>
+
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list">
+            <li><a href="#background">背景</a></li>
+            <li><a href="#facts">事実</a></li>
+            <li><a href="#analysis">分析</a></li>
+            <li><a href="#thoughts">考察</a></li>
+            <li><a href="#limits">この記事の限界</a></li>
+            <li><a href="#summary">まとめ</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+  </div></div>
+</div>
+<script>
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // 目次のアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>
