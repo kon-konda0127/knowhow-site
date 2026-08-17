@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="「プロンプトの先頭に記号を付けるとWebへ渡る」という紹介を公式ドキュメントと実機で確かめた記録。バックグラウンド化とWeb実行は別々の機能だった。">
-  <title>【見送り】記号ひとつでWebに投げられる、を確かめた | アラフォーから始める趣味</title>
+  <title>【見送り】「記号ひとつでタスクをWebへ投げられる」を検証した結果、バックグラウンド化とWeb実行は別々の機能だった | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="ai-theme">
@@ -27,11 +27,11 @@
     <header class="page-header header-ai">
       <div class="page-header-inner">
         <a href="../ai.html" class="page-header-back">← AI検証へ</a>
-        <h1>【見送り】「記号ひとつでWebに投げられる」を確かめたら、別々の機能の話だった</h1>
+        <h1>【見送り】「記号ひとつでタスクをWebへ投げられる」を検証した結果、バックグラウンド化とWeb実行は別々の機能だった</h1>
         <div class="note-meta">
           <span>カテゴリ: AI検証 &gt; ツールの見極め</span>
           <span>取り込み: 2026-08-15</span>
-          <span class="reading-time">📖 要点30秒・全文3分</span>
+          <span class="reading-time">📖 要点30秒・全文5分</span>
         </div>
       </div>
     </header>
@@ -55,85 +55,81 @@
           </dl>
         </div>
 
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+<ul>
+  <li>@claudecode84 のポスト（X）: <a class="source-link" href="https://x.com/claudecode84/status/2088186254429172010" target="_blank" rel="noopener">https://x.com/claudecode84/status/2088186254429172010</a> （取り込み日：2026-08-15。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
+  <li>Claude Code 公式ドキュメント CLIリファレンス: <a class="source-link" href="https://code.claude.com/docs/en/cli-reference" target="_blank" rel="noopener">https://code.claude.com/docs/en/cli-reference</a></li>
+  <li>Claude ヘルプセンター「Claude Code power user tips」: <a class="source-link" href="https://support.claude.com/en/articles/14554000-claude-code-power-user-tips" target="_blank" rel="noopener">https://support.claude.com/en/articles/14554000-claude-code-power-user-tips</a></li>
+</ul>
+
         <div class="tldr-box">
           <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
           <ul>
             <li>「プロンプトの先頭に記号を1つ付けると、タスクがWeb側へ渡って実行される」という紹介</li>
             <li>公式ドキュメントで確かめると、バックグラウンド化とWeb実行は<strong>別々の機能</strong>だった</li>
             <li>空のフォルダで実際に1回動かし、手元で完結することを確認した（外部への送信なし）</li>
-            <li>自分の体制では<strong>見送り</strong>。同じことは既存の仕組みででき、結果も受け取りやすい</li>
+            <li>自分の体制では<strong>見送り</strong>。同じことは既存の仕組みでできており、結果も受け取りやすい</li>
           </ul>
         </div>
 
         <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
-        <p>これを読むと、SNSで見た「便利な裏技」を、試す前に公式の定義と突き合わせる手順が持てる。</p>
-        <p>機能が実在することと、紹介された説明どおりに動くことは別になる。実在の確認だけで納得すると、名前の似た別機能を掴んだまま運用に組み込んでしまう。</p>
+<p>これを読むと、SNSで見た「便利な裏技」を、試す前に公式の定義と突き合わせる手順が持てる。</p>
+<p>機能が実在することと、紹介された説明どおりに動くことは別になる。実在の確認だけで納得すると、名前の似た別機能を掴んだまま運用に組み込んでしまう。</p>
 
         <h2 id="what"><a class="anchor-link" href="#what">#</a> 何が紹介されていたか</h2>
-        <ul>
-          <li>プロンプトの先頭に記号を1つ付けると、タスクがWeb側へ渡り、バックグラウンドで実行されるという紹介</li>
-          <li>手元のコマンドライン側を司令塔、Web側を実働部隊として使い分ける構想が述べられていた</li>
-          <li>※上記は投稿の要約。この説明のどこが実際と違ったかを次の項に書く</li>
-        </ul>
+<ul>
+  <li>プロンプトの先頭に記号を1つ付けると、タスクがWeb側へ渡り、バックグラウンドで実行されるという紹介</li>
+  <li>手元のコマンドライン側を司令塔、Web側を実働部隊として使い分ける構想が述べられていた</li>
+  <li>※上記は投稿の要約。この説明のどこが実際と違ったかを次の項に書く</li>
+</ul>
 
-        <h2 id="verify"><a class="anchor-link" href="#verify">#</a> 確かめたこと（事実）</h2>
-        <p>公式のコマンドリファレンスを読むと、関係する機能は3つに分かれていた。</p>
-        <ul>
-          <li>バックグラウンド化のフラグ（<code>--bg</code>）: <strong>手元の端末でバックグラウンドエージェントとして起動</strong>し、専用の管理コマンドで扱う。Webへの送信は伴わない</li>
-          <li>Webセッションを作るフラグ（<code>--cloud</code>）: こちらがWeb側に新しいセッションを作る機能</li>
-          <li>行き来のためのフラグ（<code>--teleport</code>）: Web側のセッションを手元の端末で再開する機能</li>
-        </ul>
-        <p>公式のヘルプ記事でも、「セッションをバックグラウンド化すること」と「ローカルとWebを切り替えること」は並べて書かれているだけで、同じ動作としては説明されていない。</p>
-        <p>実際に動かして確認もした。手順は次のとおり。</p>
-        <ol>
-          <li>機微な情報を含まない空のフォルダを用意する</li>
-          <li>そこでバックグラウンド起動を1回だけ実行する</li>
-          <li>一覧コマンドで、種別が「バックグラウンド」、作業フォルダが手元のパスであることを確認する</li>
-          <li>確認後は停止コマンドで片付ける</li>
-        </ol>
-        <p>結果として、実行は手元で完結し、外部への送信は発生しなかった。</p>
+        <h2 id="sec4"><a class="anchor-link" href="#sec4">#</a> 確かめたこと（事実）</h2>
+<p>確かめ方は2段階にした。まず公式ドキュメントで定義を読み、次に機微なデータを含まない空のフォルダで1回だけ動かす。空のフォルダに限定したのは、外に何が出るか分からない段階で、本番のデータを置いたフォルダを使わないため。</p>
+<p>公式のコマンドリファレンスを読むと、関係する機能は3つに分かれていた。どれも起動時に付ける指定（フラグ）である。</p>
+<ul>
+  <li>バックグラウンド化のフラグ（<code>--bg</code>）: <strong>手元の端末でバックグラウンドエージェントとして起動</strong>し、専用の管理コマンドで扱う。Webへの送信は伴わない</li>
+  <li>Webセッションを作るフラグ（<code>--cloud</code>）: こちらがWeb側に新しいセッションを作る機能</li>
+  <li>行き来のためのフラグ（<code>--teleport</code>）: Web側のセッションを手元の端末で再開する機能</li>
+</ul>
+<p>投稿の説明は、このうち <code>--bg</code> と <code>--cloud</code> を一つの動きとして語っていた。公式のヘルプ記事でも、「セッションをバックグラウンド化すること」と「ローカルとWebを切り替えること」は並べて書かれているだけで、同じ動作としては説明されていない。</p>
+<p>実際に動かして確認もした。手順は次のとおり。</p>
+<ol>
+  <li>機微な情報を含まない空のフォルダを用意する</li>
+  <li>そこで <code>claude --bg</code> を1回だけ実行する（当時のバージョンは 2.1.228）</li>
+  <li>一覧コマンドで、種別が「background」、作業フォルダが手元のパスであることを確認する</li>
+  <li>確認後は <code>claude stop</code> で片付ける</li>
+</ol>
+<p>結果として、実行は手元で完結し、外部への送信は発生しなかった。</p>
 
         <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
-        <p>2026-08-15、この投稿は<strong>見送りと判断した</strong>。理由は2つある。</p>
-        <p>1つ目は、同じことがすでにできること。長い作業を非同期で走らせる仕組みはチームの規程に組み込み済みで、そちらは結果を整った形で受け取れる。</p>
-        <p>今回の方法は、ログが画面の描画データをそのまま返すため、結果を機械的に読み取れなかった。</p>
-        <p>2つ目は、投稿が言う「Webへ渡る」動きが別のフラグの話だったこと。Web側で動かすかどうかは、扱うデータの機微さに直結する判断になる。</p>
-        <p>混同したまま運用へ入れるわけにはいかない。</p>
-        <ul>
-          <li>裏取りは2段階にした。まず公式ドキュメントで定義を読み、次に安全な場所で1回だけ動かす</li>
-          <li>動かす場所を「空のフォルダ」に限定したのは、外部に何が出るか分からない状態で本番のデータを置いたフォルダを使わないため</li>
-        </ul>
+<p>2026-08-15、この投稿は<strong>見送りと判断した</strong>。理由は2つある。</p>
+<p>1つ目は、同じことがすでにできること。長い作業を非同期で走らせる仕組みはチームの規程に組み込み済みで、監査やテストを担当するサブエージェントはバックグラウンドで起動し、目安の時間の2倍を過ぎたら一度だけ様子を聞き、それでも返事がなければ打ち切って範囲を絞り直す。この形だと結果を整った状態で受け取れる。</p>
+<p>今回の方法は、ログが画面の描画データをそのまま返すため、結果を機械的に読み取れなかった。</p>
+<p>2つ目は、投稿が言う「Webへ渡る」動きが別のフラグの話だったこと。Web側で動かすかどうかは、扱うデータの機微さに直結する判断になる。混同したまま運用へ入れるわけにはいかない。</p>
 
-        <h2 id="bonus"><a class="anchor-link" href="#bonus">#</a> 検証の副産物（いちばん役に立った発見）</h2>
-        <p>確認のために動いているセッションの一覧を出したところ、<strong>承認待ちのまま およそ丸一日 止まっていたセッションが2件</strong>見つかった。</p>
-        <p>指示待ちの表示が出たまま、誰も気づかずに放置されていた形になる。一覧コマンドを叩かなければ、さらに何日か止まったままだったと思われる（この項は筆者の考察）。</p>
-        <ul>
-          <li>得られた学び: 動かしっぱなしの作業は、止まっていても静かなので気づけない</li>
-          <li>対策として、起動時の点検項目に一覧の確認を足すことを検討している（この項は筆者の考察）</li>
-        </ul>
+        <h2 id="sec6"><a class="anchor-link" href="#sec6">#</a> 検証の副産物（いちばん役に立った発見）</h2>
+<p>確認のために動いているセッションの一覧を出したところ、<strong>承認待ちのまま止まっていたセッションが2件</strong>見つかった。起動してからの経過は 24.0時間と 23.5時間（承認待ちになった時刻そのものは記録されないので、待たせた時間はそれ以下）。</p>
+<p>承認待ちの通知は、発生した瞬間に1回出るだけで、見逃すと手掛かりが残らない。動かしっぱなしの作業は、止まっていても静かなので気づけない。</p>
+<ul>
+  <li>対策として、セッションを起動するたびに「返事を待ったまま止まっている他のセッションが無いか」を点検するコマンド（<code>session-check</code>）を作り、起動時の手順に加えた。何も出なければ正常、出たらそのタブを見に行く</li>
+  <li>この点検には回帰テスト（直したことで別のところが壊れていないかを確かめる自動テスト）を21件付けた</li>
+</ul>
 
         <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
-        <p>以下は筆者の考察。</p>
-        <ul>
-          <li>名前が似た機能を1つのものだと思い込む（バックグラウンド化と、Web側での実行）</li>
-          <li>「機能が実在した」を「説明どおりに動く」と読み替える</li>
-          <li>ドキュメントだけで裏取りを終える。逆に、一度も読まずにいきなり本番のフォルダで動かす</li>
-        </ul>
-
-        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
-        <ul>
-          <li><a class="source-link" href="https://x.com/claudecode84/status/2088186254429172010" target="_blank" rel="noopener">@claudecode84 のポスト（X）</a>（取り込み日：2026-08-15。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
-          <li><a class="source-link" href="https://code.claude.com/docs/en/cli-reference" target="_blank" rel="noopener">Claude Code 公式ドキュメント CLIリファレンス</a></li>
-          <li><a class="source-link" href="https://support.claude.com/en/articles/14554000-claude-code-power-user-tips" target="_blank" rel="noopener">Claude ヘルプセンター「Claude Code power user tips」</a></li>
-        </ul>
+<p>以下は筆者の考察。</p>
+<ul>
+  <li>名前が似た機能を1つのものだと思い込む（バックグラウンド化と、Web側での実行）</li>
+  <li>「機能が実在した」を「説明どおりに動く」と読み替える</li>
+  <li>ドキュメントだけで裏取りを終える。逆に、一度も読まずにいきなり本番のフォルダで動かす</li>
+</ul>
 
         <!-- 前後ナビゲーション -->
         <nav class="note-nav">
           <a href="claude-max-parallel-terminals.html" class="note-nav-item prev">
             <div class="nav-label">← 前のノート</div>
-            <div class="nav-title">【見送り】並列12ターミナルの体験談は、うちの事故履歴とかみ合わなかった</div>
+            <div class="nav-title">【見送り】「個人開発なら並列12ターミナルが妥当」を検証した結果、うちの事故記録では台数より分け方が先だった</div>
           </a>
-          <span></span>
+
         </nav>
       </article>
 
@@ -142,13 +138,13 @@
         <div class="toc-box">
           <div class="toc-title">目次</div>
           <ul class="toc-list" id="toc">
+            <li><a href="#source">出典</a></li>
             <li><a href="#why">なぜ重要か</a></li>
             <li><a href="#what">何が紹介されていたか</a></li>
-            <li><a href="#verify">確かめたこと（事実）</a></li>
+            <li><a href="#sec4">確かめたこと（事実）</a></li>
             <li><a href="#ourcase">うちの体制ではこう使う</a></li>
-            <li><a href="#bonus">検証の副産物</a></li>
+            <li><a href="#sec6">検証の副産物（いちばん役に立った発見）</a></li>
             <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
-            <li><a href="#source">出典</a></li>
           </ul>
         </div>
       </aside>

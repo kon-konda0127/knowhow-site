@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="一度うまくいった手順をSKILL.mdに固定し、AIが自分で呼び出せるようにする考え方。固定する対象と、二重管理の落とし穴。">
-  <title>【見送り】手順のスキル固定（Codex Skills） | アラフォーから始める趣味</title>
+  <title>【見送り】「うまくいった手順はCodexのスキルに固定する」を検証した結果、同じ手順が運用規約の側に既にあった | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="ai-theme">
@@ -27,11 +27,11 @@
     <header class="page-header header-ai">
       <div class="page-header-inner">
         <a href="../ai.html" class="page-header-back">← AI検証へ</a>
-        <h1>【見送り】手順のスキル固定（Codex Skills）は、うちでは重複だった</h1>
+        <h1>【見送り】「うまくいった手順はCodexのスキルに固定する」を検証した結果、同じ手順が運用規約の側に既にあった</h1>
         <div class="note-meta">
           <span>カテゴリ: AI検証 &gt; Codex活用</span>
           <span>取り込み: 2026-08-14</span>
-          <span class="reading-time">📖 要点30秒・全文3分</span>
+          <span class="reading-time">📖 要点30秒・全文4分</span>
         </div>
       </div>
     </header>
@@ -55,66 +55,68 @@
           </dl>
         </div>
 
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+<ul>
+  <li>@UT_Codex のポスト（X）: <a class="source-link" href="https://x.com/UT_Codex/status/2087849152768340303" target="_blank" rel="noopener">https://x.com/UT_Codex/status/2087849152768340303</a> （取り込み日：2026-08-14。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
+</ul>
+
         <div class="tldr-box">
           <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
           <ul>
             <li>一度うまくいった手順を会話の中に置いたままにすると、次に同じ品質が出ない</li>
-            <li>対策は、手順書をファイル（<code>SKILL.md</code>）にして<strong>AIが自分で呼び出せる</strong>ようにすること</li>
+            <li>対策は、手順書をファイル（SKILL.md）にしてAIが自分で呼び出せるようにすること</li>
             <li>固定する対象は、レビュー基準・テストコマンド・リリース手順など「繰り返す作業」</li>
-            <li>自分の体制では<strong>見送り</strong>にした。同じ手順が別の場所ですでに固定されていたため</li>
+            <li>自分の体制では<strong>見送り</strong>にした。同じ手順が運用規約のファイル側ですでに固定されていたため</li>
           </ul>
         </div>
 
         <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
-        <p>これを読むと、AIに毎回同じ説明を書き直す時間がなくなる。</p>
-        <p>うまくいったやり方は、たいてい会話の中に埋もれて消える。次に頼む時は言い方が変わり、出てくるものも変わる。手順をファイルとして残せば、そのばらつきが減る。</p>
+<p>これを読むと、AIに毎回同じ説明を書き直す時間がなくなる。</p>
+<p>うまくいったやり方は、たいてい会話の中に埋もれて消える。次に頼む時は言い方が変わり、出てくるものも変わる。手順をファイルとして残せば、そのばらつきが減る。</p>
 
         <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
-        <ul>
-          <li>Skills（スキル）とは、手順書を <code>SKILL.md</code> というファイルに書いておき、<strong>AIが必要な場面で自分で呼び出す</strong>仕組み</li>
-          <li>固定する対象は、一度うまくいって再現できた手順に限る。レビュー基準・テストコマンド・リリース手順などが例</li>
-          <li>元の投稿は、スキルを作るための材料をどこに置き、どのスキルに渡すかという<strong>保存場所の使い分け</strong>を図解していた</li>
-          <li>効く理由（この項は筆者の考察）: プロンプトは会話ごとに消えるが、ファイルは残る。品質のばらつきの多くは「毎回言い方が違うこと」から生まれる</li>
-        </ul>
+<ul>
+  <li>Skills（スキル）とは、手順書を <code>SKILL.md</code> というファイルに書いておき、<strong>AIが必要な場面で自分で呼び出す</strong>仕組み</li>
+  <li>固定する対象は、一度うまくいって再現できた手順に限る。レビュー基準・テストコマンド・リリース手順などが例</li>
+  <li>元の投稿は、スキルを作るための材料をどこに置き、どのスキルに渡すかという<strong>保存場所の使い分け</strong>を図解していた</li>
+  <li>効く理由（この項は筆者の考察）: プロンプトは会話ごとに消えるが、ファイルは残る。品質のばらつきの多くは「毎回言い方が違うこと」から生まれる</li>
+</ul>
 
         <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
-        <ul>
-          <li>当チームはCodexを「社外監査人」として使っている。監査を頼む時の定型指示は、運用規約のファイルにすでに文書化してある</li>
-          <li>2026-08-14にこの投稿を検討し、<strong>見送りと判断した</strong>。定型指示は規約側で固定できており、Codex側にもスキル基盤を持つ追加の価値が小さいため（今必要ないものは作らない、という原則）</li>
-          <li>残った学び: 手順を固定する前に「それはもうどこかで固定されていないか」を確認する。同じ手順が二か所にあると、どちらが正しいのか分からなくなる</li>
-        </ul>
+<ul>
+  <li>当チームはCodexを「社外監査人」として使っている。Claude系のAIが作ったものをClaude系だけで採点すると身内の目になるので、別系統のCodexに読み取り専用で「バグ・セキュリティ問題・改善点を指摘して、修正はしないで」と頼む。機密は渡さない</li>
+  <li>この頼み方は、運用規約のファイル（<code>codex-audit.md</code>）に文章として固定してあり、毎回書き直してはいない</li>
+  <li>2026-08-14にこの投稿を検討し、<strong>見送りと判断した</strong>。同じ指示をCodex側のスキルにも置くと正本が2か所にでき、片方を直した時にもう片方が古いまま呼び出され続ける。今必要ないものは作らない、という原則</li>
+  <li>見送ったのは「重複だから」であって「固定するのが違うから」ではない。当チームにも、一度うまくいった手順を固定する仕組みが2つある。①Claude Code側のスキル（2026-08-17時点で12本。文章を書く前に読む語彙の規範、画面を作る前に読むデザインの規範など、特定の頼み方をした時だけ読まれる）②失敗台帳から作った「完了と報告する前に確かめること」のチェックリスト（台帳50件をもとに、判断力ではなく手順で拾える失敗を固定したもの）</li>
+  <li>残った学び: 手順を固定する前に「それはもうどこかで固定されていないか」を確認する。同じ手順が二か所にあると、どちらが正しいのか分からなくなる。翌日、別の投稿（Notionの表をスキルの管理表に変換する使い方）にも同じ基準を当てはめて見送った。基準が1つ決まっていると、次の判断が速い</li>
+</ul>
 
-        <h2 id="try"><a class="anchor-link" href="#try">#</a> 試すなら <span class="note-caution">※SNS情報・未検証</span></h2>
-        <p>導入する場合は、事前にリポジトリURL・作者・ライセンスを自分で確認してから進めること。</p>
-        <ol>
-          <li>繰り返し出している指示を1つ選ぶ（レビュー基準・テスト実行・リリース手順など）</li>
-          <li>その手順を <code>SKILL.md</code> の形式で書き出す</li>
-          <li>AIが自分で呼び出せる場所に置く</li>
-        </ol>
-        <p>※具体的な設置場所・コマンドは元投稿の図解に依存しており、このノートでは未検証（要確認）</p>
+        <h2 id="practice"><a class="anchor-link" href="#practice">#</a> 試すなら <span class="note-caution">※SNS情報・未検証</span></h2>
+<p>導入する場合は、事前にリポジトリURL・作者・ライセンスを自分で確認してから進めること。</p>
+<ol>
+  <li>繰り返し出している指示を1つ選ぶ（レビュー基準・テスト実行・リリース手順など）</li>
+  <li>その手順を <code>SKILL.md</code> の形式で書き出す</li>
+  <li>AIが自分で呼び出せる場所に置く</li>
+</ol>
+<p>※具体的な設置場所・コマンドは元投稿の図解に依存しており、このノートでは未検証（要確認）</p>
 
         <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
-        <p>以下は筆者の考察。</p>
-        <ul>
-          <li>まだ一度も成功していない手順を先に固定してしまう（固定するのは再現できた手順だけ）</li>
-          <li>同じ手順を複数の場所に置き、正本がどれか分からなくなる</li>
-          <li>固定したあと見直さない。前提が変わっても、古い手順が呼び出され続ける</li>
-        </ul>
-
-        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
-        <ul>
-          <li><a class="source-link" href="https://x.com/UT_Codex/status/2087849152768340303" target="_blank" rel="noopener">@UT_Codex のポスト（X）</a>（取り込み日：2026-08-14。本文の直接転記はせず、要約と自分の文脈のみを記載）</li>
-        </ul>
+<p>以下は筆者の考察。</p>
+<ul>
+  <li>まだ一度も成功していない手順を先に固定してしまう（固定するのは再現できた手順だけ）</li>
+  <li>同じ手順を複数の場所に置き、正本がどれか分からなくなる</li>
+  <li>固定したあと見直さない。前提が変わっても、古い手順が呼び出され続ける</li>
+</ul>
 
         <!-- 前後ナビゲーション -->
         <nav class="note-nav">
           <a href="codex-model-router.html" class="note-nav-item prev">
             <div class="nav-label">← 前のノート</div>
-            <div class="nav-title">【採用】タスクの重さでモデルを振り分ける（model-routerは見送り）</div>
+            <div class="nav-title">【採用】「Codexのsubagentごとにモデルを振り分ける」を検証した結果、ツール本体は特定できず、振り分けの考え方だけが残った</div>
           </a>
           <a href="subagent-parallel-cost.html" class="note-nav-item next">
             <div class="nav-label">次のノート →</div>
-            <div class="nav-title">【見送り】サブエージェントの並列コスト対策は、うちでは重複だった</div>
+            <div class="nav-title">【見送り】「サブエージェントを設定なしで並列に走らせると利用量が膨らむ」を検証した結果、対策3点はうちの規程に既にあった</div>
           </a>
         </nav>
       </article>
@@ -124,12 +126,12 @@
         <div class="toc-box">
           <div class="toc-title">目次</div>
           <ul class="toc-list" id="toc">
+            <li><a href="#source">出典</a></li>
             <li><a href="#why">なぜ重要か</a></li>
             <li><a href="#how">しくみ（なぜ効くか）</a></li>
             <li><a href="#ourcase">うちの体制ではこう使う</a></li>
-            <li><a href="#try">試すなら</a></li>
+            <li><a href="#practice">試すなら</a></li>
             <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
-            <li><a href="#source">出典</a></li>
           </ul>
         </div>
       </aside>

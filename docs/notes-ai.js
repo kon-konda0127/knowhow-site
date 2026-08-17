@@ -19,9 +19,9 @@
 const NOTES_AI = [
   {
     id: "claude-code-html-report-skill",
-    title: "【採用】Claude Code HTML出力をコンサル品質に整えるスキル",
+    title: "【採用】「Claude CodeのHTML資料をコンサル品質に整えるスキル」を検証した結果、中身は作法書だけで、条件2つ付きで入れられた",
     verdict: "採用",
-    verdictReason: "判断基準を作法書として渡す発想を、資料づくりにも取り入れる（導入はこれから）",
+    verdictReason: "判断基準を作法書として渡す発想を、資料づくりにも取り入れる。入れる前に3点を見て問題なし、条件2つ付きで2026-08-16に導入",
     category: "AI検証 > Claude Code活用",
     tags: ["#ClaudeCode", "#スキル", "#HTML出力", "#資料作成", "#採用"],
     points: [
@@ -29,14 +29,14 @@ const NOTES_AI = [
       "「HTMLで出して」と言った瞬間だけ働き、枠・グラデ・絵文字を禁止し完成済みCSSを使わせる",
       "各セクションは「見出し→結論1文→根拠」の順で強制。図解は5つの型から選ばせ自由に描かせない",
       "効く理由は「センス良く」ではなく判断基準を作法書として渡すから。毎回同じ品質が出る",
-      "導入コマンドはSNS情報・未検証。リポジトリの裏取りをしてから"
+      "紹介の導入コマンドは使わず手動配置。入れる前に同名の複製・外部送信・インストール時フックの3点を見た（2026-08-16導入）"
     ],
     url: "notes/claude-code-html-report-skill.html",
     date: "2026-08-09"
   },
   {
     id: "codex-model-router",
-    title: "【採用】タスクの重さでモデルを振り分ける（ツールとしてのmodel-routerは見送り）",
+    title: "【採用】「Codexのsubagentごとにモデルを振り分ける」を検証した結果、ツール本体は特定できず、振り分けの考え方だけが残った",
     verdict: "採用",
     verdictReason: "考え方のみ採用。ツール本体は裏取りで実体を特定できず、2026-08-16に導入見送り（npmに同名の無関係パッケージが実在）",
     category: "AI検証 > Codex活用",
@@ -53,7 +53,7 @@ const NOTES_AI = [
   },
   {
     id: "codex-skills-fixation",
-    title: "【見送り】手順のスキル固定（Codex Skills）は、うちでは重複だった",
+    title: "【見送り】「うまくいった手順はCodexのスキルに固定する」を検証した結果、同じ手順が運用規約の側に既にあった",
     verdict: "見送り",
     verdictReason: "重複。同じ定型指示を運用規約のファイル側ですでに固定していたため、二重に持つ意味がなかった",
     category: "AI検証 > Codex活用",
@@ -71,7 +71,7 @@ const NOTES_AI = [
   },
   {
     id: "subagent-parallel-cost",
-    title: "【見送り】サブエージェントの並列コスト対策は、うちでは重複だった",
+    title: "【見送り】「サブエージェントを設定なしで並列に走らせると利用量が膨らむ」を検証した結果、対策3点はうちの規程に既にあった",
     verdict: "見送り",
     verdictReason: "重複。時間の目安・停止条件・作業の振り分けを、すでにチーム規程に明文化していたため",
     category: "AI検証 > Codex活用",
@@ -88,7 +88,7 @@ const NOTES_AI = [
   },
   {
     id: "loop-engineering",
-    title: "【採用】AIの自走は、合格基準を先に決める（ループエンジニアリング）",
+    title: "【採用】「Codexを自走させる5段階のループ設計」を検証した結果、採れたのは「合格基準を先に決める」1点だけだった",
     verdict: "採用",
     verdictReason: "採用したのは「検証基準の形式化」1点のみ。承認スキップの推奨は読み取り専用の原則と衝突するため不採用",
     category: "AI検証 > エージェント設計",
@@ -105,7 +105,7 @@ const NOTES_AI = [
   },
   {
     id: "chatgpt-desktop-linux",
-    title: "【見送り】ChatGPTデスクトップのLinux版は、うちの環境では関係なかった",
+    title: "【見送り】「ChatGPTデスクトップにLinux版が登場」を検証した結果、macOSのうちでは動かす場所が無かった",
     verdict: "見送り",
     verdictReason: "環境不一致。当方はmacOS環境のため、Linux版プレビューは動かす場所が無かった",
     category: "AI検証 > ツールの見極め",
@@ -122,7 +122,7 @@ const NOTES_AI = [
   },
   {
     id: "notion-skill-database",
-    title: "【見送り】スキルを表で管理する機能は、置き場所が二重になるので見送った",
+    title: "【見送り】「Notionの表をスキルの管理表に変換できる」を検証した結果、正本が2か所になるので置き場所は増やさなかった",
     verdict: "見送り",
     verdictReason: "重複。スキルの正本はすでに手元のフォルダにあり、管理場所がもう一つ増えるため",
     category: "AI検証 > スキル運用",
@@ -140,7 +140,7 @@ const NOTES_AI = [
   },
   {
     id: "claude-max-parallel-terminals",
-    title: "【見送り】並列12ターミナルの体験談は、うちの事故履歴とかみ合わなかった",
+    title: "【見送り】「個人開発なら並列12ターミナルが妥当」を検証した結果、うちの事故記録では台数より分け方が先だった",
     verdict: "見送り",
     verdictReason: "環境不一致と重複。ストア申請まわりは守備範囲外で、並列運用そのものはすでに実施済み",
     category: "AI検証 > ツールの見極め",
@@ -157,7 +157,7 @@ const NOTES_AI = [
   },
   {
     id: "claude-bg-vs-cloud",
-    title: "【見送り】「記号ひとつでWebに投げられる」を確かめたら、別々の機能の話だった",
+    title: "【見送り】「記号ひとつでタスクをWebへ投げられる」を検証した結果、バックグラウンド化とWeb実行は別々の機能だった",
     verdict: "見送り",
     verdictReason: "重複。ローカルでの非同期実行はすでに仕組みとして持っており、さらに投稿の説明が公式の定義と食い違っていた",
     category: "AI検証 > ツールの見極め",

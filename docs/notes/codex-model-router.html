@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>【採用】タスクの重さでモデルを振り分ける（ツールとしてのmodel-routerは見送り） | アラフォーから始める趣味</title>
+  <meta name="description" content="タスクの重さでモデルを使い分けると、品質を保ったままAI利用コストの構造が変わる">
+  <title>【採用】「Codexのsubagentごとにモデルを振り分ける」を検証した結果、ツール本体は特定できず、振り分けの考え方だけが残った | アラフォーから始める趣味</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body class="ai-theme">
@@ -26,11 +27,11 @@
     <header class="page-header header-ai">
       <div class="page-header-inner">
         <a href="../ai.html" class="page-header-back">← AI検証へ</a>
-        <h1>【採用】タスクの重さでモデルを振り分ける（ツールとしてのmodel-routerは見送り）</h1>
+        <h1>【採用】「Codexのsubagentごとにモデルを振り分ける」を検証した結果、ツール本体は特定できず、振り分けの考え方だけが残った</h1>
         <div class="note-meta">
           <span>カテゴリ: AI検証 &gt; Codex活用</span>
-          <span>更新: 2026-08-16</span>
-          <span class="reading-time">📖 要点30秒・全文3分</span>
+          <span>取り込み: 2026-08-09</span>
+          <span class="reading-time">📖 要点30秒・全文6分</span>
         </div>
       </div>
     </header>
@@ -48,91 +49,86 @@
 
         <div class="verdict-panel is-adopt">
           <dl>
-            <dt>判定</dt><dd><span class="verdict verdict-adopt">採用</span>（2026-08-14）<strong>※採ったのは考え方のみ。ツールの導入は2026-08-16に見送り</strong></dd>
+            <dt>判定</dt><dd><span class="verdict verdict-adopt">採用</span>（2026-08-14）※採ったのは考え方のみ。ツールの導入は2026-08-16に見送り</dd>
             <dt>理由</dt><dd>振り分けの考え方は自分たちの運用に取り入れた。ただしツール本体は裏取りで実体を特定できず導入しない</dd>
             <dt>次にやること</dt><dd>なし（結論済み）</dd>
           </dl>
         </div>
 
-        <div class="note-callout">
-          <p><strong>この記事を読んで <code>model-router</code> を導入しようとしている方へ。</strong></p>
-          <p>npmには同じ名前の<strong>まったく無関係なパッケージ</strong>が実在します。手順どおりインストールすると別物が入るため、導入しないでください（<a href="#verdict-detail">詳細</a>）。</p>
-        </div>
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+<ul>
+  <li>@UT_Codex（東大Codex研究所）のポスト（X）: <a class="source-link" href="https://x.com/UT_Codex/status/2086331661906796877" target="_blank" rel="noopener">https://x.com/UT_Codex/status/2086331661906796877</a> （取り込み日：2026-08-09。2026-08-17に特定・実際に開いて確認。本文の直接転記はせず要約のみ）</li>
+  <li>npm の同名パッケージ: <a class="source-link" href="https://www.npmjs.com/package/model-router" target="_blank" rel="noopener">https://www.npmjs.com/package/model-router</a> （2026-08-16に確認。無関係な別物）</li>
+  <li>Codex 公式リポジトリの要望 Issue #14039: <a class="source-link" href="https://github.com/openai/codex/issues/14039" target="_blank" rel="noopener">https://github.com/openai/codex/issues/14039</a> （2026-08-17に確認。2026-08-05 に completed で close）</li>
+</ul>
 
         <div class="tldr-box">
           <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
           <ul>
             <li>タスクの重さでモデルを使い分けると、品質を保ったままAI利用コストの構造が変わる</li>
             <li>重い判断（設計・レビュー）は上位モデル、定型的な繰り返し作業は軽量モデルへ</li>
-            <li><strong><code>model-router</code> という名前のツールは導入しないでください。</strong>npmに同名の無関係なパッケージが実在します</li>
-            <li>採用したのは考え方だけ。ツールを入れなくても、振り分ける習慣だけで今日から効きます</li>
+            <li><strong><code>model-router</code> という名前のツールは導入しない。</strong> npmに同名の無関係なパッケージが実在する（後述）</li>
+            <li>採用したのは考え方だけ。ツールを入れなくても、振り分ける習慣だけで今日から効く</li>
           </ul>
         </div>
 
         <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
-        <p>タスクの重さに応じてAIモデルを自動で使い分けられると、品質を保ったままAI利用コストの構造そのものを変えられる。</p>
-        <p>全タスクを最上位モデルに任せる使い方は、利用枠がすぐ尽き、費用もかさむ。これはAIコーディング全般に効く考え方で、ツールを入れなくても「振り分けの発想」だけで今日から使える。</p>
+<p>タスクの重さに応じてAIモデルを使い分けられると、品質を保ったままAI利用コストの構造そのものを変えられる。</p>
+<p>全タスクを最上位モデルに任せる使い方は、利用枠がすぐ尽き、費用もかさむ。これはAIコーディング全般に効く考え方で、ツールを入れなくても「振り分けの発想」だけで今日から使える。</p>
 
         <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
-        <ul>
-          <li>subagent（サブエージェント）とは、親のAIが作業の一部を子のAIに切り出して並行処理させる仕組み。通常は親も子も同じモデルで動く</li>
-          <li>子のAIごとに使うモデルを変えられれば、重い判断と軽い繰り返し作業でコストにメリハリをつけられる</li>
-          <li>振り分けの考え方: 重い判断（設計・レビュー・要件整理）は上位モデル、定型的な繰り返し作業（コード生成・変換）は軽量モデル</li>
-          <li>効く理由: AI作業の大半は「軽い作業」で、そこに最上位モデルの単価を払う必要がない</li>
-          <li>判断の質が結果を左右する少数の場面にだけ、高いモデルを集中させる</li>
-        </ul>
+<ul>
+  <li>subagent（サブエージェント）とは、親のAIが作業の一部を子のAIに切り出して並行処理させる仕組み。通常は親も子も同じモデルで動く</li>
+  <li>子のAIごとに使うモデルを変えられれば、重い判断と軽い繰り返し作業でコストにメリハリをつけられる</li>
+  <li>振り分けの考え方: 重い判断（設計・レビュー・要件整理）は上位モデル、定型的な繰り返し作業（コード生成・変換）は軽量モデル</li>
+  <li>効く理由: AI作業の大半は「軽い作業」で、そこに最上位モデルの単価を払う必要がない</li>
+  <li>判断の質が結果を左右する少数の場面にだけ、高いモデルを集中させる</li>
+  <li>ただし<strong>どこで線を引くかを決めるのは人間の仕事</strong>。判断が要る仕事まで軽いモデルに振ると、品質のほうが落ちる</li>
+</ul>
 
         <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
-        <ul>
-          <li>この振り分けは、当サイトの開発体制で<strong>人力で実践しているもの</strong>と同じ発想</li>
-          <li>司令塔（Claude）が設計と検収を握り、読み書き量の多い作業は定額のCodexへ、Google連携の確認は無料枠のGeminiへ逃がしている（体制規約として文書化済み）</li>
-          <li><strong>ツールを入れなくても、「このタスクは判断が要るか、繰り返しか」で振り分ける習慣だけでコスト効果がある</strong></li>
-        </ul>
+<ul>
+  <li>この振り分けは、当サイトの開発体制で<strong>人力で実践しているもの</strong>と同じ発想</li>
+  <li>サブエージェント7体には役ごとに使うモデルを固定している（2026年8月時点）。仕様書係はいちばん軽いモデル、テスト役・監査役・校正役・機微判定の4体は標準のモデル、監査役だけは大きな案件で上位モデルへ引き上げる。画面の初版と記事の初版を書く2体は親のモデルを継ぐ</li>
+  <li>外部のAIも同じ発想で分けている。司令塔（Claude）が設計と検収を握り、読み書き量の多い作業は定額のCodexへ読み取り専用で、Google連携の確認は無料枠のGeminiへ控えめに（体制規約として文書化済み）</li>
+  <li>同じ考え方の延長で、2026-08-17には記事の初版を書くAIをいつもより軽いモデルで1本走らせる試しもした（結果は移行の記録に1行残してある）</li>
+  <li><strong>ツールを入れなくても、「このタスクは判断が要るか、繰り返しか」で振り分ける習慣だけでコスト効果がある</strong></li>
+</ul>
 
-        <h2 id="verdict-detail"><a class="anchor-link" href="#verdict-detail">#</a> 導入を見送った理由（2026-08-16 裏取りの結果）</h2>
-        <p>当初は「ツールでも取り入れる」と書いていたが、実際に調べたところ<strong>導入対象そのものを特定できなかった</strong>ため見送った。理由は3つ。</p>
+        <h2 id="sec5"><a class="anchor-link" href="#sec5">#</a> 導入を見送った理由（2026-08-16 裏取りの結果）</h2>
+<p>当初は「ツールでも取り入れる」と書いていたが、実際に調べたところ<strong>導入対象そのものを特定できなかった</strong>ため見送った。理由は3つ。</p>
+<h3>1. 同じ名前で、まったく無関係なパッケージが実在する</h3>
+<p>npmには <code>model-router</code> という名前のパッケージが確かに存在する。だが中身は<strong>2012-12-21に初版が公開されたサーバー用のルーティングライブラリ</strong>（最終更新2024-04-09）で、AIのモデル振り分けとは何の関係もない。リポジトリ欄も未設定だった。</p>
+<p><strong>元の紹介手順どおりに「model-routerをインストール」すると、この別物が入る。</strong> 悪意のある偽物ではなく、たまたま同じ名前のパッケージが先に登録されていただけだ。それでも、入れれば目的とは違うものが入る。</p>
+<h3>2. 該当するツールのリポジトリ・作者が特定できない</h3>
+<p>紹介元の投稿にはリポジトリURLも作者名もなく、GitHubを検索しても該当するツールは見つからなかった。名前が似た汎用のLLMルーターは複数あるが、いずれも別物である。</p>
+<h3>3. 機能の実体はCodex本体の設定で、現在は標準で使えない可能性が高い</h3>
+<p>調べた限り、この機能は第三者ツールではなくCodex CLI本体の設定（<code>config.toml</code> の subagent 設定）に関するものだった。公式リポジトリには「サブエージェントごとにモデルを指定できるようにしてほしい」という<strong>未解決の要望が複数</strong>上がっている。</p>
+<p>つまり標準では実現できていない。</p>
+<p>さらに、あるバージョン以降はサブエージェントが親の設定を引き継ぐ仕様に変わったという報告もある。</p>
+<p><strong>2026-08-17 追記（この節の前提が変わった）</strong>: 上の「未解決の要望が複数」は、この記事を書いた8/16の時点で既に古かった。公式リポジトリの要望 <a class="source-link" href="https://github.com/openai/codex/issues/14039" target="_blank" rel="noopener">Issue #14039「Allow per-subagent model/provider/profile selection」</a> は <strong>2026-08-05 に completed で close</strong> されており、閉じる際に OpenAI 側から「サブエージェントはモデル・推論強度・プロバイダ・役割の設定に対応した」と示されている（エージェント定義ファイルに <code>model</code> を書く形。<strong>当方は未検証</strong>）。つまり<strong>Codex 本体で振り分けができるようになっていた</strong>。この変化は「第三者ツール <code>model-router</code> を入れる理由をさらに減らす」方向なので、<strong>見送りという結論は変わらない</strong>（理由1・2は不変。将来 Codex 側でサブエージェントを使うなら、第三者ツールではなく本体の設定を一次情報で確認する）。原因は、Web検索の要約を根拠にして Issue の状態欄を自分で開かなかったこと。</p>
 
-        <h3>1. 同じ名前で、まったく無関係なパッケージが実在する</h3>
-        <p>npmには <code>model-router</code> という名前のパッケージが確かに存在する。だが中身は<strong>2012年に公開されたサーバー用のルーティングライブラリ</strong>で、AIのモデル振り分けとは何の関係もない。</p>
-        <p><strong>元の紹介手順どおりに「model-routerをインストール」すると、この別物が入る。</strong>悪意のある偽物ではなく、たまたま同じ名前のパッケージが先に登録されていただけだ。それでも、入れれば目的とは違うものが入る。</p>
-
-        <h3>2. 該当するツールのリポジトリ・作者が特定できない</h3>
-        <p>紹介元の投稿にはリポジトリURLも作者名もなく、GitHubを検索しても該当するツールは見つからなかった。名前が似た汎用のLLMルーターは複数あるが、いずれも別物である。</p>
-
-        <h3>3. 機能の実体はCodex本体の設定で、現在は標準で使えない可能性が高い</h3>
-        <p>調べた限り、この機能は第三者ツールではなくCodex CLI本体の設定に関するものだった。公式リポジトリには「サブエージェントごとにモデルを指定できるようにしてほしい」という<strong>未解決の要望が複数</strong>上がっている。</p>
-        <p>つまり標準では実現できていない。</p>
-        <p>さらに、あるバージョン以降はサブエージェントが親の設定を引き継ぐ仕様に変わったという報告もある。</p>
-        <p><strong>2026-08-17 追記（この節の前提が変わった）</strong>: 上の「未解決の要望が複数」は、この記事を書いた8/16の時点で既に古かった。公式リポジトリの要望 <a class="source-link" href="https://github.com/openai/codex/issues/14039" target="_blank" rel="noopener">Issue #14039「Allow per-subagent model/provider/profile selection」</a> は<strong>2026-08-05 に completed で close</strong>されており、閉じる際に OpenAI 側から「サブエージェントはモデル・推論強度・プロバイダ・役割の設定に対応した」と示されている（エージェント定義ファイルに model を書く形。<strong>当方は未検証</strong>）。つまり<strong>Codex 本体で振り分けができるようになっていた</strong>。この変化は「第三者ツール model-router を入れる理由をさらに減らす」方向なので、<strong>見送りという結論は変わらない</strong>（理由1・2は不変。将来 Codex 側でサブエージェントを使うなら、第三者ツールではなく本体の設定を一次情報で確認する）。原因は、Web検索の要約を根拠にして Issue の状態欄を自分で開かなかったこと。</p>
-
-        <h2 id="nolose"><a class="anchor-link" href="#nolose">#</a> それでも損はしなかった</h2>
-        <p>見送りで失ったものは無い。<strong>このツールが自動化しようとしていた考え方（重い判断は上位モデル、繰り返し作業は軽いモデル）を、すでに人力の運用ルールとして持っていた</strong>からだ。</p>
-        <p>道具を入れる前に「それで何が良くなるのか」を自分の言葉で言えるなら、道具が無くても価値の大半は先に取れている。</p>
+        <h2 id="sec6"><a class="anchor-link" href="#sec6">#</a> それでも損はしなかった</h2>
+<p>見送りで失ったものは無い。<strong>このツールが自動化しようとしていた考え方（重い判断は上位モデル、繰り返し作業は軽いモデル）を、すでに人力の運用ルールとして持っていた</strong>からだ。</p>
+<p>道具を入れる前に「それで何が良くなるのか」を自分の言葉で言えるなら、道具が無くても価値の大半は先に取れている。</p>
 
         <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
-        <ul>
-          <li><strong>名前が一致することを、同じものだと思い込む。</strong>偽物がなりすます場合だけでなく、無関係なパッケージが先に同じ名前で登録されている場合もある</li>
-          <li>全タスクに同じ最上位モデルを使う（コスト過多になりやすい）</li>
-          <li>逆に、判断が要るタスクまで軽量モデルに振ると品質が落ちる</li>
-          <li><strong>振り分け基準を決めるのは人間の仕事</strong>（この2項は筆者の考察）</li>
-        </ul>
-
-        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
-        <ul>
-          <li><a class="source-link" href="https://x.com/UT_Codex/status/2086331661906796877" target="_blank" rel="noopener">@UT_Codex（東大Codex研究所）のポスト（X）</a>（取り込み日：2026-08-09。2026-08-17 に個別ポストを特定・実際に開いて確認。本文の直接転記はせず要約のみ）</li>
-          <li>2026-08-16 追記: 導入可否の裏取りを実施し、上記のとおり見送りと判断した</li>
-          <li>2026-08-17 追記: Issue #14039 が 8/5 に対応済みで閉じられていたことを確認し、理由3の前提を更新（結論は変わらず）</li>
-        </ul>
+<ul>
+  <li><strong>名前が一致することを、同じものだと思い込む。</strong> 偽物がなりすます場合だけでなく、無関係なパッケージが先に同じ名前で登録されている場合もある。決め手になったのは、作者・リポジトリ欄・初版の公開日</li>
+  <li>全タスクに同じ最上位モデルを使う（コスト過多になりやすい）</li>
+  <li>逆に、判断が要るタスクまで軽量モデルに振ると品質が落ちる</li>
+  <li><strong>振り分け基準を決めるのは人間の仕事</strong>（この2項は筆者の考察）</li>
+</ul>
 
         <!-- 前後ナビゲーション -->
         <nav class="note-nav">
           <a href="claude-code-html-report-skill.html" class="note-nav-item prev">
             <div class="nav-label">← 前のノート</div>
-            <div class="nav-title">【採用】Claude Code HTML出力をコンサル品質に整えるスキル</div>
+            <div class="nav-title">【採用】「Claude CodeのHTML資料をコンサル品質に整えるスキル」を検証した結果、中身は作法書だけで、条件2つ付きで入れられた</div>
           </a>
           <a href="codex-skills-fixation.html" class="note-nav-item next">
             <div class="nav-label">次のノート →</div>
-            <div class="nav-title">【見送り】手順のスキル固定（Codex Skills）は、うちでは重複だった</div>
+            <div class="nav-title">【見送り】「うまくいった手順はCodexのスキルに固定する」を検証した結果、同じ手順が運用規約の側に既にあった</div>
           </a>
         </nav>
       </article>
@@ -142,13 +138,13 @@
         <div class="toc-box">
           <div class="toc-title">目次</div>
           <ul class="toc-list" id="toc">
+            <li><a href="#source">出典</a></li>
             <li><a href="#why">なぜ重要か</a></li>
             <li><a href="#how">しくみ（なぜ効くか）</a></li>
             <li><a href="#ourcase">うちの体制ではこう使う</a></li>
-            <li><a href="#verdict-detail">導入を見送った理由</a></li>
-            <li><a href="#nolose">それでも損はしなかった</a></li>
+            <li><a href="#sec5">導入を見送った理由（2026-08-16 裏取りの結果）</a></li>
+            <li><a href="#sec6">それでも損はしなかった</a></li>
             <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
-            <li><a href="#source">出典</a></li>
           </ul>
         </div>
       </aside>
