@@ -103,6 +103,7 @@
         <p>調べた限り、この機能は第三者ツールではなくCodex CLI本体の設定に関するものだった。公式リポジトリには「サブエージェントごとにモデルを指定できるようにしてほしい」という<strong>未解決の要望が複数</strong>上がっている。</p>
         <p>つまり標準では実現できていない。</p>
         <p>さらに、あるバージョン以降はサブエージェントが親の設定を引き継ぐ仕様に変わったという報告もある。</p>
+        <p><strong>2026-08-17 追記（この節の前提が変わった）</strong>: 上の「未解決の要望が複数」は、この記事を書いた8/16の時点で既に古かった。公式リポジトリの要望 <a class="source-link" href="https://github.com/openai/codex/issues/14039" target="_blank" rel="noopener">Issue #14039「Allow per-subagent model/provider/profile selection」</a> は<strong>2026-08-05 に completed で close</strong>されており、閉じる際に OpenAI 側から「サブエージェントはモデル・推論強度・プロバイダ・役割の設定に対応した」と示されている（エージェント定義ファイルに model を書く形。<strong>当方は未検証</strong>）。つまり<strong>Codex 本体で振り分けができるようになっていた</strong>。この変化は「第三者ツール model-router を入れる理由をさらに減らす」方向なので、<strong>見送りという結論は変わらない</strong>（理由1・2は不変。将来 Codex 側でサブエージェントを使うなら、第三者ツールではなく本体の設定を一次情報で確認する）。原因は、Web検索の要約を根拠にして Issue の状態欄を自分で開かなかったこと。</p>
 
         <h2 id="nolose"><a class="anchor-link" href="#nolose">#</a> それでも損はしなかった</h2>
         <p>見送りで失ったものは無い。<strong>このツールが自動化しようとしていた考え方（重い判断は上位モデル、繰り返し作業は軽いモデル）を、すでに人力の運用ルールとして持っていた</strong>からだ。</p>
@@ -118,8 +119,9 @@
 
         <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
         <ul>
-          <li><a class="source-link" href="https://x.com/UT_Codex" target="_blank" rel="noopener">@UT_Codex（東大Codex研究所）のポスト（X）</a>（取り込み日：2026-08-09 ※個別ポストのURLは未特定）</li>
+          <li><a class="source-link" href="https://x.com/UT_Codex/status/2086331661906796877" target="_blank" rel="noopener">@UT_Codex（東大Codex研究所）のポスト（X）</a>（取り込み日：2026-08-09。2026-08-17 に個別ポストを特定・実際に開いて確認。本文の直接転記はせず要約のみ）</li>
           <li>2026-08-16 追記: 導入可否の裏取りを実施し、上記のとおり見送りと判断した</li>
+          <li>2026-08-17 追記: Issue #14039 が 8/5 に対応済みで閉じられていたことを確認し、理由3の前提を更新（結論は変わらず）</li>
         </ul>
 
         <!-- 前後ナビゲーション -->
