@@ -350,6 +350,67 @@ button { font: inherit; cursor: pointer; }
   .verdict-panel dt { margin-top: 8px; }
 }
 
+/* ノート間の前後移動（2026-08-20・T125）。
+   ここで定義する6種（note-nav / note-nav-item / nav-label / nav-title / prev / next）は
+   **サイト開設時からHTMLにあった**が style.css に定義が無く、
+   ラベルとタイトルが同じ大きさの下線付きリンク4本として縦に並ぶだけだった
+   （T123 で新設した検査 E1 が初めて機械で検出。それまでは人も気づいていない）。
+   ⚠ E1 が挙げた未定義クラスは全部で12種あるが、**残る6種
+   （header-ai / header-column / header-diet / note-table / notes / source-link）は
+   ここに足さない**。外しても計算済みスタイル・位置とも同一で、**何もしていない**と実測で
+   確かめたため、HTML から外すのが正しい（→ T126）。**検査を通すためだけの定義は書かない。**
+   既存の設計言語（--paper-3 の面・--line-soft の輪郭・--serif の見出し）に合わせる。 */
+.note-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 42px 0 8px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+/* ⚠ 詳細度に注意。514行目の `.note-body a, .note-page a` が
+   text-decoration: underline を持っており、`.note-nav-item`（クラス1つ＝0,1,0）では
+   `.note-body a`（0,1,1）に負ける。しかも**下線は祖先の a から子へ描かれる**ので、
+   `.nav-title` 側で text-decoration: none を書いても消えない（実測で確認）。
+   そのため `.note-nav .note-nav-item`（0,2,0）で上書きする。 */
+.note-nav .note-nav-item {
+  display: block;
+  /* グリッド子には min-width:0 を併せる。長い記事名で枠が画面外へはみ出すため
+     （2026-08-14 に同型の不具合があり rules/verification.md F節に記録がある） */
+  min-width: 0;
+  padding: 14px 16px;
+  background: var(--paper-3);
+  border: 1px solid var(--line-soft);
+  text-decoration: none;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.note-nav .note-nav-item:hover { border-color: var(--theme); background: var(--paper-2); }
+/* prev / next は対の修飾。prev は既定の左寄せに頼れるが、**対の片方だけ定義すると
+   次に読む人が「prev は未実装か」と迷う**ので明示する（無意味な定義ではなく、
+   対であることの表明）。 */
+.note-nav .note-nav-item.prev { text-align: left; }
+.note-nav .note-nav-item.next { text-align: right; }
+/* 先頭・末尾の記事は片側しか無い。1つだけの時は「次へ」を右の列に置く */
+.note-nav .note-nav-item.next:only-child { grid-column: 2; }
+.nav-label {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .06em;
+}
+.nav-title {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.note-nav .note-nav-item:hover .nav-title { color: var(--theme); }
+@media (max-width: 640px) {
+  .note-nav { grid-template-columns: 1fr; gap: 10px; }
+  .note-nav .note-nav-item.next { text-align: left; }
+  .note-nav .note-nav-item.next:only-child { grid-column: 1; }
+}
+
 /* 注意喚起パネル（公開後に判明した訂正・警告を本文の先頭に置く。2026-08-16 追加） */
 .note-callout {
   margin: 0 0 26px;
