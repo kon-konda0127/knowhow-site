@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="#ClaudeCode           #利用上限           #自動再開           #裏取り           #採用">
+  <title>【採用】「上限に当たっても自動で再開する」を検証した結果、機能は既に入っていたが、投稿の説明と2点食い違った | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ai-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>学びと、作る喜びで、未来を広げる。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../index.html">はじめに</a>
+        <a href="../diet.html">ダイエット</a>
+        <a href="../ai.html" class="active">AI検証</a>
+        <a href="../column.html">コラム</a>
+      </nav>
+    </header>
+
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI検証へ</a>
+        <h1>【採用】「上限に当たっても自動で再開する」を検証した結果、機能は既に入っていたが、投稿の説明と2点食い違った</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI検証 &gt; Claude Code活用</span>
+          <span>取り込み: 2026-08-20</span>
+          <span class="reading-time">📖 要点30秒・全文4分</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#ClaudeCode</span>
+          <span class="note-tag">#利用上限</span>
+          <span class="note-tag">#自動再開</span>
+          <span class="note-tag">#裏取り</span>
+          <span class="note-tag">#採用</span>
+        </div>
+
+        <div class="verdict-panel is-adopt">
+          <dl>
+            <dt>判定</dt><dd><span class="verdict verdict-adopt">採用</span>（2026-08-20）※既定で入っており、こちらで入れる操作は不要だった</dd>
+            <dt>理由</dt><dd>機能は実在し、うちのバージョンにも入っている。ただし投稿の説明と食い違う点が2つあり、そのまま信じると期待が外れる</dd>
+            <dt>次にやること</dt><dd>なし。実際に上限へ当たった時の挙動だけは未検証なので、当たった日に記録する</dd>
+          </dl>
+        </div>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+<ul>
+  <li>@claudecode_love のポスト（X）: <a class="source-link" href="https://x.com/claudecode_love/status/2089891600445129149" target="_blank" rel="noopener">https://x.com/claudecode_love/status/2089891600445129149</a> （取り込み日：2026-08-20。<strong>本文の直接転記はせず、要約と自分の文脈のみを記載</strong>）</li>
+  <li>裏取りに使った第三者の記事: <a class="source-link" href="https://clauding.de/en/posts/claude-code-2-1-234" target="_blank" rel="noopener">https://clauding.de/en/posts/claude-code-2-1-234</a> ／ <a class="source-link" href="https://www.havoptic.com/tools/claude-code" target="_blank" rel="noopener">https://www.havoptic.com/tools/claude-code</a></li>
+</ul>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
+          <ul>
+            <li>投稿の主張は「<strong>2.1.234 で、上限に当たっても自分で待って再開するようになった</strong>」</li>
+            <li><strong>機能は実在した。</strong>うちの環境にも入っている（実行ファイルの中に該当する文字列があり、<strong>既に存在すると分かっている機能を対照に置いて</strong>検索方法が正しいことを先に確かめた）</li>
+            <li>ただし<strong>投稿の説明と2点食い違う</strong>。①<strong>「週の上限」ではなく5時間の枠</strong>の話らしい ②<strong>切り替えは <code>/config</code> ではなく上限バナーのチェックボックス</strong></li>
+            <li>判定は<strong>採用</strong>。ただし<strong>既定で入っている</strong>ので、こちらで入れる操作は無い。<strong>実際に上限へ当たった時の挙動は未検証</strong></li>
+          </ul>
+        </div>
+
+        <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
+<p>これを読むと、「上限で止まる」問題がどこまで解決したのかを、期待をふくらませずに把握できる。</p>
+<p>止まる場所が5時間の枠なのか週の枠なのかで、効き方はまるで違う。週の枠で止まっている人には、この機能はたぶん効かない。</p>
+
+        <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
+<ul>
+  <li>上限に当たった時、これまでは<strong>その場で止まり、人が打ち直す</strong>必要があった</li>
+  <li>新しい挙動では、<strong>リセットの時刻まで待ってから、止まった続きを自分で再開する</strong></li>
+  <li>効くのは「人がその場にいなくてよくなる」点。夜に長い作業を投げて寝る使い方と噛み合う</li>
+</ul>
+
+        <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
+<h3>実測1: うちのバージョンには入っている</h3>
+<p>投稿は 2.1.234 の話で、うちは本日 2.1.233 から <strong>2.1.237</strong> へ上げた。2.1.234 をまたいでいるので対象に含まれる。</p>
+<p>実行ファイルの中に、該当する文字列があることを確認した。</p>
+<p><strong>ただし、この確かめ方自体が一度間違っていた。</strong>最初はパッケージのフォルダを普通に検索して「0件」と出た。そこで<strong>既に存在すると分かっている機能の名前</strong>（遠隔操作・ステータス行）を同じ方法で探したところ、<strong>そちらも0件</strong>だった。つまり検索方法のほうが壊れていた（本体が300MB超の実行ファイルで、テキストとして読ませる指定が要る）。</p>
+<p>指定を直すと、対照に置いた2つは正しく見つかり、本題の語も見つかった。<strong>対照を置かなければ「機能が無い」と誤って結論していた。</strong></p>
+<h3>実測2: 投稿の説明と2点食い違う</h3>
+<table class="note-table">
+  <thead><tr><th>項目</th><th>投稿</th><th>裏取りした情報</th></tr></thead>
+  <tbody>
+    <tr><td>どの上限か</td><td><strong>週の上限</strong></td><td><strong>5時間の枠</strong>（リセットで再開）</td></tr>
+    <tr><td>切り替え場所</td><td><strong><code>/config</code></strong></td><td><strong>上限バナーのチェックボックス</strong>（既定でオン）</td></tr>
+  </tbody>
+</table>
+<p><strong>この差は小さくない。</strong>週の枠で止まっている人が「これで解決する」と読むと、期待が外れる。</p>
+<h3>実測3: 未検証の部分をはっきりさせる</h3>
+<p><strong>実際に上限へ当たった時にどう動くかは、確かめていない。</strong>上限に当たらないと試せないためで、当たるまで待つしかない。</p>
+<ul>
+  <li>「機能が存在する」＝確認できた</li>
+  <li>「投稿の説明と食い違う点がある」＝第三者の記事2本で確認</li>
+  <li>「実際にこう動く」＝<strong>未検証</strong></li>
+</ul>
+
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+<ul>
+  <li><strong>「どの上限か」を確かめずに喜ばない。</strong>5時間の枠と週の枠は別物で、効き方が違う</li>
+  <li><strong>速報の記事は、切り替え場所のような細部がずれやすい。</strong>設定を探して見つからない時は、まず出どころを疑う</li>
+  <li><strong>「ソフトの中に無い」と結論する前に、探し方が正しいか確かめる。</strong>今回は<strong>既に存在すると分かっている機能を対照に置いて</strong>初めて、検索方法のほうが壊れていると分かった</li>
+  <li><strong>未検証の部分を書き残す。</strong>「存在する」と「思ったとおり動く」は別で、後者は上限に当たるまで分からない</li>
+</ul>
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <a href="model-tier-routing.html" class="note-nav-item prev">
+            <div class="nav-label">← 前のノート</div>
+            <div class="nav-title">【見送り】「上位モデルを減らして層ごとに振り分ける」を検証した結果、うちの実測は投稿と逆の配置を支持した</div>
+          </a>
+          <a href="third-party-skills-library.html" class="note-nav-item next">
+            <div class="nav-label">次のノート →</div>
+            <div class="nav-title">【見送り】「保存したプロンプトを全部消して、3つのスキルだけ使え」を検証した結果、うちが過去に踏んだ地雷と同じ経路だった</div>
+          </a>
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#source">出典</a></li>
+            <li><a href="#tldr">30秒でわかるこのノート</a></li>
+            <li><a href="#why">なぜ重要か</a></li>
+            <li><a href="#how">しくみ（なぜ効くか）</a></li>
+            <li><a href="#ourcase">うちの体制ではこう使う</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../ai.html">← AI検証へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>
