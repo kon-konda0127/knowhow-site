@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="上位モデルを減らし層ごとにモデルを振り分けるという提案を、自分の契約と記録で検証した記録。4層のうち3層は経路が無く、最下位ティアは実作業ではなく社外監査に置かれていた。">
+  <title>【見送り】「上位モデルを減らして層ごとに振り分ける」を検証した結果、うちの実測は投稿と逆の配置を支持した | アラフォーから始める趣味</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="ai-theme">
+<div class="shell"><div class="site-frame">
+  <aside class="rail"><span>学びと、作る喜びで、未来を広げる。</span></aside>
+  <div class="main">
+
+    <header class="topbar">
+      <a class="brand" href="../index.html">アラフォーから始める趣味</a>
+      <button class="menu" id="menu" aria-label="メニュー" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav" aria-label="メインナビゲーション">
+        <a href="../index.html">はじめに</a>
+        <a href="../diet.html">ダイエット</a>
+        <a href="../ai.html" class="active">AI検証</a>
+        <a href="../column.html">コラム</a>
+      </nav>
+    </header>
+
+    <!-- ページヘッダー -->
+    <header class="page-header header-ai">
+      <div class="page-header-inner">
+        <a href="../ai.html" class="page-header-back">← AI検証へ</a>
+        <h1>【見送り】「上位モデルを減らして層ごとに振り分ける」を検証した結果、うちの実測は投稿と逆の配置を支持した</h1>
+        <div class="note-meta">
+          <span>カテゴリ: AI検証 &gt; モデル選択</span>
+          <span>取り込み: 2026-08-20</span>
+          <span class="reading-time">📖 要点30秒・全文5分</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 本文 + TOCサイドバー -->
+    <div class="note-page-layout">
+      <article class="note-body">
+        <div class="note-tags-row">
+          <span class="note-tag">#モデル選択</span>
+          <span class="note-tag">#コスト最適化</span>
+          <span class="note-tag">#GPT-5.6</span>
+          <span class="note-tag">#社外監査</span>
+          <span class="note-tag">#見送り</span>
+        </div>
+
+        <div class="verdict-panel is-reject">
+          <dl>
+            <dt>判定</dt><dd><span class="verdict verdict-reject">見送り</span>（2026-08-20）</dd>
+            <dt>理由</dt><dd>振り分け表そのものは経路が無くて採れない。契約があるのは4層のうち1層だけで、残り3層は未契約</dd>
+            <dt>次にやること</dt><dd>なし（結論済み）。ただし9月のプラン移行で上位モデルの構成は別の理由で変わる</dd>
+          </dl>
+        </div>
+
+        <h2 id="source"><a class="anchor-link" href="#source">#</a> 出典</h2>
+<ul>
+  <li>@yugen_matuni のポスト（X）: <a class="source-link" href="https://x.com/yugen_matuni/status/2089629187837673682" target="_blank" rel="noopener">https://x.com/yugen_matuni/status/2089629187837673682</a> （取り込み日：2026-08-20。<strong>本文の直接転記はせず、要約と自分の文脈のみを記載</strong>）</li>
+  <li>投稿に出てくる Sol / Terra / Luna は <strong>OpenAI の GPT-5.6 ファミリー</strong>（2026-07-09 公開・Sol=最上位／Terra=中間／Luna=高速安価）。名前だけでは分からなかったので調べた: <a class="source-link" href="https://simonw.substack.com/p/the-new-gpt-56-family-luna-terra" target="_blank" rel="noopener">https://simonw.substack.com/p/the-new-gpt-56-family-luna-terra</a></li>
+</ul>
+
+        <div class="tldr-box">
+          <div class="tldr-title">⏱ 30秒でわかるこのノート</div>
+          <ul>
+            <li>投稿の主張は「<strong>上位モデルは全部は要らない</strong>」。層ごとにモデルを割り当て、実作業は GPT-5.6 の3ティアに任せる、という振り分け案だった</li>
+            <li>確かめてみたら、<strong>うちは既にその最下位ティアを使っていた</strong>。しかも投稿が想定する「実作業」ではなく、<strong>検証（社外監査）</strong>に置いていた。設定ファイルを開いて初めて気づいた</li>
+            <li>その最下位ティアは、<strong>うちで実装を担当したモデルも、品質をチェックする役のモデルも見逃した欠陥を実際に見つけている</strong>。ただし<strong>その指摘をそのまま実装して新しい不具合を作った例も2件</strong>ある</li>
+            <li>判定は<strong>見送り</strong>。4層のうち契約があるのは1層だけで、振り分け表は経路が無くて採れない。ただし「上位を常用しなくても回る」という前提のほうは、うちの記録でも部分的に裏付けられた</li>
+          </ul>
+        </div>
+
+        <h2 id="why"><a class="anchor-link" href="#why">#</a> なぜ重要か</h2>
+<p>これを読むと、「上位モデルを減らせるか」を<strong>意見ではなく自分の記録で</strong>判定できるようになる。</p>
+<p>上位モデルを減らす話は、他人の環境の結論をそのまま持ち込んでも当たらない。契約しているものが違えば、選べる配置が違うからである。</p>
+
+        <h2 id="how"><a class="anchor-link" href="#how">#</a> しくみ（なぜ効くか）</h2>
+<p>投稿の骨子はこうだった（要約）。</p>
+<ul>
+  <li>いちばん抽象度の高い層と、その次の設計の層と、検証の層と、実作業の層を<strong>分ける</strong></li>
+  <li>分けたうえで、層ごとに<strong>要求される能力に見合ったモデルを割り当てる</strong></li>
+  <li>実作業は GPT-5.6 の3ティア（Sol / Terra / Luna）に任せ、上位モデルの契約は減らす</li>
+</ul>
+<p>効く理屈は分かる。層によって必要な能力は違うので、全部を最上位でやるのは払いすぎになる。<strong>この考え方そのものは、うちでも2026-08-14に別の投稿から取り込み済み</strong>である（→<a href="codex-model-router.html">「Codexのsubagentごとにモデルを振り分ける」のノート</a>）。</p>
+<p><strong>今回新しいのは「だから上位モデルの契約を減らす」という結論のほう</strong>で、そこが検証の対象になる。</p>
+
+        <h2 id="ourcase"><a class="anchor-link" href="#ourcase">#</a> うちの体制ではこう使う</h2>
+
+<h3>実測1: 契約があるのは4層のうち1層だけだった</h3>
+<p>投稿の振り分け表を、うちの手元で追えるか確かめた。</p>
+<table class="note-table">
+  <thead><tr><th>投稿の層</th><th>割り当て</th><th>うちで使えるか（2026-08-20 実測）</th></tr></thead>
+  <tbody>
+    <tr><td>抽象</td><td>GPT Pro</td><td><strong>経路なし</strong></td></tr>
+    <tr><td>設計</td><td>GPT の高推論 / 上位モデル</td><td>上位モデルのみ</td></tr>
+    <tr><td>検証</td><td>上位モデル</td><td>あり</td></tr>
+    <tr><td>実作業</td><td>Sol / Terra / Luna・稀に Grok</td><td><strong>Luna のみ</strong>。Sol・Terra は選択されていない。Grok は<strong>コマンド自体が無い</strong></td></tr>
+  </tbody>
+</table>
+<p><strong>4層のうち3層は経路が無い。</strong>振り分け表としては採れない。</p>
+
+<h3>実測2: 最下位ティアを、実作業ではなく検証に置いていた</h3>
+<p>外部レビュー用のCLIの設定を開いたら、こうなっていた。</p>
+<pre><code>model = "gpt-5.6-luna"
+model_reasoning_effort = "xhigh"</code></pre>
+<p><strong>GPT-5.6 の最下位ティアに、推論の深さだけ最大を指定して使っていた。</strong>しかも用途は投稿が言う「実作業」ではなく、<strong>社外監査</strong>（自分たちの成果物を外から点検してもらう役）である。</p>
+<p>意識して選んだ配置ではなかった。<strong>投稿を検証しようとして初めて、自分の設定を読んだ。</strong></p>
+
+<h3>実測3: その最下位ティアが、内部の2者が見逃した欠陥を見つけていた</h3>
+<p>いちばん重かったのは 2026-08-15 の件である。</p>
+<p>書き込み範囲の受け入れ基準として <code>git check-ignore</code> を使った負のテストを作り、品質をチェックする役のモデルも「合格」と報告した。ところがこのコマンドは、<strong>追跡済みのファイルに対しては設定がどう壊れていても「該当なし」を返す</strong>。つまり<strong>永久に合格し続ける、中身の無い検査</strong>だった。</p>
+<p><strong>実装を担当したモデルも、品質をチェックする役のモデルも見抜けず、社外監査で初めて発覚した。</strong></p>
+<p>ほかにも、測定の設計そのものを作り直させる指摘（成功率は簡単な仕事を寄せれば上がる、という指摘）や、テスト結果をパイプでつなぐと失敗が握り潰される、という指摘が出ている。<strong>いずれも最下位ティアからの指摘</strong>である。</p>
+
+<h3>実測4: ただし、その指摘をそのまま実装して2回壊した</h3>
+<p>同じ記録には逆の例も残っている。</p>
+<ul>
+  <li>「モバイルで図の文字が読めない」という指摘を受けて最小幅を足したら、<strong>記事の本文が画面外にはみ出した</strong>（320px幅で21要素中20要素）</li>
+  <li>「見出しと実データが合っていない」という指摘を受けて補足を書いたら、<strong>その補足自体が事実と違っていた</strong></li>
+</ul>
+<p><strong>指摘が当たっていることと、指摘どおりに直して良いことは別である。</strong></p>
+
+<h3>実測5: 「型があれば下位モデルでできる」は、条件付きで確認できた</h3>
+<p>2026-08-18 に、同じ作業を上位モデルと下位モデルで並行させる比較実験をした。記事の書き換えという題材で、測った6項目のうち<strong>差が出たのは1項目だけ</strong>（しかも下位モデルのほうが良かった）。重大な指摘と事実の誤りは<strong>どちらも0件</strong>。</p>
+<p>ただし条件が付く。<strong>型が明文化されていて、事実の照合が軽い題材</strong>だった。事実照合の重い作業は未検証である。</p>
+
+        <h2 id="opposite"><a class="anchor-link" href="#opposite">#</a> 投稿と逆になった点</h2>
+<p>投稿は<strong>検証を上位モデルに</strong>置き、実作業を下位ティアに置いていた。うちは<strong>検証に最下位ティアを置いて</strong>成果が出ている。</p>
+<p>理由は推測だが、外から点検する役に必要なのは<strong>深い推論よりも「文脈を持っていないこと」</strong>なのだと思う。自分で作った人は、自分の思い込みごと点検してしまう。<strong>別系統のモデルであること自体が効いている</strong>可能性がある。</p>
+<p>これは<strong>まだ確かめていない</strong>。同じ役を上位モデルにやらせて比べれば分かるが、今回はそこまでやっていない。</p>
+
+        <h2 id="pitfalls"><a class="anchor-link" href="#pitfalls">#</a> よくあるミス・落とし穴</h2>
+<ul>
+  <li><strong>他人の振り分け表を、契約を確かめずに真似しない。</strong>今回は4層のうち3層に経路が無かった。表として採れるかは、意見ではなくコマンドの有無と設定ファイルで決まる</li>
+  <li><strong>「上位が不要」という結論だけを持ち帰らない。</strong>投稿には測定値が無い。持ち帰るなら、自分の記録のどこがそれを支持し、どこが支持しないかまで見る</li>
+  <li><strong>モデルの名前を、知らないまま書かない。</strong>今回 Sol / Terra / Luna は調べるまで何か分からなかった。<strong>知らない名前を推測で説明すると、記事全体の信用が落ちる</strong></li>
+  <li><strong>外部レビューの指摘を、そのまま実装しない。</strong>当たっている指摘でも、直し方まで正しいとは限らない。うちでは2回、直した結果が新しい不具合になっている</li>
+  <li><strong>自分の設定を読まずに「うちはこうしている」と書かない。</strong>今回いちばんの発見は、<strong>自分たちが既に最下位ティアを使っていたと気づいていなかった</strong>ことだった</li>
+</ul>
+
+        <!-- 前後ナビゲーション -->
+        <nav class="note-nav">
+          <a href="claude-bg-vs-cloud.html" class="note-nav-item prev">
+            <div class="nav-label">← 前のノート</div>
+            <div class="nav-title">【見送り】「記号ひとつでタスクをWebへ投げられる」を検証した結果、バックグラウンド化とWeb実行は別々の機能だった</div>
+          </a>
+
+        </nav>
+      </article>
+
+      <!-- 目次サイドバー -->
+      <aside class="toc-sidebar">
+        <div class="toc-box">
+          <div class="toc-title">目次</div>
+          <ul class="toc-list" id="toc">
+            <li><a href="#source">出典</a></li>
+            <li><a href="#why">なぜ重要か</a></li>
+            <li><a href="#how">しくみ（なぜ効くか）</a></li>
+            <li><a href="#ourcase">うちの体制ではこう使う</a></li>
+            <li><a href="#opposite">投稿と逆になった点</a></li>
+            <li><a href="#pitfalls">よくあるミス・落とし穴</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <a href="../ai.html">← AI検証へ戻る</a>
+    </footer>
+  </div>
+</div></div>
+
+<script>
+  // ハンバーガーメニュー
+  const menu = document.getElementById('menu');
+  const nav = document.getElementById('nav');
+  menu.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', String(open));
+  });
+
+  // TOCアクティブ追跡
+  const headings = document.querySelectorAll('.note-body h2[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  headings.forEach(h => observer.observe(h));
+</script>
+</body>
+</html>
