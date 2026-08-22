@@ -29,7 +29,7 @@ const NOTES_COLUMN = [
     url: "notes/column/20260822_one-day-system-review.html",
     readingTime: "流し読み1分・全文11分",
     date: "2026-08-22",
-    version: 2
+    version: 3
   },
   {
     id: "20260816_audit-design",
